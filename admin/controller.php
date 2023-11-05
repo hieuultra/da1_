@@ -2,7 +2,8 @@
 ob_start();
 include "../model/pdo.php";
 include "../model/cat.php";
-
+include "../model/product.php";
+include "../model/slider.php";
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -62,7 +63,7 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
-        update_cat($name_cat,$file, $id_cat);
+        update_cat($name_cat, $file, $id_cat);
         $tbao = 'Sua data thanh cong';
       }
       $dslh = loadall_cat();
@@ -70,14 +71,105 @@ if (isset($_GET['act'])) {
       break;
 
       //Product
-    case 'listProduct':
+    case 'list_pro':
+      if (isset($_POST['listok']) && ($_POST['listok'])) {
+        $id_cat = $_POST['id_cat'];
+      } else {
+        $id_cat = 0;
+      }
+      $dslh = loadall_cat();
+      $dssp = loadall_pro($id_cat);
       include("product/list-product.php");
       break;
-    case 'addProduct':
+    case 'add_pro':
+      if (isset($_POST['them']) && ($_POST['them'])) {
+        $id_cat = $_POST['id_cat'];
+        $name_pro = $_POST['name_pro'];
+        $price = $_POST['price'];
+        $dis = $_POST['discount'];
+        $des = $_POST['des'];
+        $size = $_POST['size'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        if ($name_pro != "") {
+          insert_pro($name_pro, $file, $des, $dis, $price, $size, $id_cat);
+          $tbao = 'Them data thanh cong';
+          header("location:index.php?act=list_pro");
+        }
+      }
+      $dslh = loadall_cat();
       include("product/add-product.php");
       break;
-    case 'updateProduct':
+    case 'delete_pro':
+      if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
+        delete_pro($_GET['id_pro']);
+      }
+      $dssp = loadall_pro();
+
+      include "product/list-product.php";
+      break;
+    case 'edit_pro':
+      if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
+
+        $suasp = loadone_pro($_GET['id_pro']);
+      }
+      $dslh = loadall_cat();
       include("product/update-product.php");
+      break;
+    case 'update_pro':
+      if (isset($_POST['edit']) && ($_POST['edit'])) {
+        $name_pro = $_POST['name_pro'];
+        $id_pro = $_POST['id_pro'];
+        $description = $_POST['description'];
+        $discount = $_POST['discount'];
+        $price = $_POST['price'];
+        $size = $_POST['size'];
+        $id_cat = $_POST['id_cat'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $size, $id_cat);
+        $tbao = 'Sua data thanh cong';
+      }
+      $dslh = loadall_cat();
+      $dssp = loadall_pro();
+      include "product/list-product.php";
+      break;
+
+      // slider
+    case 'list_slider':
+      $dssl = loadall_slider();
+      include "slider/list-slider.php";
+      break;
+    case 'add_slider':
+      if (isset($_POST['them']) && ($_POST['them'])) {
+        $name_slider = $_POST['name_slider'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        if ($name_slider != "") {
+          insert_slider($file, $name_slider);
+          $tbao = 'Them data thanh cong';
+          header("location:index.php?act=list_slider");
+        }
+      }
+      include("slider/add-slider.php");
       break;
   }
 } else {

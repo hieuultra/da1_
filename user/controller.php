@@ -1,5 +1,6 @@
   <?php
   // Navbar
+  ob_start();
   include_once("_navbar.php");
   include_once("./global.php");
   //phpMailer
