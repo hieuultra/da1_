@@ -70,6 +70,9 @@ if (isset($_GET['act'])) {
       include "category/list-category.php";
       break;
 
+
+  include "category/list-category.php";
+  break;
       //Product
     case 'list_pro':
       if (isset($_POST['listok']) && ($_POST['listok'])) {
@@ -171,7 +174,15 @@ if (isset($_GET['act'])) {
       }
       include("slider/add-slider.php");
       break;
+      //slider
+case 'delete_slider':
+  if (isset($_GET['id_slider']) && ($_GET['id_slider']) > 0) {
+    delete_slider($_GET['id_slider']);
   }
+  $dslh = loadall_slider();
+  break;
+ }
+  
 } else {
   include("dashboard.php");
 }
