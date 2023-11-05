@@ -23,6 +23,9 @@
       <label class="form-label">Image</label>
       <input type="file" class="form-control" name="image">
     </div>
+    <div>
+      <input type="text" name="" id="">
+    </div>
 
     <div class="mb-3">
       <label class="form-label">Price</label>
