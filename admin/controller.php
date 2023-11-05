@@ -179,7 +179,9 @@ case 'delete_slider':
   if (isset($_GET['id_slider']) && ($_GET['id_slider']) > 0) {
     delete_slider($_GET['id_slider']);
   }
-  $dslh = loadall_slider();
+  $dssl  = loadall_slider();
+
+  include "slider/list-slider.php";
   break;
  }
   
