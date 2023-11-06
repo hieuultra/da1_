@@ -171,6 +171,15 @@ if (isset($_GET['act'])) {
       }
       include("slider/add-slider.php");
       break;
+
+      case 'delete_slider':
+        if (isset($_GET['id_slider']) && ($_GET['id_slider']) > 0) {
+          delete_slider($_GET['id_slider']);
+        }
+        $dssl = loadall_slider();
+  
+        include "slider/list-slider.php";
+        break;
   }
 } else {
   include("dashboard.php");
