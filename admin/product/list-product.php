@@ -11,6 +11,18 @@
         <i class="fas fa-table me-1"></i>
         List categories
       </div>
+      <form action="index.php?act=list_pro" method="post">
+        <select class="form-select" name="id_cat" id="">
+          <option value="0" selected>TAT CA</option>
+          <?php
+          foreach ($dslh as $ds) {
+            extract($ds);
+            echo '<option value="' . $id_cat . '">' . $name_cat . '</option>';
+          }
+          ?>
+        </select>
+        <input class="btn btn-primary" type="submit" name="listok" value="GO">
+      </form>
       <div class="card-body">
         <table id="datatablesSimple">
           <thead>
@@ -20,60 +32,45 @@
               <th>Product name</th>
               <th>Image</th>
               <th>Price</th>
-              <th>Status</th>
+              <th>Discount</th>
               <th>Description</th>
-              <th>Date create</th>
+              <th>Size</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Smartphone</td>
-              <td>Iphone</td>
-              <td><img src="" alt="anh..."></td>
-              <td>$1999</td>
-              <td>Show</td>
-              <td>Iphone new generation</td>
-              <td>23/11/2023</td>
-              <td>
-                <a href="?act=updateProduct" class="btn btn-warning">Update</a>
-                <a href="?act=deleteProduct" class="btn btn-danger">Delete</a>
-              </td>
-            </tr>
+            <?php foreach ($dssp as $d) {
+              extract($d);
+              $suasp = "index.php?act=edit_pro&id_pro=" . $id_pro;
+              $xoasp = "index.php?act=delete_pro&id_pro=" . $id_pro;
+              $hinhpath = "../upload/" . $img;
+              if (is_file($hinhpath)) {
+                $hinh = "<img src='" . $hinhpath . "' height='70'>";
+              } else {
+                $hinh = "No photo";
+              }
 
-            <tr>
-              <td>2</td>
-              <td>Smartphone</td>
-              <td>Iphone 1</td>
-              <td><img src="" alt="anh..."></td>
-              <td>$19994</td>
-              <td>Hidden</td>
-              <td>Iphone new generation</td>
-              <td>23/11/2023</td>
-              <td>
-                <a href="?act=updateProduct" class="btn btn-warning">Update</a>
-                <a href="?act=deleteProduct" class="btn btn-danger">Delete</a>
-              </td>
-            </tr>
-
-            <tr>
-              <td>1</td>
-              <td>Smartphone</td>
-              <td>Iphone</td>
-              <td><img src="" alt="anh..."></td>
-              <td>$1999</td>
-              <td>Show</td>
-              <td>Iphone new generation</td>
-              <td>23/11/2023</td>
-              <td>
-                <a href="?act=updateProduct" class="btn btn-warning">Update</a>
-                <a href="?act=deleteProduct" class="btn btn-danger">Delete</a>
-              </td>
-            </tr>
-
+              echo '  <tr>
+                  <td>' . $id_pro . '</td>
+                  <td>' . $name_cat . '</td>
+                  <td>' . $name_pro . '</td>
+                  <td>' . $hinh . '</td>
+                  <td>' .  number_format($price, 0, ",", ".") . '$' . '</td>
+                  <td>' . $discount . '</td>
+                  <td>' . $description . '</td>
+                  <td>' . $size . '</td>
+                  <td>
+                  <a href="' . $suasp . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
+                  <a href="' . $xoasp . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
+                  </td>
+                </tr>';
+            }
+            ?>
           </tbody>
         </table>
+        <a href="?act=add_pro">
+          <input type="submit" class="btn btn-primary" name="them" value="ADD">
+        </a>
       </div>
     </div>
   </div>
