@@ -79,6 +79,10 @@ if (isset($_GET['act'])) {
     case 'updateProduct':
       include("product/update-product.php");
       break;
+      case 'update_usser':
+        include("product/update-product.php");
+        break;
+      
   }
 } else {
   include("dashboard.php");
