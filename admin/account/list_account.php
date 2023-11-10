@@ -1,6 +1,6 @@
 <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">List accounts</h1>
+        <h1 class="mt-4">List account</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
@@ -49,14 +49,14 @@
                             echo '<tr>
     <td>' . $id_user . '</td>
     <td>' . $username . '</td>
- <td>*********</td>
- <td>' . $name . '</td>
- <td>' . $address . '</td>
- <td>' . $phone . '</td>
- <td>' . $email . '</td>
- <td>' . $hinh . '</td>
- <td>' . $name_role . '</td>
-<td> <a href="' . $suatk . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
+    <td>*********</td>
+    <td>' . $name . '</td>
+    <td>' . $address . '</td>
+    <td>' . $phone . '</td>
+    <td>' . $email . '</td>
+    <td>' . $hinh . '</td>
+    <td>' . $name_role . '</td>
+    <td> <a href="' . $suatk . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
          ' . $xoatk . '</td>
                 </tr>';
                         }

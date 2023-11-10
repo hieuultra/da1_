@@ -5,6 +5,7 @@ include "../model/cat.php";
 include "../model/product.php";
 include "../model/slider.php";
 include "../model/user.php";
+include "../model/role.php";
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -207,6 +208,70 @@ if (isset($_GET['act'])) {
       break;
       //account
     case 'list_account':
+      $dstk = loadall_account();
+      include "account/list_account.php";
+      break;
+    case 'add_account':
+      if (isset($_POST['them']) && ($_POST['them'])) {
+
+        $username = $_POST['name_acc'];
+        $password = $_POST['password'];
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        if ($username != "") {
+          insert_acc($username, $password, $name, $address, $phone, $email, $file);
+          header("location:index.php?act=list_account");
+          $tbao = 'Them data thanh cong';
+        }
+      }
+      include("account/add_account.php");
+      break;
+    case 'delete_account':
+      if (isset($_GET['id_user']) && ($_GET['id_user']) > 0) {
+        delete_acc($_GET['id_user']);
+      }
+      $dstk = loadall_account();
+
+      include "account/list_account.php";
+      break;
+    case 'edit_account':
+      if (isset($_GET['id_user']) && ($_GET['id_user']) > 0) {
+        $suatk = loadone_acc($_GET['id_user']);
+      }
+      $dsrl = loadall_rl();
+      include "account/update_account.php";
+      break;
+    case 'update_account':
+      if (isset($_POST['edita']) && ($_POST['edita'])) {
+        $id_user = $_POST['id_user'];
+        $username = $_POST['name_acc'];
+        $password = $_POST['password'];
+        $name = $_POST['name'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $id_role = $_POST['id_role'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        update_acc($id_user, $username, $password, $name, $address, $phone, $email, $file, $id_role);
+        $tbao = 'Sua data thanh cong';
+      }
       $dstk = loadall_account();
       include "account/list_account.php";
       break;

@@ -39,31 +39,35 @@ function loadall_account()
     $dstk = pdo_query($sql);
     return $dstk; //co ket qua tra ve phai return
 }
-function delete_tk($id_tk)
+function delete_acc($id_user)
 {
-    $sql = "delete from taikhoan where id_tk=" . $id_tk;
+    $sql = "delete from user where id_user=" . $id_user;
     pdo_execute($sql);
 }
-function loadone_tk($id_tk)
+function loadone_acc($id_user)
 {
-    $sql = "select * from taikhoan where id_tk=" . $id_tk;
-    $suasp = pdo_query_one($sql);
-    return $suasp; //co ket qua tra ve phai return
+    $sql = "select * from user where id_user=" . $id_user;
+    $suatk = pdo_query_one($sql);
+    return $suatk; //co ket qua tra ve phai return
 }
-function  update_tk($id_tk, $username, $file, $email, $address, $tel, $role)
+function  update_acc($id_user, $username, $password, $name, $address, $phone, $email, $file, $id_role)
 {
     if ($file != '') {
-        $sql = "update taikhoan set username='" . $username . "',hinh='" . $file . "',email='" . $email . "',
-        address='" . $address . "',tel='" . $tel . "',role='" . $role . "' where id_tk=" . $id_tk;
+        $sql = "update user set username='" . $username . "',password='" . $password . "',
+        name='" . $name . "',address='" . $address . "',phone='" . $phone . "',
+        email='" . $email . "',image='" . $file . "',id_role='".$id_role."' where id_user=" . $id_user;
     } else {
-        $sql = "update taikhoan set username='" . $username . "',email='" . $email . "',
-        address='" . $address . "',tel='" . $tel . "' ,role='" . $role . "' where id_tk=" . $id_tk;
+        $sql = "update user set username='" . $username . "',password='" . $password . "',
+        name='" . $name . "',address='" . $address . "',phone='" . $phone . "',
+        email='" . $email . "',id_role='".$id_role."' where id_user=" . $id_user;
     }
 
     pdo_execute($sql);
 }
-function insert_taikhoan($username, $password, $ho_ten, $file, $email, $address, $tel)
+function insert_acc($username, $password, $name, $address, $phone, $email, $file)
 {
-    $sql = "insert into taikhoan(username,password,ho_ten,hinh,email,address,tel) values('$username','$password','$ho_ten','$file','$email','$address','$tel')";
+    $sql = "insert into user(username,password,name,address,phone,email,image)
+     values('$username','$password','$name','$address','$phone','$email','$file')";
     pdo_execute($sql);
 }
+
