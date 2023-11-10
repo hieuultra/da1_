@@ -118,7 +118,6 @@ if (isset($_GET['act'])) {
       break;
     case 'edit_pro':
       if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
-
         $suasp = loadone_pro($_GET['id_pro']);
       }
       $dslh = loadall_cat();
