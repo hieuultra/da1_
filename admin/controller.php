@@ -5,6 +5,7 @@ include "../model/cat.php";
 include "../model/product.php";
 include "../model/slider.php";
 include "../model/user.php";
+include "../model/comment.php";
 include "../model/role.php";
 
 if (isset($_GET['act'])) {
@@ -273,6 +274,31 @@ if (isset($_GET['act'])) {
       $dstk = loadall_account();
       include "account/list_account.php";
       break;
+
+      case 'comment':
+        $dsbl = loadall_bl();
+        include "comment/comment.php";
+        break;
+        case 'xoacomment':
+          if (isset($_GET['id_com']) && ($_GET['id_com']) > 0) {
+              delete_bl($_GET['id_com']);
+          }
+          // header("location:index.php?act=ctbl");
+          // $dsbl = loadall_bluan(0);
+          if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
+              $onecom = loadone_probl($_GET['id_pro']);
+              $ctbl = loadall_comment($_GET['id_pro']);
+          }
+
+          include "comment/comment-detail.php";
+          break;
+      case 'ctcom':
+          if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
+              $onecom = loadone_probl($_GET['id_pro']);
+              $ctbl = loadall_comment($_GET['id_pro']);
+          }
+          include "comment/comment-detail.php";
+          break;
   }
 } else {
   include("dashboard.php");

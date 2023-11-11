@@ -101,20 +101,19 @@ ob_start();
         </div>
 
         <!-- brand -->
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseBrand" aria-expanded="false" aria-controls="collapseLayouts">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCO" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon">
             <i class="fas fa-columns"></i>
           </div>
-          Brand
+          Comment
           <div class="sb-sidenav-collapse-arrow">
             <i class="fas fa-angle-down"></i>
           </div>
         </a>
 
-        <div class="collapse" id="collapseBrand" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+        <div class="collapse" id="collapseCO" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="?act=list_brand">List Brand</a>
-            <a class="nav-link" href="?act=add_brand">Add Brand</a>
+            <a class="nav-link" href="?act=comment">List Comment</a>
           </nav>
         </div>
 
