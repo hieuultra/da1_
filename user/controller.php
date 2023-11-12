@@ -165,16 +165,11 @@
       case 'contact':
         include_once("contact.php");
         break;
-
-      case 'checkout':
-        include_once("checkout.php");
-        break;
-
       case 'addtocart':
         //add thong tin sp tu cai form add to cart den session
         if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
           // Kiểm tra tài khoản đang đăng nhập
-          if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] == 2) {
+          if (isset($_SESSION['user']['id_role']) && $_SESSION['user']['id_role'] == 2) {
             header('Location: index.php'); // Chuyển hướng về trang index.php
             exit(); // Dừng việc thực thi các lệnh tiếp theo
           }
@@ -201,6 +196,9 @@
         }
         header('Location:index.php?act=view_cart');
         // include "view/cart/viewcart.php";
+        break;
+      case 'checkout':
+        include "checkout.php";
         break;
     }
   } else {
