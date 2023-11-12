@@ -179,8 +179,14 @@
        </div>
        <div class="card-footer d-flex justify-content-between bg-light border">
          <a href="' . $linksp . '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-         <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To
-           Cart</a>
+         <form action="index.php?act=addtocart" method="post">
+         <input type="hidden" name="id_pro" value="' . $id_pro . '">
+         <input type="hidden" name="name_pro" value="' . $name_pro . '">
+         <input type="hidden" name="img" value="' . $img . '">
+         <input type="hidden" name="price" value="' . $price . '">
+         <input type="hidden" name="discount" value="' . $discount . '">
+         <input type="submit" value="Add To Cart" class="btn btn-sm text-dark p-0" name="addtocart"><i class="fas fa-shopping-cart text-primary mr-1"></i>
+       </form>
        </div>
      </div>
    </div>';

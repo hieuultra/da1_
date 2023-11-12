@@ -1,3 +1,22 @@
+<?php
+// if (isset($_SESSION['mycart'])) {
+//   extract($_SESSION['mycart']);
+// }
+global  $img_path;
+$tong = 0;
+$i = 0;
+$ship = 100;
+$tongship=0;
+foreach ($_SESSION['mycart'] as $cart) {
+  $hinh = $img_path . $cart[2];
+  // $gia = $cart[3];
+  $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+  $total = $price * $cart[5];
+  $tong += $total;
+  $ship;
+  $tongship=$tong+$ship;
+}
+?>
 <div class="container-fluid pt-5">
   <div class="row px-xl-5">
     <div class="col-lg-8 table-responsive mb-5">
@@ -23,17 +42,17 @@
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3 pt-1">
             <h6 class="font-weight-medium">Total cart</h6>
-            <h6 class="font-weight-medium">$150</h6>
+            <h6 class="font-weight-medium"><?= number_format($tong, 0, ",", ".") . "$"  ?></h6>
           </div>
           <div class="d-flex justify-content-between">
             <h6 class="font-weight-medium">Shipping</h6>
-            <h6 class="font-weight-medium">$10</h6>
+            <h6 class="font-weight-medium"><?= number_format($ship, 0, ",", ".") . "$"  ?></h6>
           </div>
         </div>
         <div class="card-footer border-secondary bg-transparent">
           <div class="d-flex justify-content-between mt-2">
             <h5 class="font-weight-bold">Total</h5>
-            <h5 class="font-weight-bold">$160</h5>
+            <h5 class="font-weight-bold"><?= number_format($tongship, 0, ",", ".") . "$"  ?></h5>
           </div>
           <a href="?act=checkout" class="btn btn-block btn-primary my-3 py-3">
             Proceed To Checkout
