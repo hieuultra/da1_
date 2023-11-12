@@ -14,14 +14,14 @@
       <div class="card-body">
         <table id="datatablesSimple">
       
+               
                 <tr>
-                    <th>HANG HOA</th>
-                    <th>SO BL</th>
-                    <th>MOI NHAT</th>
-                    <th>CU NHAT</th>
-                    <th></th>
-                </tr>
-
+                            <th>PRODUCT</th>
+                            <th>COUNT_COM</th>
+                            <th>NEW_DATE</th>
+                            <th>OLD_DATE</th>
+                            <th>Action</th>
+                        </tr>
                 <?php
                 foreach ($dsbl as $bl) {
                     extract($bl);

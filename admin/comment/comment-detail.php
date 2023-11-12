@@ -16,19 +16,20 @@
         <table id="datatablesSimple">
       
         <tr>
-                    <th></th>
-                    <th>NOI DUNG</th>
-                    <th>NGAY BL</th>
-                    <th>NGUOI BL</th>
-                    <th></th>
-                </tr>
+            
+                            <th>Content</th>
+                            <th>Date_com</th>
+                            <th>User_com</th>
+                            <th>Action</th>
+                            
+                        </tr>
                 <?php
                 foreach ($ctbl as $ct) {
                     // var_dump($ctbl);
                     extract($ct);
                     $xoabl = "index.php?act=xoacomment&id_com=" . $id_com . "&id_pro=" . $id_pro;
                     echo ' <tr>
-                    <td><input type="checkbox" name="cb" id="" /></td>
+                    
                     <td>' . $content . '</td>
                     <td>' . $date_com . '</td>
                     <td>' . $nguoibl . '</td>
@@ -42,12 +43,11 @@
 
             
         </table>
-        <div class=" mb10">
-          
+       
             <a href="?act=comment">
       <input type="button"  value="LIST_CAT">
     </a>
-        </div>
+        
       </div>
     </div>
   </div>
