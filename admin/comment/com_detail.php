@@ -18,12 +18,9 @@
                 <i class="fas fa-table me-1"></i>
                 Comment detail
             </div>
-            <!-- <?php
-                    extract($onebl);
-                    ?> -->
-            <div class="tenhh">
-                PRODUCT:<?= $name_pro ?>
-            </div>
+            <!-- <div class="tenhh">
+                PRODUCT:<?= $onebl['name_pro'] ?>
+            </div> -->
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
