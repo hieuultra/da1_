@@ -128,9 +128,18 @@
             </button>
           </div>
         </div>
-        <button class="btn btn-primary px-3">
-          <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
-        </button>
+        <form action="index.php?act=addtocart" method="post">
+          <input type="hidden" name="id_pro" value="<?= $id_pro ?>">
+          <input type="hidden" name="name_pro" value="<?= $name_pro ?>">
+          <input type="hidden" name="img" value="<?= $img ?>">
+          <input type="hidden" name="price" value="<?= $price ?>">
+          <input type="hidden" name="discount" value="<?= $discount ?>">
+          <input type="submit" class="btn btn-primary px-3" name="addtocart" value=' Add To Cart'>
+          <i class="fa fa-shopping-cart mr-1"></i>
+        </form>
+        <!-- <a href="?act=addtocart"> <button class="btn btn-primary px-3">
+            <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
+          </button></a> -->
       </div>
       <div class="d-flex pt-2">
         <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
@@ -172,14 +181,14 @@
         <!-- Review -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
-            $(document).ready(function() {
-                $("#tab-pane-3").load("user/comment/comment_form.php", {
-                    id_pro: <?= $id_pro ?>
-                });
+          $(document).ready(function() {
+            $("#tab-pane-3").load("user/comment/comment_form.php", {
+              id_pro: <?= $id_pro ?>
             });
+          });
         </script>
         <div class="tab-pane fade" id="tab-pane-3">
-          
+
         </div>
       </div>
     </div>
