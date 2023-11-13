@@ -3,15 +3,15 @@
   ob_start();
   session_start();
 
-  include_once("_navbar.php");
-  include_once("./global.php");
-  include_once "./model/pdo.php";
-  include_once "./model/cat.php";
-  include_once "./model/product.php";
-  include_once "./model/size.php";
-  include_once "./model/slider.php";
-  include_once "./model/user.php";
-  include_once "./model/cart.php";
+  include "_navbar.php";
+  include "./global.php";
+  include "./model/pdo.php";
+  include "./model/cat.php";
+  include  "./model/product.php";
+  include "./model/size.php";
+  include "./model/slider.php";
+  include  "./model/user.php";
+  include "./model/cart.php";
 
   if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
@@ -175,12 +175,12 @@
           }
           $id_pro = $_POST['id_pro'];
           $name_pro = $_POST['name_pro'];
-          $img = $_POST['img'];
-          $price = $_POST['price'];
+          $image_pro = $_POST['img'];
+          $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
           $quantity = 1;
-          $total = $quantity * $price;
-          $spadd = [$id_pro, $name_pro, $img, $price, $discount, $quantity, $total];
+          $total = $quantity * $price_pro;
+          $spadd = [$id_pro, $name_pro, $image_pro, $price_pro, $discount, $quantity, $total];
           array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
         }
         include "view_cart.php";
@@ -199,6 +199,38 @@
         break;
       case 'checkout':
         include "checkout.php";
+        break;
+      case 'billconfirm':
+        if (isset($_POST['dydh']) && ($_POST['dydh'])) {
+          if (isset($_SESSION['user'])) $id_user = $_SESSION['user']['id_user'];
+          else $id_user = 0;
+          $name_user = $_POST['username'];
+          $name = $_POST['name'];
+          $email_user = $_POST['email'];
+          $phone_user = $_POST['phone'];
+          $address_user = $_POST['address'];
+          $payment_method = $_POST['payment'];
+          date_default_timezone_set("Asia/Ho_Chi_Minh");
+          $date_order = date("Y-m-d H:i:s", time());
+          $total_price = tongdh();
+          //tao bill
+          $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+
+          //insert into cart: voi $session['mycart'] $id_bill
+          //neu ko login thi dung isset hay empty
+          foreach ($_SESSION['mycart'] as $cart) {
+            insert_cart($cart[2], $cart[1], $cart[3], $cart[6], $cart[5], $cart[0], $id_bill, $_SESSION['user']['id_user']);
+          }
+          //xoa session
+          $_SESSION['cart'] = [];
+        }
+        $bill = loadone_bill($id_bill);
+        $billct = loadall_cart($id_bill);
+        include "billconfirm.php";
+        break;
+      case 'mybill':
+        $listbill = loadall_bil($_SESSION['user']['id_user']);
+        include "view/cart/mybill.php";
         break;
     }
   } else {

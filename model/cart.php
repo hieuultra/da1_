@@ -133,16 +133,16 @@ function tongdh()
     return $tong;
 }
 
-function insert_bill($name, $diachi, $email, $tel, $pttt, $tongdh, $ngaydh, $id_tk)
+function insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user)
 {
-    $sql = "insert into bill(name,diachi,email,tel,pttt,total,ngaydh,id_tk) 
-    values('$name','$diachi','$email','$tel','$pttt','$tongdh','$ngaydh','$id_tk')";
+    $sql = "insert into bill(name_user,address_user,phone_user,email_user,total_price,payment_method,date_order,id_user) 
+    values('$name_user','$address_user','$phone_user','$email_user','$total_price','$payment_method','$date_order','$id_user')";
     return pdo_execute_return_lastInsertId($sql); // insert xong tra ve id vua insert de insert vao table cart
 }
-function insert_cart($id_tk, $id_sp, $img, $name, $price, $soluong, $thanhtien, $id_bill)
+function insert_cart($image_pro, $name_pro, $price_pro, $total, $quantity, $id_pro, $id_bill, $id_user)
 {
-    $sql = "insert into cart(id_tk,id_sp,img,name,price,soluong,thanhtien,id_bill) 
-    values('$id_tk','$id_sp','$img','$name','$price','$soluong','$thanhtien','$id_bill')";
+    $sql = "insert into cart(image_pro, name_pro, price_pro, total, quantity, id_pro, id_bill,id_user) 
+    values('$image_pro', '$name_pro', '$price_pro', '$total', '$quantity', '$id_pro', '$id_bill','$id_user')";
     pdo_execute($sql);
 }
 function loadone_bill($id_bill)

@@ -6,7 +6,7 @@ global  $img_path;
 $tong = 0;
 $i = 0;
 $ship = 100;
-$tongship=0;
+$tongship = 0;
 foreach ($_SESSION['mycart'] as $cart) {
   $hinh = $img_path . $cart[2];
   // $gia = $cart[3];
@@ -14,7 +14,7 @@ foreach ($_SESSION['mycart'] as $cart) {
   $total = $price * $cart[5];
   $tong += $total;
   $ship;
-  $tongship=$tong+$ship;
+  $tongship = $tong + $ship;
 }
 ?>
 <div class="container-fluid pt-5">

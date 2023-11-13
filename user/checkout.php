@@ -1,3 +1,20 @@
+<?php
+global  $img_path;
+$tong = 0;
+$i = 0;
+$ship = 100;
+$tongship = 0;
+foreach ($_SESSION['mycart'] as $cart) {
+  $name_pro = $cart[1];
+  $hinh = $img_path . $cart[2];
+  // $gia = $cart[3];
+  $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+  $total = $price * $cart[5];
+  $tong += $total;
+  $ship;
+  $tongship = $tong + $ship;
+}
+?>
 <!-- Checkout Start -->
 <div class="container-fluid pt-5">
   <div class="row px-xl-5">
@@ -41,19 +58,6 @@
               <label>Address</label>
               <input class="form-control" type="text" name="address" value="<?= $address ?>" />
             </div>
-
-            <!-- <div class="col-md-12 form-group">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="newaccount" />
-                <label class="custom-control-label" for="newaccount">Create an account</label>
-              </div>
-            </div> -->
-            <!-- <div class="col-md-12 form-group">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="shipto" />
-                <label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-              </div>
-            </div> -->
           </div>
         </div>
         <div class="card border-secondary mb-5">
@@ -93,36 +97,42 @@
         </div>
         <div class="card-body">
           <h5 class="font-weight-medium mb-3">Products</h5>
-          <div class="d-flex justify-content-between">
-            <p>Colorful Stylish Shirt 1</p>
-            <p>$150</p>
-          </div>
-          <div class="d-flex justify-content-between">
-            <p>Colorful Stylish Shirt 2</p>
-            <p>$150</p>
-          </div>
-          <div class="d-flex justify-content-between">
-            <p>Colorful Stylish Shirt 3</p>
-            <p>$150</p>
-          </div>
+          <?php
+          $tong = 0;
+          $ship = 100;
+          $tongship = 0;
+          foreach ($_SESSION['mycart'] as $cart) {
+            $name_pro = $cart[1];
+            $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+            $total = $price * $cart[5];
+            $tong += $total;
+            $ship;
+            $tongship = $tong + $ship;
+            echo '<div class="d-flex justify-content-between">
+               <p>' . $name_pro . '</p>
+              <p>' .  number_format($price, 0, ",", ".") . '$ </p>
+              </div>';
+          }
+          echo '
           <hr class="mt-0" />
           <div class="d-flex justify-content-between mb-3 pt-1">
             <h6 class="font-weight-medium">Subtotal</h6>
-            <h6 class="font-weight-medium">$150</h6>
+            <h6 class="font-weight-medium">' . number_format($tong, 0, ",", ".") . "$" . '</h6>
           </div>
           <div class="d-flex justify-content-between">
             <h6 class="font-weight-medium">Shipping</h6>
-            <h6 class="font-weight-medium">$10</h6>
+            <h6 class="font-weight-medium">' . number_format($ship, 0, ",", ".") . "$" . '</h6>
           </div>
         </div>
         <div class="card-footer border-secondary bg-transparent">
           <div class="d-flex justify-content-between mt-2">
             <h5 class="font-weight-bold">Total</h5>
-            <h5 class="font-weight-bold">$160</h5>
+            <h5 class="font-weight-bold">' . number_format($tongship, 0, ",", ".") . "$" . '</h5>
           </div>
+        </div>';
+          ?>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Checkout End -->
+  <!-- Checkout End -->
