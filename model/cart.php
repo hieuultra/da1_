@@ -177,7 +177,7 @@ function loadall_bil($id_user)
 {
     $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";
     if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
-    $sql .= " order by b.id_bill desc";
+    $sql .= "  group by b.id_bill order by b.id_bill desc";
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
@@ -235,4 +235,10 @@ function  loadall_thongke()
     $sql .= " group by danhmuc.id_dm order by danhmuc.id_dm desc ";
     $listtk = pdo_query($sql);
     return $listtk;
+}
+function loadall_sp_cart($id_bill)
+{
+    $sql = "select * from cart  where id_bill=" . $id_bill;
+    $spbill = pdo_query($sql);
+    return $spbill; //co ket qua tra ve phai return
 }

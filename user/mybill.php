@@ -25,14 +25,14 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                
                         <?php
                         if (is_array($listbill)) {
                             foreach ($listbill as $bill) {
                                 extract($bill);
                                 $ttdh = get_ttdh($bill['id_status_bill']);
                                 $countsp = loadall_cart_count($id_bill);
-                                $ctb = "index.php?act=bill_detail&id_pro=" . $id_pro;
+                                $ctb = "index.php?act=bill_detail&id_bill=" . $id_bill;
                                 $huydh = "index.php?act=delete_bill&id_bill=" . $id_bill;
                                 echo ' <tr>
                             <td>' . $id_bill . '</td>
@@ -47,7 +47,7 @@
                             }
                         }
                         ?>
-                    </tbody>
+              
                 </table>
             </div>
         </div>

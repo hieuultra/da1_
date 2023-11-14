@@ -232,6 +232,12 @@
         $listbill = loadall_bil($_SESSION['user']['id_user']);
         include "mybill.php";
         break;
+      case 'bill_detail':
+        if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
+          $spbill = loadall_sp_cart($_GET['id_bill']);
+        }
+        include "bill_detail.php";
+        break;
     }
   } else {
     include_once("user/home/index.php");
