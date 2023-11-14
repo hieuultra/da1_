@@ -230,7 +230,7 @@
         break;
       case 'mybill':
         $listbill = loadall_bil($_SESSION['user']['id_user']);
-        include "view/cart/mybill.php";
+        include "mybill.php";
         break;
     }
   } else {

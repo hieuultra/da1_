@@ -173,11 +173,11 @@ function loadall_bill($kyw = "", $id_tk = 0)
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
-function loadall_bil($id_tk)
+function loadall_bil($id_user)
 {
-    $sql = "select * from bill where 1";
-    if ($id_tk > 0) $sql .= "  and id_tk=" . $id_tk;
-    $sql .= " order by id_bill desc";
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";
+    if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
+    $sql .= " order by b.id_bill desc";
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
@@ -185,6 +185,25 @@ function delete_bill($id_bill)
 {
     $sql = "delete from bill where id_bill=" . $id_bill;
     pdo_execute($sql);
+}
+function get_pttt($n)
+{
+    switch ($n) {
+        case '1':
+            $pt = "Paypal";
+            break;
+        case '2':
+            $pt = "Direct check";
+            break;
+        case '3':
+            $pt = "Bank transfer";
+            break;
+
+        default:
+            $pt = "Direct check";
+            break;
+    }
+    return $pt;
 }
 function get_ttdh($n)
 {

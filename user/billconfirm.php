@@ -34,6 +34,7 @@ foreach ($_SESSION['mycart'] as $cart) {
     <?php
     if (isset($bill) && (is_array($bill))) {
         extract($bill);
+        $pttt = get_pttt($bill['payment_method']);
     }
     ?>
     <div class="container px-xl-5">
@@ -49,7 +50,7 @@ foreach ($_SESSION['mycart'] as $cart) {
                                 <li class="list-group-item"><strong>ID_Bill:</strong> <?= $bill['id_bill'] ?></li>
                                 <li class="list-group-item"><strong>Date_order:</strong> <?= $bill['date_order'] ?></li>
                                 <li class="list-group-item"><strong>Total_price:</strong> <?= number_format($tongship, 0, ",", ".") . "$" ?></li>
-                                <li class="list-group-item"><strong>Payment_method:</strong> <?= $bill['payment_method'] ?></li>
+                                <li class="list-group-item"><strong>Payment_method:</strong> <?= $pttt?></li>
                             </ul>
                         </div>
                     </div>
