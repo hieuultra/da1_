@@ -232,6 +232,19 @@
         $listbill = loadall_bil($_SESSION['user']['id_user']);
         include "mybill.php";
         break;
+      case 'addfb':
+        if (isset($_POST['send']) && ($_POST['send'])) {
+          $name_user = $_POST['name'];
+          $email_user = $_POST['email'];
+          $phone_user = $_POST['phone'];
+          $subject_name = $_POST['subject'];
+          $content = $_POST['message'];
+          date_default_timezone_set("Asia/Ho_Chi_Minh");
+          $created_at = date("Y-m-d H:i:s", time());
+          insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at);
+        }
+        include_once("contact.php");
+        break;
     }
   } else {
     include_once("user/home/index.php");
