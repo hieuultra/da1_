@@ -39,7 +39,7 @@
                             <td>' . $hinh . '</td>
                             <td>' . number_format($tt, 0, ",", ".") . '$' . '</td>
                             <td>' . $quantity . '</td>
-                            <td>' . number_format($total, 0, ",", ".") . '$' . '</td>
+                            <td>' . number_format($tt, 0, ",", ".") . '$' . '</td>
                                      </tr>';
                         }
                     

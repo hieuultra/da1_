@@ -35,7 +35,7 @@
             <input class="btn btn-primary py-2 px-4" type="submit" name="send" value="Send Message">
           </div>
         </form>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script>
           swal({
             title: "FeedBack sucess!",
@@ -43,7 +43,7 @@
             icon: "success",
 
           });
-        </script>
+        </script> -->
       </div>
     </div>
     <div class="col-lg-5 mb-5">
