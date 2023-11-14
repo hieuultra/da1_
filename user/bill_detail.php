@@ -27,6 +27,7 @@
                     <?php
                         foreach ($spbill as $sp) {
                             extract($sp);
+                            $tt = $price_pro - (($price_pro * $discount) / 100);
                             $hinhpath = "./upload/" . $image_pro;
                             if (is_file($hinhpath)) {
                                 $hinh = "<img src='" . $hinhpath . "' height='70'>";
@@ -36,7 +37,7 @@
                             echo ' <tr>
                             <td>' . $name_pro . '</td>
                             <td>' . $hinh . '</td>
-                            <td>' . number_format($price_pro, 0, ",", ".") . '$' . '</td>
+                            <td>' . number_format($tt, 0, ",", ".") . '$' . '</td>
                             <td>' . $quantity . '</td>
                             <td>' . number_format($total, 0, ",", ".") . '$' . '</td>
                                      </tr>';

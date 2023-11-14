@@ -238,7 +238,7 @@ function  loadall_thongke()
 }
 function loadall_sp_cart($id_bill)
 {
-    $sql = "select * from cart  where id_bill=" . $id_bill;
+    $sql = "select * from cart c join product p on c.id_pro=p.id_pro where id_bill=" . $id_bill;
     $spbill = pdo_query($sql);
     return $spbill; //co ket qua tra ve phai return
 }
