@@ -68,3 +68,9 @@ function insert_taikhoan($username, $password, $name, $address, $phone, $email, 
      values('$username','$password','$name','$address','$phone','$email','$file')";
     pdo_execute($sql);
 }
+function insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at)
+{
+    $sql = "insert into feedback(name_user, email_user, phone_user, subject_name,content,created_at)
+     values('$name_user', '$email_user', '$phone_user', '$subject_name','$content','$created_at')";
+    pdo_execute($sql);
+}
