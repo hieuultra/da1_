@@ -135,3 +135,21 @@ function loadall_proo($kyw = "")
     $sp = pdo_query($sql);
     return $sp; //co ket qua tra ve phai return
 }
+function checktrungsp($id_pro)
+{
+    $vitri = -1;
+    for ($i = 0; $i < sizeof($_SESSION['mycart']); $i++) {
+        if ($_SESSION['mycart'][$i][0] == $id_pro) {
+            $vitri = $i;
+        }
+    }
+    return $vitri;
+}
+function  update_quantity($vitri)
+{
+    for ($i = 0; $i < sizeof($_SESSION['mycart']); $i++) {
+        if ($i == $vitri) {
+            $_SESSION['mycart'][$i][5] += 1;
+        }
+    }
+}

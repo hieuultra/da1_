@@ -26,55 +26,51 @@ function view_cart($del)
  ' . $xoasp_th . '
 </tr>
 </thead>';
+    //     for ($i = 0; $i < sizeof($_SESSION['mycart']); $i++) {
+    //         $total =  $_SESSION['mycart'][$i][3] * $_SESSION['mycart'][$i][5];
+    //         echo '<tr>
+    //       <td><img src="' . $_SESSION['mycart'][$i][2] . '" height="80px"></td>
+    //       <td>' . $_SESSION['mycart'][$i][1] . '</td>
+    //       <td>' . $_SESSION['mycart'][$i][3] . '</td>
+    //       <td>' . $_SESSION['mycart'][$i][5] . '</td>
+    //       <td>' . $total . '</td>
+    //   </tr>';
+    //     }
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart[2];
         // $gia = $cart[3];
         $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
         $total = $price * $cart[5];
         $tong += $total;
+
         if ($del == 1) {
 
             $xoasp_td = '<td><a href="index.php?act=delcart&id_cart=' . $i . '">
-            <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a></td>';
+                <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a></td>';
         } else {
-
             $xoasp_td = "";
         }
 
         echo '  <tbody class="align-middle">
-       <tr> 
-        <td><img src="' . $hinh . '" alt="" height="80px"></td>
-        <td class="align-middle">' . $cart[1] . '</td>
-        <td class="align-middle">' . number_format($price, 0, ",", ".") . '$</td>
-        <td class="align-middle">
-        <div class="input-group quantity mx-auto" style="width: 100px">
-          <div class="input-group-btn">
-            <button class="btn btn-sm btn-primary btn-minus">
-              <i class="fa fa-minus"></i>
-            </button>
-          </div>
-          <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1" />
-          <div class="input-group-btn">
-            <button class="btn btn-sm btn-primary btn-plus">
-              <i class="fa fa-plus"></i>
-            </button>
-          </div>
-        </div>
-      </td>
-        <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
-       ' . $xoasp_td . '
-        
-       </tr> 
-       </tbody>
-    ';
+           <tr> 
+            <td><img src="' . $hinh . '" alt="" height="80px"></td>
+            <td class="align-middle">' . $cart[1] . '</td>
+            <td class="align-middle">' . number_format($price, 0, ",", ".") . '$</td>
+            <td class="align-middle"><a onclick="giam(this)"><<</a><span>' . $cart[5] . '</span><a onclick="tang(this)" >>></a><input type="hidden" value="' . $i . '" /></td>
+            <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
+           ' . $xoasp_td . '
+
+           </tr> 
+           </tbody>
+        ';
         $i += 1;
     }
     echo '
-<td colspan="4">Total order</td>
+    <td colspan="4">Total order</td>
 
-<td class="align-middle">' . number_format($tong, 0, ",", ".") . '$</td>
-' . $xoasp_td2 . '
-';
+    <td class="align-middle">' . number_format($tong, 0, ",", ".") . '$</td>
+    ' . $xoasp_td2 . '
+    ';
 }
 
 function show_ctdh($listbill) //bien truyen vao ko lien quan den bien ben ngoai
@@ -247,3 +243,35 @@ function delete_bil($id_bill)
     $sql = "delete from bill where id_bill=" . $id_bill;
     pdo_execute($sql);
 }
+?>
+<script>
+    function tang(x) {
+        //thay doi so luong truc tiep voi DOM HTML
+        var cha = x.parentElement;
+        var soluongcu = cha.children[1];
+        var soluongmoi = parseInt(soluongcu.innerText) + 1;
+        soluongcu.innerText = soluongmoi;
+        var vitri = cha.children[3];
+        // alert(soluongcu);
+
+        //goi ham cap nhap session
+
+    }
+
+    function giam(x) {
+        //thay doi so luong truc tiep voi DOM HTML
+        var cha = x.parentElement;
+        var soluongcu = cha.children[1];
+        if (parseInt(soluongcu.innerText) > 1) {
+            var soluongmoi = parseInt(soluongcu.innerText) - 1;
+            soluongcu.innerText = soluongmoi;
+        } else {
+            alert("Order Product have >= 1");
+        }
+
+        // alert(soluongcu);
+
+        //goi ham cap nhap session
+
+    }
+</script>

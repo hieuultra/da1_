@@ -80,4 +80,5 @@
     </div>
   </div>
 </div>
+<script src="js/cart.js"></script>
 <!-- Footer End -->

@@ -178,10 +178,20 @@
           $image_pro = $_POST['img'];
           $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
-          $quantity = 1;
+          if (isset($_POST['quantity']) && ($_POST['quantity']) > 0) {
+            $quantity = $_POST['quantity'];
+          } else {
+            $quantity = 1;
+          }
           $total = $quantity * $price_pro;
-          $spadd = [$id_pro, $name_pro, $image_pro, $price_pro, $discount, $quantity, $total];
-          array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
+          //check trung sp
+          if (checktrungsp($id_pro) >= 0) {
+            // $tbao="trung sp roi";
+            update_quantity(checktrungsp($id_pro));
+          } else {
+            $spadd = [$id_pro, $name_pro, $image_pro, $price_pro, $discount, $quantity, $total];
+            array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
+          }
         }
         include "view_cart.php";
         break;
