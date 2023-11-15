@@ -202,8 +202,12 @@
         break;
       case 'billconfirm':
         if (isset($_POST['dydh']) && ($_POST['dydh'])) {
-          if (isset($_SESSION['user'])) $id_user = $_SESSION['user']['id_user'];
-          else $id_user = 0;
+          if (isset($_SESSION['user'])) {
+            $id_user = $_SESSION['user']['id_user'];
+          }
+          else {
+            $id_user = $_POST['user'];
+          }
           $name_user = $_POST['username'];
           $name = $_POST['name'];
           $email_user = $_POST['email'];
@@ -249,6 +253,13 @@
           insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at);
         }
         include_once("contact.php");
+        break;
+      case 'delete_bill':
+        if (isset($_GET['id_bill'])) {
+          delete_bil($_GET['id_bill']);
+        }
+        header('Location:index.php?act=mybill');
+        // include "view/cart/viewcart.php";
         break;
     }
   } else {

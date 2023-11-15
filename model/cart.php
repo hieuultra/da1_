@@ -242,3 +242,8 @@ function loadall_sp_cart($id_bill)
     $spbill = pdo_query($sql);
     return $spbill; //co ket qua tra ve phai return
 }
+function delete_bil($id_bill)
+{
+    $sql = "delete from bill where id_bill=" . $id_bill;
+    pdo_execute($sql);
+}

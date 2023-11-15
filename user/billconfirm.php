@@ -65,11 +65,11 @@ foreach ($_SESSION['mycart'] as $cart) {
                 $phone = $_SESSION['user']['phone'];
                 $email = $_SESSION['user']['email'];
             } else {
-                $username = "";
-                $name = "";
-                $address = '';
-                $phone = "";
-                $email = "";
+                $username = $_POST['username'];
+                $name = $_POST['name'];
+                $address = $_POST['address'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
             }
             ?>
 
