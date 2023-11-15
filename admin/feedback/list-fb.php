@@ -36,7 +36,7 @@
                            <td>' . $subject_name . '</td>
                           <td>' . $content . '</td>
        <td>' . $created_at . '</td>
-       <td>  <a href="' . $xoacom . '" class="btn btn-warning"><input type="button" value="Delete" /></a>
+       <td>  <a href="' . $xoacom . '" class="btn btn-warning"><input type="button" onclick ="return confirm(\'ban co chac chan muon xoa?\')" value="Delete" /></a>
         </td>
                 </tr>';
                     }
