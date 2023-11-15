@@ -74,3 +74,15 @@ function insert_fb($name_user, $email_user, $phone_user, $subject_name, $content
      values('$name_user', '$email_user', '$phone_user', '$subject_name','$content','$created_at')";
     pdo_execute($sql);
 }
+function loadall_fb()
+{
+    $sql = "select * from feedback order by id desc";
+    $dsfb = pdo_query($sql);
+    return $dsfb; //co ket qua tra ve phai return
+}
+function delete_fb($id)
+{
+    $sql = "delete from feedback where id=" . $id;
+    pdo_execute($sql);
+}
+
