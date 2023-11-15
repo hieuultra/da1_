@@ -135,6 +135,22 @@ ob_start();
             <a class="nav-link" href="?act=list_com">List Comment</a>
           </nav>
         </div>
+        <!-- feedback -->
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsefb" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-columns"></i>
+          </div>
+         Feedback
+          <div class="sb-sidenav-collapse-arrow">
+            <i class="fas fa-angle-down"></i>
+          </div>
+        </a>
+
+        <div class="collapse" id="collapsefb" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+          <nav class="sb-sidenav-menu-nested nav">
+            <a class="nav-link" href="?act=list_fb">List Feedback</a>
+          </nav>
+        </div>
 
       </div>
 

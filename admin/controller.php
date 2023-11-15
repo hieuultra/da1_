@@ -307,6 +307,18 @@ if (isset($_GET['act'])) {
       }
       include "comment/com_detail.php";
       break;
+      case 'list_fb':
+        $dsfb = loadall_fb();
+        include "feedback/list-fb.php";
+        break;
+      case 'delete_fb':
+          if (isset($_GET['id']) && ($_GET['id']) > 0) {
+            delete_fb($_GET['id']);
+          }
+          $dsfb = loadall_fb();
+
+      include "feedback/list-fb.php";
+      break;
   }
 } else {
   include("dashboard.php");
