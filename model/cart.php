@@ -56,7 +56,7 @@ function view_cart($del)
             <td><img src="' . $hinh . '" alt="" height="80px"></td>
             <td class="align-middle">' . $cart[1] . '</td>
             <td class="align-middle">' . number_format($price, 0, ",", ".") . '$</td>
-            <td class="align-middle"><a onclick="giam(this)"><<</a><span>' . $cart[5] . '</span><a onclick="tang(this)" >>></a><input type="hidden" value="' . $i . '" /></td>
+            <td class="align-middle"><a onclick="giam(this)"><i class="fa-solid fa-backward"></i> </a><span>' . $cart[5] . '</span><a onclick="tang(this)" > <i class="fa-solid fa-forward"></i></i></a><input type="hidden" value="' . $i . '" /></td>
             <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
            ' . $xoasp_td . '
 
