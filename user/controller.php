@@ -264,7 +264,10 @@
           $content = $_POST['message'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
           $created_at = date("Y-m-d H:i:s", time());
-          insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at);
+          if ($name_user != '') {
+            insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at);
+            $tbao="We will answerd you early.Thanks you for this about!!";
+          }
         }
         include_once("contact.php");
         break;

@@ -1,3 +1,9 @@
+<style>
+  .tbao{
+    text-align: center;
+    color: green;
+  }
+</style>
 <!-- Contact Start -->
 <div class="container-fluid pt-5">
   <div class="text-center mb-4">
@@ -5,7 +11,13 @@
       <span class="px-2">Contact For Any Queries</span>
     </h2>
   </div>
-
+  <h2 class="tbao">
+    <?php
+    if (isset($tbao) && ($tbao) != "") {
+      echo $tbao;
+    }
+    ?>
+  </h2>
   <div class="row px-xl-5">
     <div class="col-lg-7 mb-5">
       <div class="contact-form">
@@ -35,15 +47,6 @@
             <input class="btn btn-primary py-2 px-4" type="submit" name="send" value="Send Message">
           </div>
         </form>
-        <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script>
-          swal({
-            title: "FeedBack sucess!",
-            text: "We will get back to you as soon as possible !",
-            icon: "success",
-
-          });
-        </script> -->
       </div>
     </div>
     <div class="col-lg-5 mb-5">
@@ -80,4 +83,3 @@
   </div>
 
 </div>
-<!-- Contact End -->
