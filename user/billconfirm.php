@@ -50,7 +50,7 @@ foreach ($_SESSION['mycart'] as $cart) {
                                 <li class="list-group-item"><strong>ID_Bill:</strong> <?= $bill['id_bill'] ?></li>
                                 <li class="list-group-item"><strong>Date_order:</strong> <?= $bill['date_order'] ?></li>
                                 <li class="list-group-item"><strong>Total_price:</strong> <?= number_format($tongship, 0, ",", ".") . "$" ?></li>
-                                <li class="list-group-item"><strong>Payment_method:</strong> <?= $pttt?></li>
+                                <li class="list-group-item"><strong>Payment_method:</strong> <?= $pttt ?></li>
                             </ul>
                         </div>
                     </div>
@@ -65,11 +65,11 @@ foreach ($_SESSION['mycart'] as $cart) {
                 $phone = $_SESSION['user']['phone'];
                 $email = $_SESSION['user']['email'];
             } else {
-                $username = $_POST['username'];
-                $name = $_POST['name'];
-                $address = $_POST['address'];
-                $phone = $_POST['phone'];
-                $email = $_POST['email'];
+                $username = '';
+                $name = '';
+                $address = '';
+                $phone = '';
+                $email = '';
             }
             ?>
 

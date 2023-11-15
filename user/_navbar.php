@@ -42,9 +42,6 @@
         <a href="?act=account" class="btn border">
           <i class="far fa-user text-primary"></i>
         </a>
-        <a href="?act=mybill" class="btn border">
-          <i class="fas fa-file-invoice-dollar"></i>
-        </a>
       <?php
       } else {
       ?>
@@ -52,6 +49,9 @@
           <i class="far fa-user text-primary"></i>
         </a>
       <?php } ?>
+      <a href="?act=mybill" class="btn border">
+        <i class="fas fa-file-invoice-dollar"></i>
+      </a>
     </div>
   </div>
 </div>

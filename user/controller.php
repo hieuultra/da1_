@@ -204,9 +204,8 @@
         if (isset($_POST['dydh']) && ($_POST['dydh'])) {
           if (isset($_SESSION['user'])) {
             $id_user = $_SESSION['user']['id_user'];
-          }
-          else {
-            $id_user = $_POST['user'];
+          } else {
+            $id_user = 0;
           }
           $name_user = $_POST['username'];
           $name = $_POST['name'];
@@ -233,7 +232,12 @@
         include "billconfirm.php";
         break;
       case 'mybill':
+        // $id_user = $_POST['id_user'];
+        // if (isset($_SESSION['user'])) {
         $listbill = loadall_bil($_SESSION['user']['id_user']);
+        // }else{
+        //   $listbill = loadall_bil($id_user);
+        // }
         include "mybill.php";
         break;
       case 'bill_detail':

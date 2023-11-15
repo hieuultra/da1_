@@ -25,6 +25,7 @@ foreach ($_SESSION['mycart'] as $cart) {
           <div class="row">
             <?php
             if (isset($_SESSION['user'])) {
+              $id_user= $_SESSION['user']['id_user'];
               $username = $_SESSION['user']['username'];
               $name = $_SESSION['user']['name'];
               $address = $_SESSION['user']['address'];
