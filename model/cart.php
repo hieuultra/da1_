@@ -1,3 +1,8 @@
+<style>
+    #x {
+        width: 40px;
+    }
+</style>
 <?php
 function view_cart($del)
 {
@@ -13,9 +18,6 @@ function view_cart($del)
 
         $xoasp_td2 = "";
     }
-
-
-
     echo '   <thead class="bg-secondary text-dark">
     <tr>
     <th>Image</th>
@@ -46,20 +48,19 @@ function view_cart($del)
         if ($del == 1) {
 
             $xoasp_td = '<td><a href="index.php?act=delcart&id_cart=' . $i . '">
-                <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a></td>';
+                <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
+                </td>';
         } else {
             $xoasp_td = "";
         }
-
         echo '  <tbody class="align-middle">
            <tr> 
             <td><img src="' . $hinh . '" alt="" height="80px"></td>
             <td class="align-middle">' . $cart[1] . '</td>
             <td class="align-middle">' . number_format($price, 0, ",", ".") . '$</td>
-            <td class="align-middle"><a onclick="giam(this)"><i class="fa-solid fa-backward"></i> </a><span>' . $cart[5] . '</span><a onclick="tang(this)" > <i class="fa-solid fa-forward"></i></i></a><input type="hidden" value="' . $i . '" /></td>
+            <td class="align-middle"><a onclick="giam(this)"></a><input value="' . $cart[5] . '" id="x"><a onclick="tang(this)" ></a><input type="hidden" value="' . $i . '" /></td>
             <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
            ' . $xoasp_td . '
-
            </tr> 
            </tbody>
         ';
@@ -160,18 +161,18 @@ function loadall_cart_count($id_bill)
     $bill = pdo_query($sql);
     return sizeof($bill); //dem so lg mat hang
 }
-function loadall_bill($kyw = "", $id_tk = 0)
+function loadall_bill()
 {
-    $sql = "select * from bill where 1";
-    if ($id_tk > 0) $sql .= "  and id_tk=" . $id_tk;
-    if ($kyw != '') $sql .= "  and id_bill like '%" . $kyw . "%'";
-    $sql .= " order by id_bill desc";
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";
+    // if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
+    // if ($kyw != '') $sql .= "  and id_bill like '%" . $kyw . "%'";
+    $sql .= " order by b.id_bill desc";
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
 function loadall_bil($id_user)
 {
-    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join status_bill s on b.id_status_bill=s.id_status_bill where 1";
     if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
     $sql .= "  group by b.id_bill order by b.id_bill desc";
     $listbill = pdo_query($sql);
@@ -273,6 +274,8 @@ function delete_bil($id_bill)
         if (parseInt(soluongcu.innerText) > 1) {
             var soluongmoi = parseInt(soluongcu.innerText) - 1;
             soluongcu.innerText = soluongmoi;
+
+
         } else {
             alert("Order Product have >= 1");
         }

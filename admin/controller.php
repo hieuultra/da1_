@@ -15,6 +15,7 @@ include "../model/slider.php";
 include "../model/user.php";
 include "../model/role.php";
 include "../model/comment.php";
+include "../model/cart.php";
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -319,6 +320,15 @@ if (isset($_GET['act'])) {
 
       include "feedback/list-fb.php";
       break;
+      case 'list_bill':
+        // if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+        //     $kyw = $_POST['kyw'];
+        // } else {
+        //     $kyw = "";
+        // }
+        $listbill = loadall_bill();
+        include "bill/list_bill.php";
+        break;
   }
 } else {
   include("dashboard.php");
