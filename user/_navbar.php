@@ -49,9 +49,19 @@
           <i class="far fa-user text-primary"></i>
         </a>
       <?php } ?>
-      <a href="?act=mybill" class="btn border">
-        <i class="fas fa-file-invoice-dollar"></i>
-      </a>
+      <?php
+      if (isset($_SESSION['user'])) {
+      ?>
+        <a href="?act=mybill" class="btn border">
+          <i class="fas fa-file-invoice-dollar"></i>
+        </a>
+      <?php
+      } else {
+      ?>
+        <a href="?act=mybill&id_user=0" class="btn border">
+          <i class="fas fa-file-invoice-dollar"></i>
+        </a>
+      <?php } ?>
     </div>
   </div>
 </div>

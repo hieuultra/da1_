@@ -242,13 +242,16 @@
         include "billconfirm.php";
         break;
       case 'mybill':
-        // $id_user = $_POST['id_user'];
         // if (isset($_SESSION['user'])) {
+        //   if (isset($_GET['id_user']) && ($_GET['id_user']) > 0) {
+        //     $listbill = loadall_bi($_GET['id_user']);
+        //   } else {
         $listbill = loadall_bil($_SESSION['user']['id_user']);
-        // }else{
-        //   $listbill = loadall_bil($id_user);
         // }
         include "mybill.php";
+        // } else {
+        //   // Redirect or handle the case where 'user' is not set in the session.
+        // }
         break;
       case 'bill_detail':
         if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
@@ -266,7 +269,7 @@
           $created_at = date("Y-m-d H:i:s", time());
           if ($name_user != '') {
             insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at);
-            $tbao="We will answerd you early.Thanks you for this about!!";
+            $tbao = "We will answerd you early.Thanks you for this about!!";
           }
         }
         include_once("contact.php");

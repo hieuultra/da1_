@@ -177,6 +177,14 @@ function loadall_bil($id_user)
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
+function loadall_bi($id_user)
+{
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";
+    if ($id_user = 0) $sql .= "  and b.id_user=" . $id_user;
+    $sql .= "  group by b.id_bill order by b.id_bill desc";
+    $listbill = pdo_query($sql);
+    return $listbill; //co ket qua tra ve phai return
+}
 function delete_bill($id_bill)
 {
     $sql = "delete from bill where id_bill=" . $id_bill;
