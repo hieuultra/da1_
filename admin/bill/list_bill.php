@@ -17,10 +17,8 @@
                         <tr>
                             <th>Name_user</th>
                             <th>Id_bill</th>
-                            <th>Product name</th>
                             <th>Quantity</th>
-                            <th>Image</th>
-                            <th>Price</th>
+                            <th>Total_Price</th>
                             <th>Date_order</th>
                             <th>Status_bill</th>
                             <th>Action</th>
@@ -31,20 +29,18 @@
                             extract($l);
                             $suabill = "index.php?act=edit_bill&id_bill=" . $id_bill;
                             $xoabill = "index.php?act=delete_bill&id_bill=" . $id_bill;
-                            $hinhpath = "../upload/" . $image_pro;
-                            if (is_file($hinhpath)) {
-                                $hinh = "<img src='" . $hinhpath . "' height='70'>";
-                            } else {
-                                $hinh = "No photo";
-                            }
+                            // $hinhpath = "../upload/" . $image_pro;
+                            // if (is_file($hinhpath)) {
+                            //     $hinh = "<img src='" . $hinhpath . "' height='70'>";
+                            // } else {
+                            //     $hinh = "No photo";
+                            // }
 
                             echo '  <tr>
                   <td>' . $name_user . '</td>
                   <td>' . $id_bill . '</td>
-                  <td>' . $name_pro . '</td>
-                  <td>' . $quantity . '</td>
-                  <td>' . $hinh . '</td>
-                  <td>' .  number_format($price_pro, 0, ",", ".") . '$' . '</td>
+                  <td>' . $sum_quantity . '</td>
+                  <td>' .  number_format($total_price, 0, ",", ".") . '$' . '</td>
                   <td>' . $date_order . '</td>
                   <td>' . $name_status . '</td>
                   <td>

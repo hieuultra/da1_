@@ -154,6 +154,12 @@ function loadone_b($id_bill)
     $bill = pdo_query_one($sql);
     return $bill; //co ket qua tra ve phai return
 }
+function loadone_b_c($id_bill)
+{
+    $sql = "select * from cart where id_bill=" . $id_bill;
+    $bill = pdo_query_one($sql);
+    return $bill; //co ket qua tra ve phai return
+}
 
 function loadall_cart($id_bill)
 {
@@ -169,10 +175,9 @@ function loadall_cart_count($id_bill)
 }
 function loadall_bill()
 {
-    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join status_bill s on b.id_status_bill=s.id_status_bill where 1";
-    // if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
-    // if ($kyw != '') $sql .= "  and id_bill like '%" . $kyw . "%'";
-    $sql .= " order by b.id_bill desc";
+    $sql = "select *,sum(c.quantity) as sum_quantity from bill b join cart c on b.id_bill=c.id_bill
+     join status_bill s on b.id_status_bill=s.id_status_bill where 1";
+    $sql .= " group by c.id_bill order by b.id_bill desc";
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
