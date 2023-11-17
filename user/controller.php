@@ -157,9 +157,6 @@
         session_unset();
         header('Location:?act=login');
         break;
-      default:
-        include_once("user/home/index.php");
-        break;
 
         //muahang
       case 'contact':
@@ -280,6 +277,9 @@
         }
         header('Location:index.php?act=mybill');
         // include "view/cart/viewcart.php";
+        break;
+      default:
+        include_once("user/home/index.php");
         break;
     }
   } else {
