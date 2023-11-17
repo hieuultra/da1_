@@ -2,11 +2,12 @@
   // Navbar
   ob_start();
   session_start();
-
-  include "_navbar.php";
-  include "./global.php";
+  
   include "./model/pdo.php";
   include "./model/cat.php";
+  $dsdm = loadall_cat();
+  include "_navbar.php";
+  include "./global.php";
   include  "./model/product.php";
   include "./model/size.php";
   include "./model/slider.php";
@@ -16,9 +17,9 @@
   if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
   }
-
+  
   $spnew = loadall_pro_home();
-  $dsdm = loadall_cat();
+  
   $dst8 = loadall_pro_top8();
   $dssl = loadall_slider();
   // Controller
@@ -60,7 +61,9 @@
         $name_cat = load_ten_dm($id_cat);
         include "product_cat.php";
         break;
-
+         case 'name_cat':
+          $dsdm = loadall_cat();
+          break;
         //shop
       case 'shop':
         $sps = loadall_pro_shop1();
@@ -282,7 +285,9 @@
         include_once("user/home/index.php");
         break;
     }
+    
   } else {
+    include '_navbar.php';
     include_once("user/home/index.php");
   }
   // Footer
