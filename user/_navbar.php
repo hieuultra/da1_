@@ -26,6 +26,7 @@
             </div>
           </div>
           <a href="?act=contact" class="nav-item nav-link">Contact</a>
+          <a href="?act=blog" class="nav-item nav-link">Blog</a>
         </div>
       </nav>
     </div>
