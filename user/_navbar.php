@@ -16,21 +16,20 @@
           <a href="?act=shop" class="nav-item nav-link">Shop</a>
 
           <div class="nav-item dropdown">
-            <form action="?act=name_cat">
             <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
             <div class="dropdown-menu rounded-0 m-0">
-       <?php
-        
-        foreach ($dsdm as $dm) {
+              <?php
+
+              foreach ($dsdm as $dm) {
                 extract($dm);
                 $linkdm = "index.php?act=product_cat&id_cat=" . $id_cat;
                 echo '
                 <a href="' . $linkdm . '" class="dropdown-item">' . $name_cat . '</a>
                 ';
-               }
+              }
               ?>
             </div>
-            </form>
+
           </div>
           <a href="?act=contact" class="nav-item nav-link">Contact</a>
           <a href="?act=blog" class="nav-item nav-link">Blog</a>

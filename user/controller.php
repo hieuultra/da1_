@@ -2,7 +2,7 @@
   // Navbar
   ob_start();
   session_start();
-  
+
   include "./model/pdo.php";
   include "./model/cat.php";
   $dsdm = loadall_cat();
@@ -17,9 +17,9 @@
   if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
   }
-  
+
   $spnew = loadall_pro_home();
-  
+
   $dst8 = loadall_pro_top8();
   $dssl = loadall_slider();
   // Controller
@@ -61,9 +61,6 @@
         $name_cat = load_ten_dm($id_cat);
         include "product_cat.php";
         break;
-         case 'name_cat':
-          $dsdm = loadall_cat();
-          break;
         //shop
       case 'shop':
         $sps = loadall_pro_shop1();
@@ -285,9 +282,7 @@
         include_once("user/home/index.php");
         break;
     }
-    
   } else {
-    include '_navbar.php';
     include_once("user/home/index.php");
   }
   // Footer
