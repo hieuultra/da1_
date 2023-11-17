@@ -15,6 +15,7 @@ include "../model/slider.php";
 include "../model/user.php";
 include "../model/role.php";
 include "../model/comment.php";
+include "../model/cart.php";
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -307,17 +308,50 @@ if (isset($_GET['act'])) {
       }
       include "comment/com_detail.php";
       break;
-      case 'list_fb':
-        $dsfb = loadall_fb();
-        include "feedback/list-fb.php";
-        break;
-      case 'delete_fb':
-          if (isset($_GET['id']) && ($_GET['id']) > 0) {
-            delete_fb($_GET['id']);
-          }
-          $dsfb = loadall_fb();
+    case 'list_fb':
+      $dsfb = loadall_fb();
+      include "feedback/list-fb.php";
+      break;
+    case 'delete_fb':
+      if (isset($_GET['id']) && ($_GET['id']) > 0) {
+        delete_fb($_GET['id']);
+      }
+      $dsfb = loadall_fb();
 
       include "feedback/list-fb.php";
+      break;
+      //bill
+    case 'list_bill':
+      // if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+      //     $kyw = $_POST['kyw'];
+      // } else {
+      //     $kyw = "";
+      // }
+      $listbill = loadall_bill();
+      include "bill/list_bill.php";
+      break;
+    case 'edit_bill':
+      if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
+        $suabi = loadone_b($_GET['id_bill']);
+        // $suab = loadone_b_c($_GET['id_bill']);
+      }
+      $dsst = loadall_status_bill();
+      include("bill/update_bill.php");
+      break;
+    case 'update_bill':
+      if (isset($_POST['edit']) && ($_POST['edit'])) {
+        $name_user = $_POST['name_user'];
+        $id_bill = $_POST['id_bill'];
+        $phone_user = $_POST['phone_user'];
+        $address_user = $_POST['address_user'];
+        // $quantity = $_POST['quantity'];
+        $id_status_bill = $_POST['id_status_bill'];
+        update_bill($id_bill, $name_user, $address_user, $phone_user, $id_status_bill);
+        $tbao = 'Sua data thanh cong';
+      }
+      $dsst = loadall_status_bill();
+      $listbill = loadall_bill();
+      include "bill/list_bill.php";
       break;
   }
 } else {

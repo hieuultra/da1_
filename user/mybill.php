@@ -30,7 +30,7 @@
                         if (is_array($listbill)) {
                             foreach ($listbill as $bill) {
                                 extract($bill);
-                                $ttdh = get_ttdh($bill['id_status_bill']);
+                                // $ttdh = get_ttdh($bill['id_status_bill']);
                                 $countsp = loadall_cart_count($id_bill);
                                 $ctb = "index.php?act=bill_detail&id_bill=" . $id_bill;
                                 $huydh = "index.php?act=delete_bill&id_bill=" . $id_bill;
@@ -39,7 +39,7 @@
                             <td>' . $date_order . '</td>
                             <td>' . $countsp . '</td>
                             <td>' . number_format($total_price, 0, ",", ".") . '$' . '</td>
-                            <td>' . $ttdh . '</td>
+                            <td>' . $name_status . '</td>
                             <td><a href="' . $ctb . '" class="btn btn-primary"><input type="button" value="See detail" /></a></td>
                             <td> <a href="' . $huydh . '" class="btn btn-danger"><input type="button" value="Unset bill" onclick ="return confirm(\'ban co chac chan muon huy don hang?\')" /></a>
                     </td>
