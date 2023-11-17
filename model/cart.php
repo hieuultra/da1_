@@ -148,6 +148,12 @@ function loadone_bill($id_bill)
     $bill = pdo_query_one($sql);
     return $bill; //co ket qua tra ve phai return
 }
+function loadone_b($id_bill)
+{
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where b.id_bill=" . $id_bill;
+    $bill = pdo_query_one($sql);
+    return $bill; //co ket qua tra ve phai return
+}
 
 function loadall_cart($id_bill)
 {
@@ -163,7 +169,7 @@ function loadall_cart_count($id_bill)
 }
 function loadall_bill()
 {
-    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join status_bill s on b.id_status_bill=s.id_status_bill where 1";
     // if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
     // if ($kyw != '') $sql .= "  and id_bill like '%" . $kyw . "%'";
     $sql .= " order by b.id_bill desc";
@@ -250,6 +256,26 @@ function loadall_sp_cart($id_bill)
 function delete_bil($id_bill)
 {
     $sql = "delete from bill where id_bill=" . $id_bill;
+    pdo_execute($sql);
+}
+function loadall_status_bill()
+{
+
+    //cach noi chuoi sql
+    //phai co cach khoang
+    $sql = "select * from status_bill where 1 order by id_status_bill desc";
+    $dsst = pdo_query($sql);
+    return $dsst; //co ket qua tra ve phai return
+
+
+}
+function update_bill($id_bill, $name_user, $address_user, $phone_user, $id_status_bill)
+{
+
+    $sql = "update bill set name_user='" . $name_user . "',address_user='" . $address_user . "',
+        phone_user='" . $phone_user . "',id_status_bill='" . $id_status_bill . "' where id_bill=" . $id_bill;
+
+
     pdo_execute($sql);
 }
 ?>

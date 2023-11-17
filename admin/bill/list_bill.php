@@ -1,4 +1,3 @@
-
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">List Bill</h1>
@@ -12,18 +11,6 @@
                 <i class="fas fa-table me-1"></i>
                 List bill
             </div>
-            <!-- <form action="index.php?act=list_pro" method="post">
-        <select class="form-select" name="id_cat" id="">
-          <option value="0" selected>TAT CA</option>
-          <?php
-            foreach ($dslh as $ds) {
-                extract($ds);
-                echo '<option value="' . $id_cat . '">' . $name_cat . '</option>';
-            }
-            ?>
-        </select>
-        <input class="btn btn-primary" type="submit" name="listok" value="GO">
-      </form> -->
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
@@ -59,7 +46,7 @@
                   <td>' . $hinh . '</td>
                   <td>' .  number_format($price_pro, 0, ",", ".") . '$' . '</td>
                   <td>' . $date_order . '</td>
-                  <td></td>
+                  <td>' . $name_status . '</td>
                   <td>
                   <a href="' . $suabill . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
                   <a href="' . $xoabill . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
