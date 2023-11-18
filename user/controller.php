@@ -287,10 +287,10 @@
         $dsblog = loadall_blog();
         include_once("blog.php");
         break;
-        case 'blog_detail':
-          $dsblog = loadall_blog();
-          include_once("blog_detail.php");
-          break;
+      case 'blog_detail':
+        $dsblog = loadall_blog();
+        include_once("blog_detail.php");
+        break;
     }
   } else {
     include_once("user/home/index.php");
