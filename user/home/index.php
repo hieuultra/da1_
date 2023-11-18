@@ -24,3 +24,6 @@ include_once("_subscribe.php");
 
 // Products Start
 include("top_product.php");
+
+// brand start
+include '_brand.php';
