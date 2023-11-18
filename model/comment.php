@@ -59,3 +59,16 @@ function loadone_spbl($id_pro)
 //     $sql = "update danhmuc set name='" . $nameloai . "' where id_dm=" . $id_dm;
 //     pdo_execute($sql);
 // }
+function insert_news($news_name, $content, $file, $update_at,  $create_at)
+{
+    $sql = "insert into news(news_name, content, news_img, update_at,create_at) values('$news_name','$content','$file','$update_at','$create_at')";
+    pdo_execute($sql);
+}
+function loadall_blog()
+{
+    //cach noi chuoi sql
+    //phai co cach khoang
+    $sql = "select * from news where 1 order by id";
+    $dsblog = pdo_query($sql);
+    return $dsblog; //co ket qua tra ve phai return
+}

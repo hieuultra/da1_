@@ -13,6 +13,7 @@
   include "./model/slider.php";
   include  "./model/user.php";
   include "./model/cart.php";
+  include "./model/comment.php";
 
   if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
@@ -281,6 +282,15 @@
       default:
         include_once("user/home/index.php");
         break;
+        // blog
+      case 'blog':
+        $dsblog = loadall_blog();
+        include_once("blog.php");
+        break;
+        case 'blog_detail':
+          $dsblog = loadall_blog();
+          include_once("blog_detail.php");
+          break;
     }
   } else {
     include_once("user/home/index.php");

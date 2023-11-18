@@ -353,6 +353,35 @@ if (isset($_GET['act'])) {
       $listbill = loadall_bill();
       include "bill/list_bill.php";
       break;
+      //blog
+      case 'add_blog':
+        if (isset($_POST['them']) && ($_POST['them'])) {
+          $news_name = $_POST['news_name'];
+          $content = $_POST['content'];
+          $file = $_FILES['image']['name'];
+          $target_dir = "../upload/";
+          $target_file = $target_dir . basename($_FILES['image']["name"]);
+          if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+          } else {
+            // echo "Sorry, there was an error uploading your file.";
+          }
+          date_default_timezone_set("Asia/Ho_Chi_Minh");
+          $update_at = date("Y-m-d H:i:s", time());
+          date_default_timezone_set("Asia/Ho_Chi_Minh");
+          $create_at = date("Y-m-d H:i:s", time());
+          if ($news_name!= "") {
+            insert_news($news_name,$content,$file ,$update_at,  $create_at );
+            $tbao = 'Them data thanh cong';
+            header("location:index.php?act=list_blog");
+          }
+        }
+        include("blog/add_blog.php");
+        break;
+        case 'list_blog':
+          $dsblog = loadall_blog();
+          include "blog/list_blog.php";
+          break;
   }
 } else {
   include("dashboard.php");
