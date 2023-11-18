@@ -1,4 +1,34 @@
 <div class="container-fluid shadow-sm sticky-top bg-light mb-2">
+  <div class="row bg-secondary py-2 px-xl-5">
+    <div class="col-lg-6 d-none d-lg-block">
+      <div class="d-inline-flex align-items-center">
+        <a class="text-dark" href="">FAQs</a>
+        <span class="text-muted px-2">|</span>
+        <a class="text-dark" href="">Help</a>
+        <span class="text-muted px-2">|</span>
+        <a class="text-dark" href="">Support</a>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center text-lg-right">
+      <div class="d-inline-flex align-items-center">
+        <a class="text-dark px-2" href="">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="text-dark px-2" href="">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="text-dark px-2" href="">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a class="text-dark px-2" href="">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a class="text-dark pl-2" href="">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="row align-items-center py-3 px-xl-5">
     <!-- Logo -->
     <div class="col-lg-4 d-none d-lg-block">
@@ -60,5 +90,22 @@
         <i class="fas fa-file-invoice-dollar"></i>
       </a>
     </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-6 text-left">
+          <form action="index.php?act=search_pro" method="post">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for products" name="kyw">
+              <div class="input-group-append">
+                <span class="input-group-text bg-transparent text-primary">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
