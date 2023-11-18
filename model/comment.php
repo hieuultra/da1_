@@ -72,3 +72,24 @@ function loadall_blog()
     $dsblog = pdo_query($sql);
     return $dsblog; //co ket qua tra ve phai return
 }
+function delete_blog($id)
+{
+    $sql = "delete from news where id=" . $id;
+    pdo_execute($sql);
+}
+function loadone_news($id)
+{
+    $sql = "select * from news where id=" . $id;
+    $sp = pdo_query_one($sql);
+    return $sp; //co ket qua tra ve phai return
+}
+function update_news($news_name, $content, $file, $id)
+{
+    if ($file != "") {
+        $sql = "update news set news_name='" . $news_name . "' ,content='" . $content . "', news_img='" . $file . "' where id=" . $id;
+    } else {
+        $sql = "update news set news_name='" . $news_name . "' ,content='" . $content . "' where id=" . $id;
+    }
+
+    pdo_execute($sql);
+}
