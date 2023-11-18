@@ -60,11 +60,23 @@
        <a href="' . $linksp . '">   <img class="img-fluid w-300" src="' . $hinh . '" alt="" id="img" /></a>
        </div>
        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+       <div class="product-action">
+       <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+       <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+   </div>
         <a href="' . $linksp . '"> <h6 class="text-truncate mb-3">' . $name_pro . '</h6></a>
          <div class="d-flex justify-content-center">
            <h6>' . number_format($tt, 0, ",", ".") . '$' . '</h6>
            <h6 class="text-muted ml-2"><del>' . number_format($price, 0, ",", ".") . '$' . '</del></h6>
          </div>
+         <div class="d-flex align-items-center justify-content-center mb-1">
+         <small class="fa fa-star text-primary mr-1"></small>
+         <small class="fa fa-star text-primary mr-1"></small>
+         <small class="fa fa-star text-primary mr-1"></small>
+         <small class="fa fa-star text-primary mr-1"></small>
+         <small class="fa fa-star text-primary mr-1"></small>
+         <small>(99)</small>
+     </div>
        </div>
        <div class="card-footer d-flex justify-content-between bg-light border">
          <a href="' . $linksp . '" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
