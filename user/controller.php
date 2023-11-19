@@ -294,6 +294,17 @@
         $dsblog = loadall_blog();
         include_once("blog_detail.php");
         break;
+        //brand
+      case 'product_brand':
+        if (isset($_GET['id_brand']) && ($_GET['id_brand']) > 0) {
+          $id_brand = $_GET['id_brand'];
+        } else {
+          $id_brand = 0;
+        }
+        $dssp = loadall_pro_brand($id_brand);
+        $name_brand = load_ten_br($id_brand);
+        include "product_brand.php";
+        break;
     }
   } else {
     include_once("user/home/index.php");

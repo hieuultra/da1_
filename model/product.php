@@ -66,6 +66,19 @@ function loadall_pro_cat($id_cat = 0)
     $dssp = pdo_query($sql);
     return $dssp; //co ket qua tra ve phai returnss
 }
+function loadall_pro_brand($id_brand = 0)
+{
+    //cach noi chuoi sql
+    //phai co cach khoang
+    $sql = "select * from product where 1";
+    if ($id_brand > 0) {
+        $sql .= " and id_brand = '" . $id_brand . "'";
+    }
+
+    $sql .= " order by id_pro desc";
+    $dssp = pdo_query($sql);
+    return $dssp; //co ket qua tra ve phai returnss
+}
 
 function loadall_pro($id_cat = 0)
 {
@@ -92,6 +105,17 @@ function load_ten_dm($id_cat)
         $dm = pdo_query_one($sql);
         extract($dm);
         return $name_cat; //co ket qua tra ve phai return
+    } else {
+        return "";
+    }
+}
+function load_ten_br($id_brand)
+{
+    if ($id_brand > 0) {
+        $sql = "select * from brand where id_brand=" . $id_brand;
+        $dm = pdo_query_one($sql);
+        extract($dm);
+        return $name_brand; //co ket qua tra ve phai return
     } else {
         return "";
     }
