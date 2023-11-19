@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 18, 2023 lúc 02:24 PM
+-- Thời gian đã tạo: Th10 19, 2023 lúc 05:34 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -58,9 +58,21 @@ INSERT INTO `bill` (`id_bill`, `name_user`, `address_user`, `phone_user`, `email
 CREATE TABLE `brand` (
   `id_brand` int(11) NOT NULL,
   `name_brand` varchar(200) NOT NULL,
-  `img` varchar(255) NOT NULL,
+  `img_br` varchar(255) NOT NULL,
   `shows_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `brand`
+--
+
+INSERT INTO `brand` (`id_brand`, `name_brand`, `img_br`, `shows_menu`) VALUES
+(2, 'WP', 'vendor-8.jpg', 0),
+(3, 'AM', 'vendor-6.jpg', 0),
+(4, 'FZ', 'vendor-4.jpg', 0),
+(5, 'BP', 'vendor-3.jpg', 0),
+(6, 'TC', 'vendor-5.jpg', 0),
+(7, 'DX', 'vendor-2.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -135,7 +147,9 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`id_com`, `content`, `date_com`, `id_user`, `id_pro`) VALUES
 (29, 'hgjj', '2023-11-15 08:32:40', 1, 24),
-(30, 'hkjhgkj\r\n', '2023-11-15 22:56:37', 3, 24);
+(30, 'hkjhgkj\r\n', '2023-11-15 22:56:37', 3, 24),
+(31, 'hha', '2023-11-18 23:01:02', 3, 27),
+(32, 'new shoes', '2023-11-19 23:19:54', 3, 28);
 
 -- --------------------------------------------------------
 
@@ -221,30 +235,32 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_pro`, `name_pro`, `img`, `thumbnail`, `description`, `discount`, `price`, `view`, `id_size`, `id_cat`, `id_brand`) VALUES
-(1, 'quan tt', 'OIP (4).jpg', '', 'mua di', 12, 19999, 11, 1, 14, 0),
-(2, ' ao zf ', 'OIP (15).jpg', '', 'vasvsavdasv', 22, 124900000, 3, 2, 13, 0),
-(3, ' giay ads ', 'OIP (10).jpg', '', 'cdsacda', 11, 7900000, 12, 2, 17, 0),
-(5, ' hat vg ', 'tải xuống (5).jpg', '', 'dcvdwv', 22, 123999, 2, 3, 16, 0),
-(6, ' hat bb ', 'OIP (7).jpg', '', 'vssgeger', 34, 123333, 3, 4, 16, 0),
-(7, ' hoddie ', 'OIP (6).jpg', '', 'ewger', 3, 41111100, 2, 2, 13, 0),
-(8, ' bag pink ', 'OIP (9).jpg', '', 'fefewfe', 45, 99866, 13, 3, 22, 0),
-(9, ' bag ss ', 'OIP (8).jpg', '', 'dvdsv ', 22, 29999, 2, 1, 22, 0),
-(10, ' shirt whis ', 'OIP (14).jpg', '', 'ahahaha', 22, 239999, 3, 1, 13, 0),
-(12, ' vest ', 'OIP (13).jpg', '', 'sdvsvasdv', 11, 23999, 8, 3, 13, 0),
-(13, ' bag klm', 'OIP (19).jpg', '', 'fdfwe', 2, 34999, 4, 4, 22, 0),
-(14, ' hat vf ', 'OIP (17).jpg', '', 'vdasvbab', 23, 23888, 9, 2, 16, 0),
-(15, ' shoes boot ', 'OIP (24).jpg', '', 'saca', 11, 123444, 10, 2, 17, 0),
-(16, ' bag yellow ', 'tải xuống (13).jpg', '', 'ewfdsvcds', 3, 29899, 26, 4, 22, 0),
-(17, ' bag hhh ', 'OIP (18).jpg', '', 'sbsab', 34, 343434, 11, 3, 22, 0),
-(18, ' hat brown ', 'OIP (29).jpg', '', 'wefdf', 2, 34555, 10, 3, 16, 0),
-(19, ' vest girl ', 'OIP (25).jpg', '', 'fdvdsv  fwfw', 3, 23999, 17, 2, 13, 0),
-(20, ' dress cuoi ', 'OIP (34).jpg', '', 'dwcdwcwee e', 3, 78999, 11, 4, 44, 0),
-(21, ' shoes nike ', 'OIP (35).jpg', '', 'evef f ewrferfrefer', 34, 23445, 4, 2, 17, 0),
-(22, ' shoes blak ', 'tải xuống (15).jpg', '', 'fadsds', 23, 13214, 6, 3, 17, 0),
-(23, ' dress1 ', 'OIP (38).jpg', '', 'fwdw wefe', 33, 213123, 3, 2, 44, 0),
-(24, ' dress2 ', 'tải xuống (17).jpg', '', 'eefef', 22, 212131, 12, 2, 44, 0),
-(25, ' dress3 ', 'tải xuống (16).jpg', '', 'esf', 2, 3121210, 7, 2, 44, 0),
-(26, ' ao dai vn ', 'OIP (22).jpg', '', 'afsdafa', 22, 21431, 0, 2, 13, 0);
+(1, 'quan tt', 'OIP (4).jpg', '', 'mua di', 12, 19999, 12, 1, 14, 2),
+(2, ' ao zf ', 'OIP (15).jpg', '', 'vasvsavdasv', 22, 124900000, 3, 2, 13, 3),
+(3, ' giay ads ', 'OIP (10).jpg', '', 'cdsacda', 11, 7900000, 12, 2, 17, 4),
+(5, ' hat vg ', 'tải xuống (5).jpg', '', 'dcvdwv', 22, 123999, 2, 3, 16, 4),
+(6, ' hat bb ', 'OIP (7).jpg', '', 'vssgeger', 34, 123333, 4, 4, 16, 5),
+(7, ' hoddie ', 'OIP (6).jpg', '', 'ewger', 3, 41111100, 2, 2, 13, 6),
+(8, ' bag pink ', 'OIP (9).jpg', '', 'fefewfe', 45, 99866, 16, 3, 22, 7),
+(9, ' bag ss ', 'OIP (8).jpg', '', 'dvdsv ', 22, 29999, 2, 1, 22, 7),
+(10, ' shirt whis ', 'OIP (14).jpg', '', 'ahahaha', 22, 239999, 3, 1, 13, 6),
+(12, ' vest ', 'OIP (13).jpg', '', 'sdvsvasdv', 11, 23999, 8, 3, 13, 5),
+(13, ' bag klm', 'OIP (19).jpg', '', 'fdfwe', 2, 34999, 4, 4, 22, 6),
+(14, ' hat vf ', 'OIP (17).jpg', '', 'vdasvbab', 23, 23888, 9, 2, 16, 3),
+(15, ' shoes boot ', 'OIP (24).jpg', '', 'saca', 11, 123444, 11, 2, 17, 2),
+(16, ' bag yellow ', 'tải xuống (13).jpg', '', 'ewfdsvcds', 3, 29899, 26, 4, 22, 2),
+(17, ' bag hhh ', 'OIP (18).jpg', '', 'sbsab', 34, 343434, 11, 3, 22, 3),
+(18, ' hat brown ', 'OIP (29).jpg', '', 'wefdf', 2, 34555, 10, 3, 16, 4),
+(19, ' vest girl ', 'OIP (25).jpg', '', 'fdvdsv  fwfw', 3, 23999, 17, 2, 13, 4),
+(20, ' dress cuoi ', 'OIP (34).jpg', '', 'dwcdwcwee e', 3, 78999, 11, 4, 44, 5),
+(21, ' shoes nike ', 'OIP (35).jpg', '', 'evef f ewrferfrefer', 34, 23445, 7, 2, 17, 6),
+(22, ' shoes blak ', 'tải xuống (15).jpg', '', 'fadsds', 23, 13214, 8, 3, 17, 7),
+(23, ' dress1 ', 'OIP (38).jpg', '', 'fwdw wefe', 33, 213123, 3, 2, 44, 7),
+(24, ' dress2 ', 'tải xuống (17).jpg', '', 'eefef', 22, 212131, 14, 2, 44, 6),
+(25, ' dress3 ', 'tải xuống (16).jpg', '', 'esf', 2, 3121210, 8, 2, 44, 2),
+(26, ' ao dai vn ', 'OIP (22).jpg', '', 'afsdafa', 22, 21431, 1, 2, 13, 7),
+(27, ' quan ngan ', 'tải xuống.jpg', '', 'edewf e wf', 22, 21323, 5, 1, 14, 2),
+(28, ' giay sport ', 'OIP (36).jpg', '', 'dcxdsc', 22, 233333000000, 5, 0, 17, 3);
 
 -- --------------------------------------------------------
 
@@ -479,7 +495,7 @@ ALTER TABLE `bill`
 -- AUTO_INCREMENT cho bảng `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -497,7 +513,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_com` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_com` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `feedback`
@@ -521,7 +537,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `product_detail`
