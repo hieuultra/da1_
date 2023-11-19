@@ -46,7 +46,7 @@
       case 'pro_detail':
         if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
           $onesp = loadone_pro($_GET['id_pro']);
-          $dss = loadall_size();
+          // $dss = loadall_size();
           extract($onesp);
           $spcl = loadone_sp_cungloai($_GET['id_pro'], $id_cat);
           tangluotxem($_GET['id_pro']);

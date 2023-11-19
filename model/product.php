@@ -81,7 +81,7 @@ function loadall_pro($id_cat = 0)
 }
 function loadone_pro($id_pro)
 {
-    $sql = "select * from product pro join size s on pro.id_size=s.id_size where id_pro=" . $id_pro;
+    $sql = "select * from product where id_pro=" . $id_pro;
     $suasp = pdo_query_one($sql);
     return $suasp; //co ket qua tra ve phai return
 }
