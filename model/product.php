@@ -1,8 +1,8 @@
 <?php
-function insert_pro($name_pro, $file, $des, $dis, $price, $id_size, $id_cat)
+function insert_pro($name_pro, $file, $des, $dis, $price, $id_cat, $id_brand)
 {
-    $sql = "insert into product(name_pro,img,description,discount,price,id_size,id_cat) 
-    values(' $name_pro ','$file','$des','$dis','$price','$id_size','$id_cat')";
+    $sql = "insert into product(name_pro,img,description,discount,price,id_cat,id_brand) 
+    values(' $name_pro ','$file','$des','$dis','$price','$id_cat','$id_brand')";
     pdo_execute($sql);
 }
 
@@ -71,7 +71,7 @@ function loadall_pro($id_cat = 0)
 {
     //cach noi chuoi sql
     //phai co cach khoang
-    $sql = "select * from product pro join category cat on pro.id_cat = cat.id_cat join size s on pro.id_size=s.id_size where 1";
+    $sql = "select * from product pro join category cat on pro.id_cat = cat.id_cat join brand b on pro.id_brand=b.id_brand where 1";
     if ($id_cat > 0) {
         $sql .= " and pro.id_cat = '" . $id_cat . "'";
     }
@@ -96,16 +96,16 @@ function load_ten_dm($id_cat)
         return "";
     }
 }
-function update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_size, $id_cat)
+function update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_cat, $id_brand)
 {
     if ($file != "") {
         $sql = "update product set name_pro='" . $name_pro . "',img='" . $file . "',
         description='" . $description . "',discount='" . $discount . "',price='" . $price . "',
-        id_size='" . $id_size . "',id_cat='" . $id_cat . "' where id_pro=" . $id_pro;
+       id_cat='" . $id_cat . "',id_brand='" . $id_brand . "' where id_pro=" . $id_pro;
     } else {
         $sql = "update product set name_pro='" . $name_pro . "',
         description='" . $description . "',discount='" . $discount . "',price='" . $price . "',
-        id_size='" . $id_size . "',id_cat='" . $id_cat . "' where id_pro=" . $id_pro;
+        id_cat='" . $id_cat . "',id_brand='" . $id_brand . "' where id_pro=" . $id_pro;
     }
 
     pdo_execute($sql);

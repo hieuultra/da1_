@@ -20,6 +20,19 @@
     </div>
 
     <div class="mb-3">
+      <label class="form-label">Brands</label>
+      <select class="form-select" name="id_brand">
+        <?php
+        foreach ($dsbr as $ds) {
+          extract($ds);
+          echo '<option value="' . $id_brand . '">' . $name_brand . '</option>';
+        }
+        ?>
+
+      </select>
+    </div>
+
+    <div class="mb-3">
       <label class="form-label">Image</label>
       <input type="file" class="form-control" name="image">
     </div>
@@ -34,10 +47,10 @@
       <input type="number" class="form-control" name="discount">
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label class="form-label">ID_Size</label>
       <input type="number" class="form-control" name="size">
-    </div>
+    </div> -->
 
     <div class="mb-3">
       <label class="form-label">Description</label>

@@ -90,6 +90,7 @@ if (isset($_GET['act'])) {
       } else {
         $id_cat = 0;
       }
+      $dsbr = loadall_brand();
       $dslh = loadall_cat();
       $dssp = loadall_pro($id_cat);
       include("product/list-product.php");
@@ -97,6 +98,7 @@ if (isset($_GET['act'])) {
     case 'add_pro':
       if (isset($_POST['them']) && ($_POST['them'])) {
         $id_cat = $_POST['id_cat'];
+        $id_brand = $_POST['id_brand'];
         $name_pro = $_POST['name_pro'];
         $price = $_POST['price'];
         $dis = $_POST['discount'];
@@ -111,11 +113,12 @@ if (isset($_GET['act'])) {
           // echo "Sorry, there was an error uploading your file.";
         }
         if ($name_pro != "") {
-          insert_pro($name_pro, $file, $des, $dis, $price, $size, $id_cat);
+          insert_pro($name_pro, $file, $des, $dis, $price, $id_cat, $id_brand);
           $tbao = 'Them data thanh cong';
           header("location:index.php?act=list_pro");
         }
       }
+      $dsbr = loadall_brand();
       $dslh = loadall_cat();
       include("product/add-product.php");
       break;
@@ -131,6 +134,7 @@ if (isset($_GET['act'])) {
       if (isset($_GET['id_pro']) && ($_GET['id_pro']) > 0) {
         $suasp = loadone_pro($_GET['id_pro']);
       }
+      $dsbr = loadall_brand();
       $dslh = loadall_cat();
       include("product/update-product.php");
       break;
@@ -138,10 +142,11 @@ if (isset($_GET['act'])) {
       if (isset($_POST['edit']) && ($_POST['edit'])) {
         $name_pro = $_POST['name_pro'];
         $id_pro = $_POST['id_pro'];
+        $id_brand = $_POST['id_brand'];
         $description = $_POST['description'];
         $discount = $_POST['discount'];
         $price = $_POST['price'];
-        $size = $_POST['size'];
+        // $size = $_POST['size'];
         $id_cat = $_POST['id_cat'];
         $file = $_FILES['image']['name'];
         $target_dir = "../upload/";
@@ -151,9 +156,10 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
-        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $size, $id_cat);
+        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_cat,$id_brand);
         $tbao = 'Sua data thanh cong';
       }
+      $dsbr = loadall_brand();
       $dslh = loadall_cat();
       $dssp = loadall_pro();
       include "product/list-product.php";

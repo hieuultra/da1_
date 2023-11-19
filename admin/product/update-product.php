@@ -33,6 +33,20 @@ if (is_file($hinhpath)) {
     </div>
 
     <div class="mb-3">
+      <label class="form-label">Brand</label>
+      <select class="form-select" name="id_brand">
+        <option value="0" selected>All</option>
+        <?php
+        foreach ($dsbr as $ds) {
+          if ($ds['id_brand'] == $id_brand) $s = "selected";
+          else $s = "";
+          echo '<option value="' . $ds['id_brand'] . '" ' . $s . '>' . $ds['name_brand'] . '</option>';
+        }
+        ?>
+      </select>
+    </div>
+
+    <div class="mb-3">
       <label class="form-label">Image</label>
       <input type="file" class="form-control" name="image">
       <?= $hinh ?>
@@ -48,10 +62,10 @@ if (is_file($hinhpath)) {
       <input type="number" class="form-control" name="discount" value="<?= $discount ?>">
     </div>
 
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label class="form-label">Id_Size</label>
       <input type="number" class="form-control" name="size" value="<?= $id_size ?>">
-    </div>
+    </div> -->
 
     <div class="mb-3">
       <label class="form-label">Description</label>

@@ -1,7 +1,7 @@
 <?php
 function insert_brand($name_brand, $file)
 {
-    $sql = "insert into brand(name_brand,img) values('$name_brand','$file')";
+    $sql = "insert into brand(name_brand,img_br) values('$name_brand','$file')";
     pdo_execute($sql);
 }
 function loadall_brand()
@@ -25,7 +25,7 @@ function loadone_brand($id_brand)
 function update_brand($name_brand, $file, $id_brand)
 {
     if ($file != "") {
-        $sql = "update brand set name_brand='" . $name_brand . "' ,img='" . $file . "' where id_brand=" . $id_brand;
+        $sql = "update brand set name_brand='" . $name_brand . "' ,img_br='" . $file . "' where id_brand=" . $id_brand;
     } else {
         $sql = "update brand set name_brand='" . $name_brand . "' where id_brand=" . $id_brand;
     }
