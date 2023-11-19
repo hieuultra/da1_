@@ -417,8 +417,8 @@ if (isset($_GET['act'])) {
       $dsblog = loadall_blog();
       include "blog/list_blog.php";
       break;
-      //brand
 
+      //brand
     case 'add_brand':
       if (isset($_POST['them']) && ($_POST['them'])) {
         $name_brand = $_POST['Name_brand'];
@@ -443,7 +443,6 @@ if (isset($_GET['act'])) {
       $dsbr = loadall_brand();
       include "brand/list-brand.php";
       break;
-
 
     case 'delete_brand':
       if (isset($_GET['id_brand']) && ($_GET['id_brand']) > 0) {
@@ -472,7 +471,7 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
-        update_brand($name_brand, $file, $shows_menu, $id_brand);
+        update_brand($name_brand, $file, $id_brand);
         $tbao = 'Sua data thanh cong';
       }
       $dsbr = loadall_brand();

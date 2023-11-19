@@ -6,6 +6,8 @@
   include "./model/pdo.php";
   include "./model/cat.php";
   $dsdm = loadall_cat();
+  include "./model/brand.php";
+  $dsbr = loadall_brand();
   include "_navbar.php";
   include "./global.php";
   include  "./model/product.php";
@@ -14,6 +16,7 @@
   include  "./model/user.php";
   include "./model/cart.php";
   include "./model/comment.php";
+
 
   if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];

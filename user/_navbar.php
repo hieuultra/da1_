@@ -59,8 +59,24 @@
               }
               ?>
             </div>
-
           </div>
+
+          <div class="nav-item dropdown">
+            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Brands</a>
+            <div class="dropdown-menu rounded-0 m-0">
+              <?php
+
+              foreach ($dsbr as $br) {
+                extract($br);
+                $linkdm = "index.php?act=product_brand&id_brand=" . $id_brand;
+                echo '
+                <a href="' . $linkdm . '" class="dropdown-item">' . $name_brand . '</a>
+                ';
+              }
+              ?>
+            </div>
+          </div>
+
           <a href="?act=contact" class="nav-item nav-link">Contact</a>
           <a href="?act=blog" class="nav-item nav-link">Blog</a>
         </div>
