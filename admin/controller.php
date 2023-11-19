@@ -16,6 +16,7 @@ include "../model/user.php";
 include "../model/role.php";
 include "../model/comment.php";
 include "../model/cart.php";
+include "../model/brand.php";
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -415,6 +416,67 @@ if (isset($_GET['act'])) {
       }
       $dsblog = loadall_blog();
       include "blog/list_blog.php";
+      break;
+      //brand
+
+    case 'add_brand':
+      if (isset($_POST['them']) && ($_POST['them'])) {
+        $name_brand = $_POST['Name_brand'];
+        // $shows_menu = $_POST['Shows_menu'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        if ($name_brand != "") {
+          insert_brand($name_brand, $file);
+          header("location:index.php?act=list_brand");
+          $tbao = 'Them data thanh cong';
+        }
+      }
+      include "brand/add-brand.php";
+      break;
+    case 'list_brand':
+      $dsbr = loadall_brand();
+      include "brand/list-brand.php";
+      break;
+
+
+    case 'delete_brand':
+      if (isset($_GET['id_brand']) && ($_GET['id_brand']) > 0) {
+        delete_brand($_GET['id_brand']);
+      }
+      $dsbr = loadall_brand();
+      include "brand/list-brand.php";
+      break;
+
+    case 'edit_brand':
+      if (isset($_GET['id_brand']) && ($_GET['id_brand']) > 0) {
+        $br = loadone_brand($_GET['id_brand']);
+      }
+      include "brand/update_brand.php";
+      break;
+    case 'update_brand':
+      if (isset($_POST['edit']) && ($_POST['edit'])) {
+        $id_brand = $_POST['id_brand'];
+        $name_brand = $_POST['name_brand'];
+        // $shows_menu = $_POST['Shows_menu'];
+        $file = $_FILES['image']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['image']["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
+        update_brand($name_brand, $file, $shows_menu, $id_brand);
+        $tbao = 'Sua data thanh cong';
+      }
+      $dsbr = loadall_brand();
+      include "brand/list-brand.php";
       break;
   }
 } else {
