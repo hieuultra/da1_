@@ -44,6 +44,7 @@ if (is_array($suabi)) {
                 </thead>
                 <tbody>
                     <?php foreach ($suabi as $s) {
+                        // extract($s);
                         $suasp = "index.php?act=edit_pro&id_pro=" . $id_pro;
                         $xoasp = "index.php?act=delete_pro&id_pro=" . $id_pro;
                         $hinhpath = "../upload/" . $image_pro;

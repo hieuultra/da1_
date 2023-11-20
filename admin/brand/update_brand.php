@@ -2,7 +2,7 @@
 if (is_array($br)) {
     extract($br);
 }
-$hinhpath = "../upload/" . $img;
+$hinhpath = "../upload/" . $img_br;
 if (is_file($hinhpath)) {
     $hinh = "<img src='" . $hinhpath . "' height='70'>";
 } else {

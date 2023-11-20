@@ -28,7 +28,7 @@
 
               $suabr = "index.php?act=edit_brand&id_brand=" . $id_brand;
               $xoabr = "index.php?act=delete_brand&id_brand=" . $id_brand;
-              $hinhpath = "../upload/" . $img;
+              $hinhpath = "../upload/" . $img_br;
               if (is_file($hinhpath)) {
                 $hinh = "<img src='" . $hinhpath . "' height='100' width='300'>";
               } else {
