@@ -83,7 +83,7 @@ ob_start();
 
 
         <!-- slider -->
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSlider" aria-expanded="false" aria-controls="collapseLayouts">
+        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSlider" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon">
             <i class="fas fa-columns"></i>
           </div>
@@ -98,7 +98,7 @@ ob_start();
             <a class="nav-link" href="?act=list_slider">List Slider</a>
             <a class="nav-link" href="?act=add_slider">Add Slider</a>
           </nav>
-        </div>
+        </div> -->
 
         <!-- blog -->
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsebl" aria-expanded="false" aria-controls="collapseLayouts">

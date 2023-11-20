@@ -13,7 +13,7 @@
             </div>
             <div class="card-body">
                 <table id="datatablesSimple">
-                 
+                    <thead>
                         <tr>
                             <th>NAME_USER</th>
                             <th>EMAIL_USER</th>
@@ -23,7 +23,7 @@
                             <th>CREATED_AT</th>
                             <th>ACCTION</th>
                         </tr>
-                    
+                    </thead>
 
                     <?php foreach ($dsfb as $fb) {
                         extract($fb);

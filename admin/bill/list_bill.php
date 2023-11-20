@@ -17,8 +17,8 @@
                         <tr>
                             <th>Name_user</th>
                             <th>Id_bill</th>
-                            <th>Quantity</th>
-                            <th>Total_Price</th>
+                            <th>Quantity_Pro</th>
+                            <th>Total_Bill</th>
                             <th>Date_order</th>
                             <th>Status_bill</th>
                             <th>Action</th>

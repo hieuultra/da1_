@@ -11,9 +11,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Infor_user</h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= $suabi[0]['name_user'] ?></h6>
-                    <p class="card-text"><?= $suabi[0]['phone_user'] ?></p>
-                    <p class="card-text"><?= $suabi[0]['address_user'] ?></p>
+                    <h6 class="card-subtitle mb-2 text-muted">Name_user:<?= $suabi[0]['name_user'] ?></h6>
+                    <p class="card-text">Phone_user:<?= $suabi[0]['phone_user'] ?></p>
+                    <p class="card-text">Address_user:<?= $suabi[0]['address_user'] ?></p>
                 </div>
             </div>
         </div>
@@ -32,8 +32,8 @@
                 <tbody>
                     <?php foreach ($suabi as $s) {
                         extract($s);
-                        $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
-                        $xoasp = "index.php?act=delete_pro&id_pro=" . $s['id_pro'];
+                        // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
+                        $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
                         $hinhpath = "../upload/" . $s['image_pro'];
                         if (is_file($hinhpath)) {
                             $hinh = "<img src='" . $hinhpath . "' height='70'>";
@@ -48,9 +48,8 @@
                   <td><input value="' . $s['quantity'] . '" id="x"></td>
                   <td>' .  number_format($s['total'], 0, ",", ".") . '$' . '</td>
                   <td>
-                  <a href="' . $suasp . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
-                  <a href="' . $xoasp . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
-                  </td>
+            <a href="' . $xoasp . '" class="btn btn-danger"><input type="button" value="DELETE" onclick="return confirm(\'ban co chac chan muon xoa?\')" /></a>
+        </td>
                 </tr>';
                     }
                     echo ' <td colspan="4">Total order</td>
@@ -72,6 +71,8 @@
                 </tbody>
             </table>
         </div>
+
+
 
         <!-- <a href="?act=add_pro">
           <input type="submit" class="btn btn-primary" name="them" value="ADD">
