@@ -156,7 +156,7 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
-        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_cat,$id_brand);
+        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_cat, $id_brand);
         $tbao = 'Sua data thanh cong';
       }
       $dsbr = loadall_brand();
@@ -347,13 +347,13 @@ if (isset($_GET['act'])) {
       break;
     case 'update_bill':
       if (isset($_POST['edit']) && ($_POST['edit'])) {
-        $name_user = $_POST['name_user'];
+        // $name_user = $_POST['name_user'];
         $id_bill = $_POST['id_bill'];
-        $phone_user = $_POST['phone_user'];
-        $address_user = $_POST['address_user'];
+        // $phone_user = $_POST['phone_user'];
+        // $address_user = $_POST['address_user'];
         // $quantity = $_POST['quantity'];
         $id_status_bill = $_POST['id_status_bill'];
-        update_bill($id_bill, $name_user, $address_user, $phone_user, $id_status_bill);
+        update_bill($id_bill, $id_status_bill);
         $tbao = 'Sua data thanh cong';
       }
       $dsst = loadall_status_bill();

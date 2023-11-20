@@ -6,20 +6,7 @@
 <div class="container-fluid mt-4 px-4">
     <h1 class="mt-4">Update bill</h1>
     <form action="?act=update_bill" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id_bill" value="<?= $id_bill ?>">
-        <div class="mb-3">
-            <label class="form-label">Status_bill</label>
-            <select class="form-select" name="id_status_bill">
-                <option value="0" selected>All</option>
-                <?php
-                foreach ($dsst as $ds) {
-                    if ($ds['id_status_bill'] == $id_status_bill) $s = "selected";
-                    else $s = "";
-                    echo '<option value="' . $ds['id_status_bill'] . '" ' . $s . '>' . $ds['name_status'] . '</option>';
-                }
-                ?>
-            </select>
-        </div>
+        <input type="hidden" name="id_bill" value="<?= $suabi[0]['id_bill'] ?>">
         <div class="container mt-4">
             <div class="card">
                 <div class="card-body">
@@ -59,14 +46,29 @@
                   <td>' . $hinh . '</td>
                   <td>' .  number_format($s['price_pro'], 0, ",", ".") . '$' . '</td>
                   <td><input value="' . $s['quantity'] . '" id="x"></td>
-                  <td>' .  number_format($s['total_price'], 0, ",", ".") . '$' . '</td>
+                  <td>' .  number_format($s['total'], 0, ",", ".") . '$' . '</td>
                   <td>
                   <a href="' . $suasp . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
                   <a href="' . $xoasp . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
                   </td>
                 </tr>';
                     }
+                    echo ' <td colspan="4">Total order</td>
+                    <td class="align-middle">' . number_format($s['total_price'], 0, ",", ".") . '$</td>';
                     ?>
+                    <div class="mb-3">
+                        <label class="form-label">Status_bill</label>
+                        <select class="form-select" name="id_status_bill">
+                            <option value="0" selected>All</option>
+                            <?php
+                            foreach ($dsst as $ds) {
+                                if ($ds['id_status_bill'] == $suabi[0]['id_status_bill']) $s = "selected";
+                                else $s = "";
+                                echo '<option value="' . $ds['id_status_bill'] . '" ' . $s . '>' . $ds['name_status'] . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
                 </tbody>
             </table>
         </div>

@@ -274,11 +274,10 @@ function loadall_status_bill()
 
 
 }
-function update_bill($id_bill, $name_user, $address_user, $phone_user, $id_status_bill)
+function update_bill($id_bill, $id_status_bill)
 {
 
-    $sql = "update bill set name_user='" . $name_user . "',address_user='" . $address_user . "',
-        phone_user='" . $phone_user . "',id_status_bill='" . $id_status_bill . "' where id_bill=" . $id_bill;
+    $sql = "update bill set id_status_bill='" . $id_status_bill . "' where id_bill=" . $id_bill;
 
 
     pdo_execute($sql);
