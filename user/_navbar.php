@@ -85,7 +85,7 @@
 
     <!-- Cart -->
     <div class="col-lg-4 col-6 text-right">
-      <a href="" class="btn border">
+      <a href="?act=view_wishlist" class="btn border">
         <i class="fas fa-heart text-primary"></i>
         <span class="badge">0</span>
       </a>
