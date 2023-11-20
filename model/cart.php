@@ -148,10 +148,10 @@ function loadone_bill($id_bill)
     $bill = pdo_query_one($sql);
     return $bill; //co ket qua tra ve phai return
 }
-function loadone_b($id_bill)
+function loadall_b($id_bill)
 {
     $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where b.id_bill=" . $id_bill;
-    $bill = pdo_query_one($sql);
+    $bill = pdo_query($sql);
     return $bill; //co ket qua tra ve phai return
 }
 function loadone_b_c($id_bill)

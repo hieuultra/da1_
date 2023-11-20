@@ -1,7 +1,7 @@
 <?php
-if (is_array($suabi)) {
-    extract($suabi);
-}
+// if (is_array($suabi)) {
+//     extract($suabi);
+// }
 ?>
 <div class="container-fluid mt-4 px-4">
     <h1 class="mt-4">Update bill</h1>
@@ -24,9 +24,9 @@ if (is_array($suabi)) {
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Infor_user</h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= $name_user ?></h6>
-                    <p class="card-text"><?= $phone_user ?></p>
-                    <p class="card-text"><?= $address_user ?></p>
+                    <h6 class="card-subtitle mb-2 text-muted"><?= $suabi[0]['name_user'] ?></h6>
+                    <p class="card-text"><?= $suabi[0]['phone_user'] ?></p>
+                    <p class="card-text"><?= $suabi[0]['address_user'] ?></p>
                 </div>
             </div>
         </div>
@@ -44,10 +44,10 @@ if (is_array($suabi)) {
                 </thead>
                 <tbody>
                     <?php foreach ($suabi as $s) {
-                        // extract($s);
-                        $suasp = "index.php?act=edit_pro&id_pro=" . $id_pro;
-                        $xoasp = "index.php?act=delete_pro&id_pro=" . $id_pro;
-                        $hinhpath = "../upload/" . $image_pro;
+                        extract($s);
+                        $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
+                        $xoasp = "index.php?act=delete_pro&id_pro=" . $s['id_pro'];
+                        $hinhpath = "../upload/" . $s['image_pro'];
                         if (is_file($hinhpath)) {
                             $hinh = "<img src='" . $hinhpath . "' height='70'>";
                         } else {
@@ -55,11 +55,11 @@ if (is_array($suabi)) {
                         }
 
                         echo '  <tr>
-                  <td>' . $name_pro . '</td>
+                  <td>' . $s['name_pro'] . '</td>
                   <td>' . $hinh . '</td>
-                  <td>' .  number_format($price_pro, 0, ",", ".") . '$' . '</td>
-                  <td><input value="' . $quantity . '" id="x"></td>
-                  <td>' .  number_format($total_price, 0, ",", ".") . '$' . '</td>
+                  <td>' .  number_format($s['price_pro'], 0, ",", ".") . '$' . '</td>
+                  <td><input value="' . $s['quantity'] . '" id="x"></td>
+                  <td>' .  number_format($s['total_price'], 0, ",", ".") . '$' . '</td>
                   <td>
                   <a href="' . $suasp . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
                   <a href="' . $xoasp . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>

@@ -339,7 +339,7 @@ if (isset($_GET['act'])) {
       break;
     case 'edit_bill':
       if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
-        $suabi = loadone_b($_GET['id_bill']);
+        $suabi = loadall_b($_GET['id_bill']);
         // $suab = loadone_b_c($_GET['id_bill']);
       }
       $dsst = loadall_status_bill();

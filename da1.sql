@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2023 lúc 05:34 PM
+-- Thời gian đã tạo: Th10 20, 2023 lúc 10:25 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -45,7 +45,6 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`id_bill`, `name_user`, `address_user`, `phone_user`, `email_user`, `total_price`, `payment_method`, `id_status_bill`, `date_order`, `id_user`) VALUES
-(71, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '3058785.8', 1, 2, '2023-11-16 20:37:05', 1),
 (72, 'hieubt', 'thaibinh', '0363707562', 'hieubtph32408@fpt.edu.vn', '6151435.5', 3, 1, '2023-11-16 20:40:48', 1),
 (73, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '58004.06', 2, 1, '2023-11-17 08:59:22', 1);
 
@@ -72,7 +71,8 @@ INSERT INTO `brand` (`id_brand`, `name_brand`, `img_br`, `shows_menu`) VALUES
 (4, 'FZ', 'vendor-4.jpg', 0),
 (5, 'BP', 'vendor-3.jpg', 0),
 (6, 'TC', 'vendor-5.jpg', 0),
-(7, 'DX', 'vendor-2.jpg', 0);
+(7, 'DX', 'vendor-2.jpg', 0),
+(8, 'IT', 'vendor-7.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -150,6 +150,19 @@ INSERT INTO `comment` (`id_com`, `content`, `date_com`, `id_user`, `id_pro`) VAL
 (30, 'hkjhgkj\r\n', '2023-11-15 22:56:37', 3, 24),
 (31, 'hha', '2023-11-18 23:01:02', 3, 27),
 (32, 'new shoes', '2023-11-19 23:19:54', 3, 28);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `favorite_pro`
+--
+
+CREATE TABLE `favorite_pro` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_pro` int(11) NOT NULL,
+  `created_at` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
 
@@ -260,7 +273,7 @@ INSERT INTO `product` (`id_pro`, `name_pro`, `img`, `thumbnail`, `description`, 
 (25, ' dress3 ', 'tải xuống (16).jpg', '', 'esf', 2, 3121210, 8, 2, 44, 2),
 (26, ' ao dai vn ', 'OIP (22).jpg', '', 'afsdafa', 22, 21431, 1, 2, 13, 7),
 (27, ' quan ngan ', 'tải xuống.jpg', '', 'edewf e wf', 22, 21323, 5, 1, 14, 2),
-(28, ' giay sport ', 'OIP (36).jpg', '', 'dcxdsc', 22, 233333000000, 5, 0, 17, 3);
+(28, ' giay sport ', 'OIP (36).jpg', '', 'dcxdsc', 22, 250000, 5, 0, 17, 3);
 
 -- --------------------------------------------------------
 
@@ -422,6 +435,12 @@ ALTER TABLE `comment`
   ADD PRIMARY KEY (`id_com`);
 
 --
+-- Chỉ mục cho bảng `favorite_pro`
+--
+ALTER TABLE `favorite_pro`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `feedback`
 --
 ALTER TABLE `feedback`
@@ -495,7 +514,7 @@ ALTER TABLE `bill`
 -- AUTO_INCREMENT cho bảng `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `cart`
@@ -514,6 +533,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comment`
   MODIFY `id_com` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT cho bảng `favorite_pro`
+--
+ALTER TABLE `favorite_pro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `feedback`
