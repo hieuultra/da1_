@@ -30,7 +30,7 @@ function view_wishlist($del)
                 <input type="hidden" name="id_pro" value="' . $wl[0] . '">
                 <input type="hidden" name="name_pro" value="' . $wl[1] . '">
                 <input type="hidden" name="img" value="' . $wl[2] . '">
-                <input type="hidden" name="price" value="' . $price . '">
+                <input type="hidden" name="price" value="' . $wl[3] . '">
                 <input type="hidden" name="discount" value="' . $wl[4] . '">
                 <input type="submit" value="Add To Cart" class="btn btn-primary" name="addtocart">
             </form>
