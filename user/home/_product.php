@@ -67,8 +67,7 @@
          <input type="hidden" name="img" value="' . $img . '">
          <input type="hidden" name="price" value="' . $price . '">
          <input type="hidden" name="discount" value="' . $discount . '">
-         <button type="submit" class="btn btn-primary" name="wishlist"><i class="fas fa-heart"></i> </button>
-         
+         <input type="submit" class="btn btn-primary" value="Like" name="wishlist">
        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
        </form>
    </div>

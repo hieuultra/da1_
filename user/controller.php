@@ -325,23 +325,20 @@
             $price_pro = $_POST['price'];
             $discount = $_POST['discount'];
             //check trung sp
-            if (checktrungsp($id_pro) >= 0) {
-              // $tbao="trung sp roi";
-            } else {
               $spwl = [$id_pro, $name_pro, $image_pro, $price_pro, $discount];
-              array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...       
-            }
+              array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...
           }
           include "view_wishlist.php";
+          
           break;
         case "view_wishlist":
           include 'view_wishlist.php';
           break;
         case 'delwl':
           if (isset($_GET['id'])) {
-            array_splice($_SESSION['mywishlist'], $_GET['id'], 1);
+            array_splice($_SESSION['wishlist'], $_GET['id'], 1);
           } else {
-            $_SESSION['mywishlist'] = [];
+            $_SESSION['wishlist'] = [];
           }
           header('Location:index.php?act=view_wishlist');
           // include "view/cart/viewcart.php";

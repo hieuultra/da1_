@@ -46,7 +46,6 @@ function view_cart($del)
         $tong += $total;
 
         if ($del == 1) {
-
             $xoasp_td = '<td><a href="index.php?act=delcart&id_cart=' . $i . '">
                 <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
                 </td>';
