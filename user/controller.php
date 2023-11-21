@@ -16,11 +16,16 @@
   include  "./model/user.php";
   include "./model/cart.php";
   include "./model/comment.php";
+  include "./model/wishlist.php";
 
 
   if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = [];
   }
+  if (!isset($_SESSION['wishlist'])) {
+    $_SESSION['wishlist'] = [];
+  }
+
 
   $spnew = loadall_pro_home();
 
@@ -305,6 +310,39 @@
         $name_brand = load_ten_br($id_brand);
         include "product_brand.php";
         break;
+        // wishlist
+        case 'wishlist':
+          //add thong tin sp tu cai form add to cart den session
+          if (isset($_POST['wishlist']) && ($_POST['wishlist'])) {
+            // Kiểm tra tài khoản đang đăng nhập
+            if (isset($_SESSION['user']['id_role']) && $_SESSION['user']['id_role'] == 2) {
+              header('Location: index.php'); // Chuyển hướng về trang index.php
+              exit(); // Dừng việc thực thi các lệnh tiếp theo
+            }
+            $id_pro = $_POST['id_pro'];
+            $name_pro = $_POST['name_pro'];
+            $image_pro = $_POST['img'];
+            $price_pro = $_POST['price'];
+            $discount = $_POST['discount'];
+            //check trung sp
+              $spwl = [$id_pro, $name_pro, $image_pro, $price_pro, $discount];
+              array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...
+          }
+          include "view_wishlist.php";
+          
+          break;
+        case "view_wishlist":
+          include 'view_wishlist.php';
+          break;
+        case 'delwl':
+          if (isset($_GET['id'])) {
+            array_splice($_SESSION['wishlist'], $_GET['id'], 1);
+          } else {
+            $_SESSION['wishlist'] = [];
+          }
+          header('Location:index.php?act=view_wishlist');
+          // include "view/cart/viewcart.php";
+          break;
     }
   } else {
     include_once("user/home/index.php");

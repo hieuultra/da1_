@@ -61,8 +61,15 @@
        </div>
        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
        <div class="product-action">
-       <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+       <form action="index.php?act=wishlist" method="post">
+         <input type="hidden" name="id_pro" value="' . $id_pro . '">
+         <input type="hidden" name="name_pro" value="' . $name_pro . '">
+         <input type="hidden" name="img" value="' . $img . '">
+         <input type="hidden" name="price" value="' . $price . '">
+         <input type="hidden" name="discount" value="' . $discount . '">
+         <input type="submit" class="btn btn-primary" value="Like" name="wishlist">
        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+       </form>
    </div>
         <a href="' . $linksp . '"> <h6 class="text-truncate mb-3">' . $name_pro . '</h6></a>
          <div class="d-flex justify-content-center">
