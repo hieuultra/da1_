@@ -77,7 +77,7 @@ ob_start();
         <div class="collapse" id="collapseAccount" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav">
             <a class="nav-link" href="?act=list_account">List account</a>
-            <a class="nav-link" href="?act=add_account">Add account</a>
+            <a class="nav-link" href="?act=add_acc">Add account</a>
           </nav>
         </div>
 
