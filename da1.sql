@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 20, 2023 lúc 10:25 AM
+-- Thời gian đã tạo: Th10 22, 2023 lúc 04:56 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -45,8 +45,9 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`id_bill`, `name_user`, `address_user`, `phone_user`, `email_user`, `total_price`, `payment_method`, `id_status_bill`, `date_order`, `id_user`) VALUES
-(72, 'hieubt', 'thaibinh', '0363707562', 'hieubtph32408@fpt.edu.vn', '6151435.5', 3, 1, '2023-11-16 20:40:48', 1),
-(73, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '58004.06', 2, 1, '2023-11-17 08:59:22', 1);
+(74, 'jacson', 'usa', '344422323', 'jacson@gmail.com', '94228.15', 3, 2, '2023-11-20 19:52:38', 8),
+(81, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '119633301', 3, 1, '2023-11-22 22:04:40', 1),
+(82, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '99087.52', 2, 1, '2023-11-22 22:09:00', 1);
 
 -- --------------------------------------------------------
 
@@ -97,10 +98,12 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id_cart`, `image_pro`, `name_pro`, `price_pro`, `total`, `quantity`, `id_pro`, `id_bill`, `id_user`) VALUES
-(116, 'tải xuống (16).jpg', ' dress3 ', 3121210, 3121210, 1, 25, 71, 1),
-(117, 'tải xuống (16).jpg', ' dress3 ', 3121210, 3121210, 2, 25, 72, 1),
-(118, 'OIP (29).jpg', ' hat brown ', 34555, 34555, 1, 18, 72, 1),
-(119, 'tải xuống (13).jpg', ' bag yellow ', 29899, 29899, 2, 16, 73, 1);
+(119, 'tải xuống (13).jpg', ' bag yellow ', 29899, 29899, 2, 16, 73, 1),
+(120, 'OIP (34).jpg', ' dress cuoi ', 78999, 78999, 1, 20, 74, 8),
+(121, 'OIP (4).jpg', 'quan tt', 19999, 19999, 1, 1, 74, 8),
+(128, 'OIP (6).jpg', ' hoddie ', 41111100, 41111100, 3, 7, 81, 1),
+(129, 'OIP (17).jpg', ' hat vf ', 23888, 23888, 2, 14, 82, 1),
+(130, 'OIP (29).jpg', ' hat brown ', 35000, 35000, 2, 29, 82, 1);
 
 -- --------------------------------------------------------
 
@@ -177,16 +180,17 @@ CREATE TABLE `feedback` (
   `phone_user` varchar(255) NOT NULL,
   `subject_name` varchar(255) NOT NULL,
   `content` varchar(255) NOT NULL,
-  `created_at` varchar(255) NOT NULL
+  `created_at` varchar(255) NOT NULL,
+  `id_status_fb` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `name_user`, `email_user`, `phone_user`, `subject_name`, `content`, `created_at`) VALUES
-(3, 'buitrunghieu ', 'hieubtph32408@fpt.edu.vn', '4323214', 'Giày thể thao cao cấp ', 'wdefe', '2023-11-15 22:24:53'),
-(10, 'buitrunghieu ', 'hieubtph32408@fpt.edu.vn', '0363707561', 'Giày thể thao cao cấp ', 'hoi chat', '2023-11-16 20:37:33');
+INSERT INTO `feedback` (`id`, `name_user`, `email_user`, `phone_user`, `subject_name`, `content`, `created_at`, `id_status_fb`) VALUES
+(10, 'buitrunghieu ', 'hieubtph32408@fpt.edu.vn', '0363707561', 'Giày thể thao cao cấp ', 'hoi chat', '2023-11-16 20:37:33', 1),
+(11, 'dattran', 'adminh@fpt.edu.vn', '0363707561', 'ao ', 'qua rong', '2023-11-20 21:24:53', 1);
 
 -- --------------------------------------------------------
 
@@ -250,7 +254,7 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`id_pro`, `name_pro`, `img`, `thumbnail`, `description`, `discount`, `price`, `view`, `id_size`, `id_cat`, `id_brand`) VALUES
 (1, 'quan tt', 'OIP (4).jpg', '', 'mua di', 12, 19999, 12, 1, 14, 2),
 (2, ' ao zf ', 'OIP (15).jpg', '', 'vasvsavdasv', 22, 124900000, 3, 2, 13, 3),
-(3, ' giay ads ', 'OIP (10).jpg', '', 'cdsacda', 11, 7900000, 12, 2, 17, 4),
+(3, ' giay ads ', 'OIP (10).jpg', '', 'cdsacda', 11, 7900000, 13, 2, 17, 4),
 (5, ' hat vg ', 'tải xuống (5).jpg', '', 'dcvdwv', 22, 123999, 2, 3, 16, 4),
 (6, ' hat bb ', 'OIP (7).jpg', '', 'vssgeger', 34, 123333, 4, 4, 16, 5),
 (7, ' hoddie ', 'OIP (6).jpg', '', 'ewger', 3, 41111100, 2, 2, 13, 6),
@@ -259,21 +263,21 @@ INSERT INTO `product` (`id_pro`, `name_pro`, `img`, `thumbnail`, `description`, 
 (10, ' shirt whis ', 'OIP (14).jpg', '', 'ahahaha', 22, 239999, 3, 1, 13, 6),
 (12, ' vest ', 'OIP (13).jpg', '', 'sdvsvasdv', 11, 23999, 8, 3, 13, 5),
 (13, ' bag klm', 'OIP (19).jpg', '', 'fdfwe', 2, 34999, 4, 4, 22, 6),
-(14, ' hat vf ', 'OIP (17).jpg', '', 'vdasvbab', 23, 23888, 9, 2, 16, 3),
+(14, ' hat vf ', 'OIP (17).jpg', '', 'vdasvbab', 23, 23888, 10, 2, 16, 3),
 (15, ' shoes boot ', 'OIP (24).jpg', '', 'saca', 11, 123444, 11, 2, 17, 2),
-(16, ' bag yellow ', 'tải xuống (13).jpg', '', 'ewfdsvcds', 3, 29899, 26, 4, 22, 2),
+(16, ' bag yellow ', 'tải xuống (13).jpg', '', 'ewfdsvcds', 3, 29899, 28, 4, 22, 2),
 (17, ' bag hhh ', 'OIP (18).jpg', '', 'sbsab', 34, 343434, 11, 3, 22, 3),
-(18, ' hat brown ', 'OIP (29).jpg', '', 'wefdf', 2, 34555, 10, 3, 16, 4),
 (19, ' vest girl ', 'OIP (25).jpg', '', 'fdvdsv  fwfw', 3, 23999, 17, 2, 13, 4),
 (20, ' dress cuoi ', 'OIP (34).jpg', '', 'dwcdwcwee e', 3, 78999, 11, 4, 44, 5),
-(21, ' shoes nike ', 'OIP (35).jpg', '', 'evef f ewrferfrefer', 34, 23445, 7, 2, 17, 6),
-(22, ' shoes blak ', 'tải xuống (15).jpg', '', 'fadsds', 23, 13214, 8, 3, 17, 7),
-(23, ' dress1 ', 'OIP (38).jpg', '', 'fwdw wefe', 33, 213123, 3, 2, 44, 7),
-(24, ' dress2 ', 'tải xuống (17).jpg', '', 'eefef', 22, 212131, 14, 2, 44, 6),
+(21, ' shoes nike ', 'OIP (35).jpg', '', 'evef f ewrferfrefer', 34, 23445, 8, 2, 17, 6),
+(22, ' shoes blak ', 'tải xuống (15).jpg', '', 'fadsds', 23, 13214, 9, 3, 17, 7),
+(23, ' dress1 ', 'OIP (38).jpg', '', 'fwdw wefe', 33, 213123, 4, 2, 44, 7),
+(24, ' dress2 ', 'tải xuống (17).jpg', '', 'eefef', 22, 212131, 17, 2, 44, 6),
 (25, ' dress3 ', 'tải xuống (16).jpg', '', 'esf', 2, 3121210, 8, 2, 44, 2),
 (26, ' ao dai vn ', 'OIP (22).jpg', '', 'afsdafa', 22, 21431, 1, 2, 13, 7),
 (27, ' quan ngan ', 'tải xuống.jpg', '', 'edewf e wf', 22, 21323, 5, 1, 14, 2),
-(28, ' giay sport ', 'OIP (36).jpg', '', 'dcxdsc', 22, 250000, 5, 0, 17, 3);
+(28, ' giay sport ', 'OIP (36).jpg', '', 'dcxdsc', 22, 250000, 6, 0, 17, 3),
+(29, ' hat brown ', 'OIP (29).jpg', '', 'vsdvdsv', 11, 35000, 2, 0, 16, 8);
 
 -- --------------------------------------------------------
 
@@ -376,6 +380,25 @@ INSERT INTO `status_bill` (`id_status_bill`, `name_status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `status_fb`
+--
+
+CREATE TABLE `status_fb` (
+  `id_status_fb` int(1) NOT NULL,
+  `name_fb` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `status_fb`
+--
+
+INSERT INTO `status_fb` (`id_status_fb`, `name_fb`) VALUES
+(1, 'chua xac nhan'),
+(2, 'da xac nhan');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `user`
 --
 
@@ -398,7 +421,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `username`, `password`, `name`, `address`, `phone`, `email`, `image`, `id_role`) VALUES
 (1, 'hieubt', '123', 'Buitrunghieu ', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', 'a.jpg', 1),
 (3, 'hieuvip', '321', 'buitrunghieu ', 'Thai Binh', '0363707561', 'user@gmail.com', 'r.jpg', 2),
-(4, 'dattc', '111', 'trancongdat', 'nam dinh', '4323214', 'dattc@gmail.com', 'cf2a122a156546850b3ef7e1bfbaed5d.jpg', 2);
+(4, 'dattc', '111', 'trancongdat', 'nam dinh', '4323214', 'dattc@gmail.com', 'cf2a122a156546850b3ef7e1bfbaed5d.jpg', 2),
+(8, 'jacson', '1212', 'm.jacson', 'usa', '344422323', 'jacson@gmail.com', '686418.jpg', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -495,6 +519,12 @@ ALTER TABLE `status_bill`
   ADD PRIMARY KEY (`id_status_bill`);
 
 --
+-- Chỉ mục cho bảng `status_fb`
+--
+ALTER TABLE `status_fb`
+  ADD PRIMARY KEY (`id_status_fb`);
+
+--
 -- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
@@ -508,7 +538,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT cho bảng `brand`
@@ -520,7 +550,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -544,7 +574,7 @@ ALTER TABLE `favorite_pro`
 -- AUTO_INCREMENT cho bảng `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `image`
@@ -562,7 +592,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `product_detail`
@@ -595,10 +625,16 @@ ALTER TABLE `status_bill`
   MODIFY `id_status_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT cho bảng `status_fb`
+--
+ALTER TABLE `status_fb`
+  MODIFY `id_status_fb` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
