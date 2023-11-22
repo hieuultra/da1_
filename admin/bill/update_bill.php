@@ -53,6 +53,9 @@
                 </tr>';
                     }
                     echo ' <td colspan="4">Total order</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td class="align-middle">' . number_format($s['total_price'], 0, ",", ".") . '$</td>';
                     ?>
                     <div class="mb-3">
