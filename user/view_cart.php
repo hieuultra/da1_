@@ -7,11 +7,12 @@ $tong = 0;
 $i = 0;
 $ship = 100;
 $tongship = 0;
+// var_dump($_SESSION['mycart']);
 foreach ($_SESSION['mycart'] as $cart) {
-  $hinh = $img_path . $cart[2];
+  $hinh = $img_path . $cart['image'];
   // $gia = $cart[3];
-  $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
-  $total = $price * $cart[5];
+  $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
+  $total = $price * $cart['quantity'];
   $tong += $total;
   $ship;
   $tongship = $tong + $ship;

@@ -5,11 +5,11 @@ $i = 0;
 $ship = 100;
 $tongship = 0;
 foreach ($_SESSION['mycart'] as $cart) {
-  $name_pro = $cart[1];
-  $hinh = $img_path . $cart[2];
+  $name_pro = $cart['name'];
+  $hinh = $img_path . $cart['image'];
   // $gia = $cart[3];
-  $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
-  $total = $price * $cart[5];
+  $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
+  $total = $price * $cart['quantity'];
   $tong += $total;
   $ship;
   $tongship = $tong + $ship;
@@ -25,7 +25,7 @@ foreach ($_SESSION['mycart'] as $cart) {
           <div class="row">
             <?php
             if (isset($_SESSION['user'])) {
-              $id_user= $_SESSION['user']['id_user'];
+              $id_user = $_SESSION['user']['id_user'];
               $username = $_SESSION['user']['username'];
               $name = $_SESSION['user']['name'];
               $address = $_SESSION['user']['address'];
@@ -104,9 +104,11 @@ foreach ($_SESSION['mycart'] as $cart) {
           $ship = 100;
           $tongship = 0;
           foreach ($_SESSION['mycart'] as $cart) {
-            $name_pro = $cart[1];
-            $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
-            $total = $price * $cart[5];
+            $name_pro = $cart['name'];
+            $hinh = $img_path . $cart['image'];
+            // $gia = $cart[3];
+            $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
+            $total = $price * $cart['quantity'];
             $tong += $total;
             $ship;
             $tongship = $tong + $ship;

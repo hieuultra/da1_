@@ -191,12 +191,16 @@
           }
           $total = $quantity * $price_pro;
           //check trung sp
-          if (checktrungsp($id_pro) >= 0) {
-            // $tbao="trung sp roi";
-            update_quantity(checktrungsp($id_pro));
+
+          if (isset($_SESSION['mycart'][$id_pro])) {
+            $_SESSION['mycart'][$id_pro]['quantity'] += 1;
           } else {
-            $spadd = [$id_pro, $name_pro, $image_pro, $price_pro, $discount, $quantity, $total];
-            array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
+            $spadd = [
+              'id' => $id_pro, 'name' => $name_pro, 'image' => $image_pro, 'price' => $price_pro, 'discount' => $discount, 'quantity' => $quantity, 'total' => $total
+            ];
+            //array_push($_SESSION['mycart'], $spadd); //add mang con($spadd) vao mang cha $_session...
+            $_SESSION['mycart'][$id_pro] = $spadd;
+            // var_dump($_SESSION['mycart']);
           }
         }
         include "view_cart.php";
@@ -238,7 +242,7 @@
           //insert into cart: voi $session['mycart'] $id_bill
           //neu ko login thi dung isset hay empty
           foreach ($_SESSION['mycart'] as $cart) {
-            insert_cart($cart[2], $cart[1], $cart[3], $cart[6], $cart[5], $cart[0], $id_bill, $_SESSION['user']['id_user']);
+            insert_cart($cart['image'], $cart['name'], $cart['price'], $cart['total'], $cart['quantity'], $cart['id'], $id_bill, $_SESSION['user']['id_user']);
           }
           //xoa session
           $_SESSION['cart'] = [];
@@ -329,7 +333,6 @@
           array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...
         }
         include "view_wishlist.php";
-
         break;
       case "view_wishlist":
         include 'view_wishlist.php';
@@ -342,6 +345,20 @@
         }
         header('Location:index.php?act=view_wishlist');
         // include "view/cart/viewcart.php";
+        break;
+      case 'edit_sc':
+        if (isset($_POST['ss']) && ($_POST['ss'])) {
+          $id_pro = $_POST['id_pro'];
+          $name_pro = $_POST['name_pro'];
+          $image_pro = $_POST['img'];
+          $price_pro = $_POST['price'];
+          $discount = $_POST['discount'];
+          $quantity = $_POST['quantity'];
+          // $new_quantity =  $quantity;
+          // var_dump($_POST);die;
+          $_SESSION['mycart'][$id_pro]['quantity'] = $quantity;
+        }
+        include "view_cart.php";
         break;
     }
   } else {

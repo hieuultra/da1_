@@ -4,6 +4,18 @@
     }
 </style>
 <?php
+//     for ($i = 0; $i < sizeof($_SESSION['mycart']); $i++) {
+//         $total =  $_SESSION['mycart'][$i][3] * $_SESSION['mycart'][$i][5];
+//         echo '<tr>
+//       <td><img src="' . $_SESSION['mycart'][$i][2] . '" height="80px"></td>
+//       <td>' . $_SESSION['mycart'][$i][1] . '</td>
+//       <td>' . $_SESSION['mycart'][$i][3] . '</td>
+//       <td>' . $_SESSION['mycart'][$i][5] . '</td>
+//       <td>' . $total . '</td>
+//   </tr>';
+//     }
+// var_dump($_SESSION['mycart']);
+// _' . $cart['id'] . ': de sau id_pro
 function view_cart($del)
 {
     global  $img_path;
@@ -28,48 +40,46 @@ function view_cart($del)
  ' . $xoasp_th . '
 </tr>
 </thead>';
-    //     for ($i = 0; $i < sizeof($_SESSION['mycart']); $i++) {
-    //         $total =  $_SESSION['mycart'][$i][3] * $_SESSION['mycart'][$i][5];
-    //         echo '<tr>
-    //       <td><img src="' . $_SESSION['mycart'][$i][2] . '" height="80px"></td>
-    //       <td>' . $_SESSION['mycart'][$i][1] . '</td>
-    //       <td>' . $_SESSION['mycart'][$i][3] . '</td>
-    //       <td>' . $_SESSION['mycart'][$i][5] . '</td>
-    //       <td>' . $total . '</td>
-    //   </tr>';
-    //     }
     foreach ($_SESSION['mycart'] as $cart) {
-        $hinh = $img_path . $cart[2];
+        $hinh = $img_path . $cart['image'];
         // $gia = $cart[3];
-        $price =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
-        $total = $price * $cart[5];
+        $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
+        $total = $price * $cart['quantity'];
         $tong += $total;
 
         if ($del == 1) {
             $xoasp_td = '<td><a href="index.php?act=delcart&id_cart=' . $i . '">
-                <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
+            <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
+                <input type="hidden" name="id_pro" value="' . $cart['id'] . '">
+                <input type="hidden" name="name_pro" value="' . $cart['name'] . '">
+                <input type="hidden" name="img" value="' . $cart['image'] . '">
+                <input type="hidden" name="price" value="' . $cart['price'] . '">
+                <input type="hidden" name="discount" value="' . $cart['discount'] . '">
+           
                 </td>';
         } else {
             $xoasp_td = "";
         }
         echo '  <tbody class="align-middle">
-           <tr> 
+           <tr> <form action="?act=edit_sc" method="post">
             <td><img src="' . $hinh . '" alt="" height="80px"></td>
-            <td class="align-middle">' . $cart[1] . '</td>
+            <td class="align-middle">' . $cart['name'] . '</td>
             <td class="align-middle">' . number_format($price, 0, ",", ".") . '$</td>
-            <td class="align-middle"><a onclick="giam(this)"></a><input value="' . $cart[5] . '" id="x"><a onclick="tang(this)" ></a><input type="hidden" value="' . $i . '" /></td>
+            <td class="align-middle"><a onclick="giam(this)"></a><input name="quantity" value="' . $cart['quantity'] . '" id="x"><a onclick="tang(this)" ></a><input type="hidden" value="' . $i . '" /></td>
             <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
            ' . $xoasp_td . '
-           </tr> 
-           </tbody>
+                    <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>   
+           </form>
+           </tr>  
+           </tbody>    
         ';
         $i += 1;
     }
     echo '
     <td colspan="4">Total order</td>
-
     <td class="align-middle">' . number_format($tong, 0, ",", ".") . '$</td>
     ' . $xoasp_td2 . '
+    
     ';
 }
 
@@ -122,8 +132,8 @@ function tongdh()
 
     $tong = 0;
     foreach ($_SESSION['mycart'] as $cart) {
-        $gia =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
-        $thanhtien = $gia * $cart[5];
+        $gia =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
+        $thanhtien = $gia * $cart['quantity'];
         $tong += $thanhtien;
     }
     return $tong;
@@ -277,9 +287,10 @@ function update_bill($id_bill, $id_status_bill)
 {
 
     $sql = "update bill set id_status_bill='" . $id_status_bill . "' where id_bill=" . $id_bill;
-
-
     pdo_execute($sql);
+}
+function update_sc($quantity)
+{
 }
 ?>
 <script>
