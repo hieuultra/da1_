@@ -23,11 +23,11 @@ function view_cart($del)
     $i = 0;
     if ($del == 1) {
         $xoasp_th = '<th>Action</th>';
-
+        $edit = '<td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td> ';
         $xoasp_td2 = '';
     } else {
+        $edit = '';
         $xoasp_th = "";
-
         $xoasp_td2 = "";
     }
     echo '   <thead class="bg-secondary text-dark">
@@ -58,6 +58,7 @@ function view_cart($del)
            
                 </td>';
         } else {
+            $edit = '';
             $xoasp_td = "";
         }
         echo '  <tbody class="align-middle">
@@ -68,7 +69,7 @@ function view_cart($del)
             <td class="align-middle"><a onclick="giam(this)"></a><input name="quantity" value="' . $cart['quantity'] . '" id="x"><a onclick="tang(this)" ></a><input type="hidden" value="' . $i . '" /></td>
             <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
            ' . $xoasp_td . '
-                    <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>   
+' . $edit . '
            </form>
            </tr>  
            </tbody>    
