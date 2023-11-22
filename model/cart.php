@@ -23,11 +23,11 @@ function view_cart($del)
     $i = 0;
     if ($del == 1) {
         $xoasp_th = '<th>Action</th>';
-        $edit = '<td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td> ';
+
         $xoasp_td2 = '';
     } else {
-        $edit = '';
         $xoasp_th = "";
+
         $xoasp_td2 = "";
     }
     echo '   <thead class="bg-secondary text-dark">
@@ -55,10 +55,9 @@ function view_cart($del)
                 <input type="hidden" name="img" value="' . $cart['image'] . '">
                 <input type="hidden" name="price" value="' . $cart['price'] . '">
                 <input type="hidden" name="discount" value="' . $cart['discount'] . '">
-           
+               
                 </td>';
         } else {
-            $edit = '';
             $xoasp_td = "";
         }
         echo '  <tbody class="align-middle">
@@ -69,7 +68,7 @@ function view_cart($del)
             <td class="align-middle"><a onclick="giam(this)"></a><input name="quantity" value="' . $cart['quantity'] . '" id="x"><a onclick="tang(this)" ></a><input type="hidden" value="' . $i . '" /></td>
             <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
            ' . $xoasp_td . '
-' . $edit . '
+                     <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>   
            </form>
            </tr>  
            </tbody>    
@@ -160,7 +159,7 @@ function loadone_bill($id_bill)
 }
 function loadall_b($id_bill)
 {
-    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where b.id_bill=" . $id_bill;
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join product p on c.id_pro=p.id_pro where b.id_bill=" . $id_bill;
     $bill = pdo_query($sql);
     return $bill; //co ket qua tra ve phai return
 }

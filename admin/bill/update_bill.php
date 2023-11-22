@@ -32,6 +32,8 @@
                 <tbody>
                     <?php foreach ($suabi as $s) {
                         extract($s);
+                        $s['price_pro'] =  $s['price_pro'] - (($s['price_pro'] *  $s['discount']) / 100);
+                        $s['total']= $s['price_pro'] * $s['quantity'];
                         // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
                         $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
                         $hinhpath = "../upload/" . $s['image_pro'];

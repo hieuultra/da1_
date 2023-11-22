@@ -268,6 +268,13 @@
           $spbill = loadall_sp_cart($_GET['id_bill']);
         }
         include "bill_detail.php";
+      case 'delete_bill':
+          if (isset($_GET['id_bill'])) {
+            delete_bil($_GET['id_bill']);
+          }
+          header('Location:index.php?act=mybill');
+          // include "view/cart/viewcart.php";
+          break;
       case 'addfb':
         if (isset($_POST['send']) && ($_POST['send'])) {
           $name_user = $_POST['name'];
@@ -284,13 +291,7 @@
         }
         include_once("contact.php");
         break;
-      case 'delete_bill':
-        if (isset($_GET['id_bill'])) {
-          delete_bil($_GET['id_bill']);
-        }
-        header('Location:index.php?act=mybill');
-        // include "view/cart/viewcart.php";
-        break;
+      
       default:
         include_once("user/home/index.php");
         break;
