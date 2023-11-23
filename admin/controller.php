@@ -319,6 +319,29 @@ if (isset($_GET['act'])) {
       $dsfb = loadall_fb();
       include "feedback/list-fb.php";
       break;
+      case 'edit_fb':
+        if (isset($_GET['id']) && ($_GET['id']) > 0) {
+          $suafb = loadone_fbb($_GET['id']);
+          // $suab = loadone_b_c($_GET['id_bill']);
+        }
+        $dsstfb = loadall_status_fb();
+        include("feedback/update_fb.php");
+        break;
+      case 'update_fb':
+        if (isset($_POST['editfb']) && ($_POST['editfb'])) {
+          // $name_user = $_POST['name_user'];
+          $id = $_POST['id'];
+          // $phone_user = $_POST['phone_user'];
+          // $address_user = $_POST['address_user'];
+          // $quantity = $_POST['quantity'];
+          $id_status_fb = $_POST['id_status_fb'];
+          update_fb($id, $id_status_fb);
+          $tbao = 'Sua data thanh cong';
+        }
+        $dsstfb = loadall_status_fb();
+        $dsfb = loadall_fb();
+        include "feedback/list-fb.php";
+        break;
     case 'delete_fb':
       if (isset($_GET['id']) && ($_GET['id']) > 0) {
         delete_fb($_GET['id']);
