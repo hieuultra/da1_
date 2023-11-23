@@ -27,7 +27,6 @@ if (is_array($suafb)) {
                                 if ($ds['id_status_fb'] == $id_status_fb) $s = "selected";
                                 else $s = "";
                                 echo '<option value="' . $ds['id_status_fb'] . '" ' . $s . '>' . $ds['name_fb'] . '</option>';
-                               
                             }
                             ?>
 

@@ -55,9 +55,20 @@ foreach ($_SESSION['mycart'] as $cart) {
             <h5 class="font-weight-bold">Total</h5>
             <h5 class="font-weight-bold"><?= number_format($tongship, 0, ",", ".") . "$"  ?></h5>
           </div>
-          <a href="?act=checkout" class="btn btn-block btn-primary my-3 py-3">
-            Proceed To Checkout
-          </a>
+          <?php
+          if (isset($_SESSION['user'])) {
+          ?>
+            <a href="?act=checkout" class="btn btn-block btn-primary my-3 py-3">
+              Proceed To Checkout
+            </a>
+          <?php
+          } else {
+          ?>
+            <a href="?act=login" class="btn btn-block btn-primary my-3 py-3">
+              Proceed To Checkout
+            </a>
+          <?php } ?>
+
         </div>
       </div>
     </div>
