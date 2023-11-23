@@ -327,7 +327,7 @@
           $image_pro = $_POST['img'];
           $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
-          //check trung sp
+      
           $spwl = [$id_pro, $name_pro, $image_pro, $price_pro, $discount];
           array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...
         }
