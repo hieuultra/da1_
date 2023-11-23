@@ -76,13 +76,33 @@ function insert_fb($name_user, $email_user, $phone_user, $subject_name, $content
 }
 function loadall_fb()
 {
-    $sql = "select * from feedback order by id desc";
+    $sql = "select * from feedback f join status_fb s on f.id_status_fb=s.id_status_fb order by id desc";
     $dsfb = pdo_query($sql);
     return $dsfb; //co ket qua tra ve phai return
 }
 function delete_fb($id)
 {
     $sql = "delete from feedback where id=" . $id;
+    pdo_execute($sql);
+}
+function loadone_fbb($id)
+{
+    $sql = "select * from feedback  where id=" . $id;
+    $fb = pdo_query_one($sql);
+    return $fb; //co ket qua tra ve phai return
+}
+function loadall_status_fb()
+{
+    //cach noi chuoi sql
+    //phai co cach khoang
+    $sql = "select * from status_fb where 1 order by id_status_fb desc";
+    $dsstfb = pdo_query($sql);
+    return $dsstfb; //co ket qua tra ve phai return
+}
+function update_fb($id, $id_status_fb)
+{
+
+    $sql = "update feedback set id_status_fb='" . $id_status_fb . "' where id=" . $id;
     pdo_execute($sql);
 }
 

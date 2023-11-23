@@ -20,6 +20,7 @@
                             <th>PHONE_USER</th>
                             <th>SUBJECT_NAME</th>
                             <th>CONTENT</th>
+                            <th>STATUS</th>
                             <th>CREATED_AT</th>
                             <th>ACCTION</th>
                         </tr>
@@ -27,16 +28,18 @@
 
                     <?php foreach ($dsfb as $fb) {
                         extract($fb);
-
+                        $suafb = "index.php?act=edit_fb&id=" . $id;
                         $xoacom = "index.php?act=delete_fb&id=" . $id;
                         echo '<tr>
                            <td>' . $name_user . '</td>
                            <td>' . $email_user . '</td>
                            <td>' . $phone_user . '</td>
                            <td>' . $subject_name . '</td>
-                          <td>' . $content . '</td>
-       <td>' . $created_at . '</td>
-       <td>  <a href="' . $xoacom . '" class="btn btn-warning"><input type="button" onclick ="return confirm(\'ban co chac chan muon xoa?\')" value="Delete" /></a>
+                           <td>' . $content . '</td>
+                           <td>' . $name_fb . '</td>
+                           <td>' . $created_at . '</td>
+                           <td> <a href="' . $suafb . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
+         <a href="' . $xoacom . '" class="btn btn-warning"><input type="button" onclick ="return confirm(\'ban co chac chan muon xoa?\')" value="Delete" /></a>
         </td>
                 </tr>';
                     }
