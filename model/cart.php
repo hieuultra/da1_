@@ -23,11 +23,11 @@ function view_cart($del)
     $i = 0;
     if ($del == 1) {
         $xoasp_th = '<th>Action</th>';
-
+        $edit = '';
         $xoasp_td2 = '';
     } else {
         $xoasp_th = "";
-
+        $edit = '';
         $xoasp_td2 = "";
     }
     echo '   <thead class="bg-secondary text-dark">
@@ -40,6 +40,7 @@ function view_cart($del)
  ' . $xoasp_th . '
 </tr>
 </thead>';
+
     foreach ($_SESSION['mycart'] as $cart) {
         $hinh = $img_path . $cart['image'];
         // $gia = $cart[3];
@@ -55,10 +56,11 @@ function view_cart($del)
                 <input type="hidden" name="img" value="' . $cart['image'] . '">
                 <input type="hidden" name="price" value="' . $cart['price'] . '">
                 <input type="hidden" name="discount" value="' . $cart['discount'] . '">
-               
                 </td>';
+            $edit = '<td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>  ';
         } else {
             $xoasp_td = "";
+            $edit = "";
         }
         echo '  <tbody class="align-middle">
            <tr> <form action="?act=edit_sc" method="post">
@@ -68,7 +70,7 @@ function view_cart($del)
             <td class="align-middle"><a onclick="giam(this)"></a><input name="quantity" value="' . $cart['quantity'] . '" id="x"><a onclick="tang(this)" ></a><input type="hidden" value="' . $i . '" /></td>
             <td class="align-middle">' . number_format($total, 0, ",", ".") . '$</td>
            ' . $xoasp_td . '
-                     <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>   
+                 ' . $edit . '
            </form>
            </tr>  
            </tbody>    
@@ -83,49 +85,49 @@ function view_cart($del)
     ';
 }
 
-function show_ctdh($listbill) //bien truyen vao ko lien quan den bien ben ngoai
-{
-    global  $img_path;
-    $tong = 0;
-    $i = 0;
+// function show_ctdh($listbill) //bien truyen vao ko lien quan den bien ben ngoai
+// {
+//     global  $img_path;
+//     $tong = 0;
+//     $i = 0;
 
-    echo '<tr>
-    <th>Hình</th>
-    <th>Tên sản phẩm</th>
-    <th>Giá</th>
-    <th>Số lượng</th>
-    <th>Thành Tiền</th>
+//     echo '<tr>
+//     <th>Hình</th>
+//     <th>Tên sản phẩm</th>
+//     <th>Giá</th>
+//     <th>Số lượng</th>
+//     <th>Thành Tiền</th>
 
-</tr>';
-    foreach ($listbill as $cart) {
-        $hinh = $img_path . $cart['img'];
-        // $tong += $cart['thanhtien'];
-        echo ' 
-       <tr> 
-        <td><img src="' . $hinh . '" alt="" height="80px"></td>
-        <td>' . $cart['name'] . '</td>
-        <td>$' . number_format($cart['price'], 0, ",", ".") . '</td>
-        <td>' . $cart['soluong'] . '</td>
-        <td>$' . number_format($cart['thanhtien'], 0, ",", ".") . '</td>
-        
-       </tr> 
-    ';
-        $i += 1;
-    }
-    foreach ($_SESSION['mycart'] as $cart) {
-        // $gia = $cart[3];
-        $gia =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
-        $thanhtien = $gia * $cart[5];
-        $tong += $thanhtien;
-    }
-    echo '
-        <tr> 
-        <td colspan="4">Tổng đơn hàng</td>
-        
-        <td>$' . number_format($tong, 0, ",", ".") . '</td>
-        </tr> 
-        ';
-}
+// </tr>';
+//     foreach ($listbill as $cart) {
+//         $hinh = $img_path . $cart['img'];
+//         // $tong += $cart['thanhtien'];
+//         echo ' 
+//        <tr> 
+//         <td><img src="' . $hinh . '" alt="" height="80px"></td>
+//         <td>' . $cart['name'] . '</td>
+//         <td>$' . number_format($cart['price'], 0, ",", ".") . '</td>
+//         <td>' . $cart['soluong'] . '</td>
+//         <td>$' . number_format($cart['thanhtien'], 0, ",", ".") . '</td>
+
+//        </tr> 
+//     ';
+//         $i += 1;
+//     }
+//     foreach ($_SESSION['mycart'] as $cart) {
+//         // $gia = $cart[3];
+//         $gia =  $cart[3] - (($cart[3] *  $cart[4]) / 100);
+//         $thanhtien = $gia * $cart[5];
+//         $tong += $thanhtien;
+//     }
+//     echo '
+//         <tr> 
+//         <td colspan="4">Tổng đơn hàng</td>
+
+//         <td>$' . number_format($tong, 0, ",", ".") . '</td>
+//         </tr> 
+//         ';
+// }
 
 function tongdh()
 {
