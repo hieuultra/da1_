@@ -259,22 +259,20 @@
         $listbill = loadall_bil($_SESSION['user']['id_user']);
         // }
         include "mybill.php";
-        // } else {
-        //   // Redirect or handle the case where 'user' is not set in the session.
-        // }
         break;
       case 'bill_detail':
         if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
           $spbill = loadall_sp_cart($_GET['id_bill']);
         }
         include "bill_detail.php";
+        break;
       case 'delete_bill':
-          if (isset($_GET['id_bill'])) {
-            delete_bil($_GET['id_bill']);
-          }
-          header('Location:index.php?act=mybill');
-          // include "view/cart/viewcart.php";
-          break;
+        if (isset($_GET['id_bill'])) {
+          delete_bil($_GET['id_bill']);
+        }
+        header('Location:index.php?act=mybill');
+        // include "view/cart/viewcart.php";
+        break;
       case 'addfb':
         if (isset($_POST['send']) && ($_POST['send'])) {
           $name_user = $_POST['name'];
@@ -291,7 +289,7 @@
         }
         include_once("contact.php");
         break;
-      
+
       default:
         include_once("user/home/index.php");
         break;
@@ -329,7 +327,7 @@
           $image_pro = $_POST['img'];
           $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
-          //check trung sp
+      
           $spwl = [$id_pro, $name_pro, $image_pro, $price_pro, $discount];
           array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...
         }
