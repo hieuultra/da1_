@@ -22,7 +22,7 @@ function view_cart($del)
     $tong = 0;
     $i = 0;
     if ($del == 1) {
-        $xoasp_th = '<th>Action</th>';
+        $xoasp_th = '<th colspan="2">Action</th>';
         $edit = '';
         $xoasp_td2 = '';
     } else {
