@@ -42,7 +42,7 @@
                             <td>' . $name_status . '</td>
                             <td><a href="' . $ctb . '" class="btn btn-primary"><input type="button" value="See detail" /></a></td>
                             <td> <a href="' . $huydh . '" class="btn btn-danger"><input type="button" value="Unset bill" onclick ="return confirm(\'ban co chac chan muon huy don hang?\')" /></a>
-                    </td>
+                          </td>
                                      </tr>';
                             }
                         }

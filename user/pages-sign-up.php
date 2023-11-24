@@ -12,6 +12,70 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
 </head>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+    $().ready(function() {
+        $("#demoForm").validate({
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                "username": {
+                    required: true,
+                    maxlength: 10
+                },
+                "password": {
+                    required: true,
+                    minlength: 3
+                },
+                "name": {
+                    required: true,
+                    minlength: 5
+                },
+                "address": {
+                    required: true,
+                },
+                "phone": {
+                    required: true,
+                },
+                "email": {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                "username": {
+                    required: "Bắt buộc nhập username",
+                    maxlength: "Hãy nhập tối đa 10 ký tự"
+                },
+                "password": {
+                    required: "Bắt buộc nhập password",
+                    minlength: "Hãy nhập ít nhất 3 ký tự"
+                },
+                "name": {
+                    required: "Bắt buộc nhập ho ten",
+                    maxlength: "Hãy nhập ít nhất 5 ký tự"
+                },               
+                "address": {
+                    required: "Bắt buộc nhập address",
+                },
+                "phone": {
+                    required: "Bắt buộc nhập phone",
+                },
+                "email": {
+                    required: "Bắt buộc nhập email",
+                    email: "Hãy nhập dúng định dạng email"
+                }
+            }
+        });
+    });
+</script>
+<style>
+    label.error {
+        color: red;
+    }
+</style>
 <style>
   label.error {
     color: red;
@@ -39,7 +103,7 @@
             <div class="card">
               <div class="card-body">
                 <div class="m-sm-4">
-                  <form method="post" action="?act=sign_up" enctype="multipart/form-data">
+                  <form method="post" action="?act=sign_up" enctype="multipart/form-data" id="demoForm">
                     <div class="form-group">
                       <label>UserName</label>
                       <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />

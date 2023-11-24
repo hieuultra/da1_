@@ -1,6 +1,61 @@
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+    $().ready(function() {
+        // Thêm một quy tắc tùy chỉnh cho price
+        $.validator.addMethod("positiveNumber", function(value, element) {
+            return Number(value) > 0;
+        }, "Price phải là số dương");
+        $("#demoForm").validate({
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+            rules: {
+                "name_pro": {
+                    required: true,
+                },             
+                "img ": {
+                    required: true,
+                },
+                "price": {
+                    required: true,
+                    positiveNumber: true
+                },
+                "discount": {
+                    required: true,
+                },
+             
+            },
+            messages: {
+                "tensp ": {
+                    required: "Bắt buộc nhập username",
+                    maxlength: "Hãy nhập tối đa 10 ký tự"
+                },
+                
+                "img ": {
+                    required: "Bắt buộc nhập hình ",
+                },
+             
+                "price": {
+                    required: "Bắt buộc nhập password",
+                    positiveNumber: "Price phải là số dương"
+                },
+                "discount ": {
+                    required: "Bắt buộc nhập giảm giá ",
+
+                },
+            }
+        });
+    });
+</script>
+<style>
+    label.error {
+        color: red;
+    }
+</style>
 <div class="container-fluid mt-4 px-4">
   <h1 class="mt-4">Add product</h1>
-  <form action="?act=add_pro" method="post" enctype="multipart/form-data">
+  <form action="?act=add_pro" method="post" enctype="multipart/form-data" id="demoForm">
     <div class="mb-3">
       <label class="form-label">Name</label>
       <input type="text" class="form-control" name="name_pro">
