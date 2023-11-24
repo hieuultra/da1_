@@ -41,7 +41,7 @@ function view_cart($del)
 </tr>
 </thead>';
 
-    foreach ($_SESSION['mycart'] as $key=>$cart) {
+    foreach ($_SESSION['mycart'] as $key => $cart) {
         $hinh = $img_path . $cart['image'];
         // $gia = $cart[3];
         $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
