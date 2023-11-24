@@ -355,7 +355,6 @@
           $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
           $quantity = $_POST['quantity'];
-          // $new_quantity =  $quantity;
           // var_dump($_POST);die;
           $_SESSION['mycart'][$id_pro]['quantity'] = $quantity;
         }
