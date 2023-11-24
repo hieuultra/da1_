@@ -41,7 +41,7 @@ function view_cart($del)
 </tr>
 </thead>';
 
-    foreach ($_SESSION['mycart'] as $cart) {
+    foreach ($_SESSION['mycart'] as $key=>$cart) {
         $hinh = $img_path . $cart['image'];
         // $gia = $cart[3];
         $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
@@ -49,7 +49,7 @@ function view_cart($del)
         $tong += $total;
 
         if ($del == 1) {
-            $xoasp_td = '<td><a href="index.php?act=delcart&id_cart=' . $i . '">
+            $xoasp_td = '<td><a href="index.php?act=delcart&id_cart=' . $key . '">
             <input class="btn btn-danger" type="button" value="Remove" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
                 <input type="hidden" name="id_pro" value="' . $cart['id'] . '">
                 <input type="hidden" name="name_pro" value="' . $cart['name'] . '">

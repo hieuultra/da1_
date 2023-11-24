@@ -8,7 +8,9 @@ $i = 0;
 $ship = 100;
 $tongship = 0;
 // var_dump($_SESSION['mycart']);
-foreach ($_SESSION['mycart'] as $cart) {
+$carts = $_SESSION['mycart'];
+// var_dump
+foreach ($carts as $cart) {
   $hinh = $img_path . $cart['image'];
   // $gia = $cart[3];
   $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);

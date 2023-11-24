@@ -26,16 +26,16 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total_price</th>
-                        <th>Action</th>
+                        <!-- <th>Action</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($suabi as $s) {
                         extract($s);
                         $s['price_pro'] =  $s['price_pro'] - (($s['price_pro'] *  $s['discount']) / 100);
-                        $s['total']= $s['price_pro'] * $s['quantity'];
+                        $s['total'] = $s['price_pro'] * $s['quantity'];
                         // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
-                        $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
+                        // $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
                         $hinhpath = "../upload/" . $s['image_pro'];
                         if (is_file($hinhpath)) {
                             $hinh = "<img src='" . $hinhpath . "' height='70'>";
@@ -49,9 +49,6 @@
                   <td>' .  number_format($s['price_pro'], 0, ",", ".") . '$' . '</td>
                   <td><input value="' . $s['quantity'] . '" id="x"></td>
                   <td>' .  number_format($s['total'], 0, ",", ".") . '$' . '</td>
-                  <td>
-            <a href="' . $xoasp . '" class="btn btn-danger"><input type="button" value="DELETE" onclick="return confirm(\'ban co chac chan muon xoa?\')" /></a>
-        </td>
                 </tr>';
                     }
                     echo ' <td colspan="4">Total order</td>

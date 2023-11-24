@@ -210,7 +210,7 @@
         break;
       case 'delcart':
         if (isset($_GET['id_cart'])) {
-          array_splice($_SESSION['mycart'], $_GET['id_cart'], 1);
+          unset($_SESSION['mycart'][$_GET['id_cart']]);
         } else {
           $_SESSION['mycart'] = [];
         }
@@ -346,7 +346,9 @@
         // include "view/cart/viewcart.php";
         break;
       case 'edit_sc':
+        // var_dump($_SESSION['mycart']);
         if (isset($_POST['ss']) && ($_POST['ss'])) {
+          // var_dump($_POST);
           $id_pro = $_POST['id_pro'];
           $name_pro = $_POST['name_pro'];
           $image_pro = $_POST['img'];
