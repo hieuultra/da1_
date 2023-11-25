@@ -522,10 +522,16 @@ if (isset($_GET['act'])) {
       break;
 
       //dboard
-    // case 'd_b':
-    //   $countsp = count_sp();
-    //   include "dashboard.php";
-    //   break;
+      // case 'd_b':
+      //   $countsp = count_sp();
+      //   include "dashboard.php";
+      //   break;
+
+      //log_out
+    case 'log_out':
+      session_unset();
+      header('Location:../index.php');
+      break;
   }
 } else {
   include("dashboard.php");
