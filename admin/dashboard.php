@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <main>
   <div class="container-fluid px-4">
     <h1 class="mt-4">Dashboard</h1>
@@ -13,6 +16,7 @@
             echo ' <div class="card-body">' . $count_sp . ' Count_products</div>';
           }
           ?>
+        <i class="fa-solid fa-box fa-shake fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=list_pro">View Details</a>
             <div class="small text-white">
@@ -29,6 +33,7 @@
             echo ' <div class="card-body">' . number_format($sum_total, 0, ",", ".") . '$ Total revenue</div>';
           }
           ?>
+          <i class="fa-solid fa-money-bill fa-beat fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="#">View Details</a>
             <div class="small text-white">
@@ -45,6 +50,7 @@
             echo ' <div class="card-body">' . $sum_user  . ' Customer</div>';
           }
           ?>
+          <i class="fa-solid fa-users-line fa-fade fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=list_account">View Details</a>
             <div class="small text-white">
@@ -65,7 +71,7 @@
         </div>
       </div> -->
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-xl-6">
         <div class="card mb-4">
           <div class="card-header">
@@ -88,8 +94,8 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="card mb-4">
+    </div> -->
+    <!-- <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table me-1"></i>
         DataTable Example
@@ -136,6 +142,6 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
   </div>
 </main>
