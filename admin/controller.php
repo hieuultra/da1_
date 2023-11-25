@@ -17,6 +17,11 @@ include "../model/role.php";
 include "../model/comment.php";
 include "../model/cart.php";
 include "../model/brand.php";
+include "../model/dboard.php";
+
+$countsp = count_sp();
+$sum = sum_total_pr();
+$sum_user = sum_user_b();
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -515,6 +520,12 @@ if (isset($_GET['act'])) {
       $dsbr = loadall_brand();
       include "brand/list-brand.php";
       break;
+
+      //dboard
+    // case 'd_b':
+    //   $countsp = count_sp();
+    //   include "dashboard.php";
+    //   break;
   }
 } else {
   include("dashboard.php");
