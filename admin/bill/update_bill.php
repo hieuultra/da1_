@@ -4,7 +4,7 @@
 // }
 ?>
 <style>
-    #s{
+    #s {
         font-size: 20px;
         font-weight: bold;
         color: red;
@@ -48,28 +48,32 @@
                     } else {
                         $hinh = "No photo";
                     }
-
-                    echo '  <tr>
-                  <td>' . $s['name_pro'] . '</td>
-                  <td>' . $hinh . '</td>
-                  <td>' .  number_format($s['price_pro'], 0, ",", ".") . '$' . '</td>
-                  <form action="?act=edit_q" method="post">
-                  <input type="hidden" name="id_cart" value="' . $s['id_cart'] . '">
-                  <input type="hidden" name="id_bill" value="' . $s['id_bill'] . '">
-                  <td><input name="quantity" value="' . $s['quantity'] . '" id="x"></td>
-                  <td>' .  number_format($s['total'], 0, ",", ".") . '$' . '</td>
-                  <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>
-                  </form>
-                </tr>';
-                }
-                echo ' <td colspan="4">Total order</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="align-middle">' . number_format($s['total_price'], 0, ",", ".") . '$</td>';
                 ?>
+                    <tr>
+                        <td><?= $s['name_pro'] ?></td>
+                        <td><?= $hinh ?></td>
+                        <td><?= number_format($s['price_pro'], 0, ",", ".") ?>$</td>
+                        <form action="?act=edit_q" method="post">
+                            <td>
+                                <input type="hidden" name="id_cart" value="<?= $s['id_cart'] ?>">
+                                <input type="hidden" name="id_bill" value="<?= $s['id_bill'] ?>">
+                                <input name="quantity" value="<?= $s['quantity'] ?>" id="x">
+                            </td>
+                            <td><?= number_format($s['total'], 0, ",", ".") ?>$</td>
+                            <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>
+                        </form>
+                    </tr>
+                <?php } ?>
+                <tr>
+                    <td colspan="4">Total order</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="align-middle"><?= number_format($s['total_price'], 0, ",", ".") ?>$</td>
+                </tr>
             </tbody>
         </table>
+
         <form action="?act=update_bill" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_bill" value="<?= $suabi[0]['id_bill'] ?>">
             <div class="mb-3">

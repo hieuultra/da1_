@@ -363,7 +363,6 @@ if (isset($_GET['act'])) {
     case 'edit_bill':
       if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
         $suabi = loadall_b($_GET['id_bill']);
-        // $suab = loadone_b_c($_GET['id_bill']);
       }
       $dsst = loadall_status_bill();
       include("bill/update_bill.php");
@@ -388,8 +387,9 @@ if (isset($_GET['act'])) {
         $quantity = $_POST['quantity'];
         $id_cart = $_POST['id_cart'];
         $id_bill = $_POST['id_bill'];
-        edit_cart($id_cart,$quantity,$id_bill);
+        edit_cart($id_cart, $quantity, $id_bill);
       }
+      // $bc = loadall_bc();
       include("bill/update_bill.php");
       break;
       //blog
