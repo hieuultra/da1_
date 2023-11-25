@@ -84,7 +84,17 @@ function view_cart($del)
     
     ';
 }
+function update_bill($id_bill, $id_status_bill)
+{
 
+    $sql = "update bill set id_status_bill='" . $id_status_bill . "' where id_bill=" . $id_bill;
+    pdo_execute($sql);
+}
+function edit_cart($id_cart, $quantity, $id_bill)
+{
+    $sql = "update cart set quantity='" . $quantity . "' where id_bill=" . $id_bill . " and id_cart=" . $id_cart;
+    pdo_execute($sql);
+}
 // function show_ctdh($listbill) //bien truyen vao ko lien quan den bien ben ngoai
 // {
 //     global  $img_path;
@@ -285,15 +295,8 @@ function loadall_status_bill()
 
 
 }
-function update_bill($id_bill, $id_status_bill)
-{
 
-    $sql = "update bill set id_status_bill='" . $id_status_bill . "' where id_bill=" . $id_bill;
-    pdo_execute($sql);
-}
-function update_sc($quantity)
-{
-}
+
 ?>
 <script>
     function tang(x) {
