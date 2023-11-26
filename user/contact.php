@@ -52,9 +52,11 @@
     <div class="col-lg-5 mb-5">
       <h5 class="font-weight-semi-bold mb-3">Get In Touch</h5>
       <p>
-        Justo sed diam ut sed amet duo amet lorem amet stet sea ipsum, sed duo
-        amet et. Est elitr dolor elitr erat sit sit. Dolor diam et erat clita
-        ipsum justo sed.
+      All products at U FASHION are guaranteed to be super products, like authentic up to 99%, 
+      fullboxes, accessories and bill stores of France, Hong Kong,... The perfection of the product 
+      always reaches the highest level, no less than genuine goods from materials, textures to each 
+      needle and thread. In particular, super branded products are the ideal choice for 
+      customers who want to own a quality product from a famous brand at a very reasonable price, suitable for anyone's "budget".
       </p>
       <div class="d-flex flex-column mb-3">
         <h5 class="font-weight-semi-bold mb-3">Store 1</h5>

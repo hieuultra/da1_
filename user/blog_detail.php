@@ -78,22 +78,20 @@
                 <div class="author-avatar">
                     <img src="./img/avatar.png" class="img-fluid" alt="" />
                 </div>
-                <div class="author-description">
+                <!-- <div class="author-description">
                     <h2>About the Author: <a href="#">admin</a></h2>
-                </div>
+                </div> -->
             </div>
             <!-- Comments Section -->
-            <div class="single-post-comments mt-4">
+            <!-- <div class="single-post-comments mt-4">
                 <div class="comments-area">
                     <div class="comments-heading">
                         <h3>6 comments</h3>
                     </div>
                     <div class="comments-list">
-                        <!-- Comments List -->
-                        <!-- Your comment structure here -->
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
