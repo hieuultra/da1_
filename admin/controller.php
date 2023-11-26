@@ -108,7 +108,7 @@ if (isset($_GET['act'])) {
         $price = $_POST['price'];
         $dis = $_POST['discount'];
         $des = $_POST['des'];
-        $size = $_POST['size'];
+        // $size = $_POST['size'];
         $file = $_FILES['image']['name'];
         $target_dir = "../upload/";
         $target_file = $target_dir . basename($_FILES['image']["name"]);
@@ -117,8 +117,16 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
+        $thum = $_FILES['thum']['name'];
+        $target_dir = "../upload/";
+        $target_file = $target_dir . basename($_FILES['thum']["name"]);
+        if (move_uploaded_file($_FILES["thum"]["tmp_name"], $target_file)) {
+          // echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        } else {
+          // echo "Sorry, there was an error uploading your file.";
+        }
         if ($name_pro != "") {
-          insert_pro($name_pro, $file, $des, $dis, $price, $id_cat, $id_brand);
+          insert_pro($name_pro, $file, $thum, $des, $dis, $price, $id_cat, $id_brand);
           $tbao = 'Them data thanh cong';
           header("location:index.php?act=list_pro");
         }
@@ -161,7 +169,7 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
-        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_cat, $id_brand);
+        update_pro($id_pro, $name_pro, $file,$description, $discount, $price, $id_cat, $id_brand);
         $tbao = 'Sua data thanh cong';
       }
       $dsbr = loadall_brand();

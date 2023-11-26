@@ -93,6 +93,11 @@
     </div>
 
     <div class="mb-3">
+      <label class="form-label">Thumbnail</label>
+      <input type="file" class="form-control" name="thum">
+    </div>
+
+    <div class="mb-3">
       <label class="form-label">Price</label>
       <input type="number" class="form-control" name="price">
     </div>

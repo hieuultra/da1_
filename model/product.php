@@ -1,8 +1,8 @@
 <?php
-function insert_pro($name_pro, $file, $des, $dis, $price, $id_cat, $id_brand)
+function insert_pro($name_pro, $file, $thum, $des, $dis, $price, $id_cat, $id_brand)
 {
-    $sql = "insert into product(name_pro,img,description,discount,price,id_cat,id_brand) 
-    values(' $name_pro ','$file','$des','$dis','$price','$id_cat','$id_brand')";
+    $sql = "insert into product(name_pro,img,thumbnail,description,discount,price,id_cat,id_brand) 
+    values(' $name_pro ','$file','$thum','$des','$dis','$price','$id_cat','$id_brand')";
     pdo_execute($sql);
 }
 
@@ -31,7 +31,7 @@ function loadall_pro_shop3()
 {
     //cach noi chuoi sql
     //phai co cach khoang
-    $sql = "select * from product where 1 order by id_pro desc limit 16,10";
+    $sql = "select * from product where 1 order by id_pro desc limit 16,12";
     $sps = pdo_query($sql);
     return $sps; //co ket qua tra ve phai return
 }

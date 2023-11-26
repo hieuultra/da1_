@@ -20,18 +20,19 @@
         <?php
         $tt = $price - (($price * $discount) / 100);
         $hinh = $img_path . $img;
+        $hinh1 = $img_path . $thumbnail;
         echo ' <div class="carousel-inner border">
         <div class="carousel-item active">
-          <img class="w-100 h-100" src="' . $hinh . '" alt="Image" />
+          <img class="w-100 h-100" src="' . $hinh . '" id="x" />
         </div>
         <div class="carousel-item">
-          <img class="w-100 h-100" src="' . $hinh . '" alt="Image" />
+          <img class="w-100 h-50" src="' . $hinh1 . '" id="x" />
         </div>
         <div class="carousel-item">
-          <img class="w-100 h-100" src="' . $hinh . '" alt="Image" />
+          <img class="w-100 h-100" src="' . $hinh . '" id="x" />
         </div>
         <div class="carousel-item">
-          <img class="w-100 h-100" src="' . $hinh . '" alt="Image" />
+          <img class="w-100 h-100" src="' . $hinh . '" id="x" />
         </div>
       </div>';
         ?>

@@ -33,7 +33,7 @@
               <th>Image</th>
               <th>Price</th>
               <th>Discount</th>
-              <th>Description</th>
+              <!-- <th>Description</th> -->
               <th>Brand</th>
               <th>Action</th>
             </tr>
@@ -57,7 +57,7 @@
                   <td>' . $hinh . '</td>
                   <td>' .  number_format($price, 0, ",", ".") . '$' . '</td>
                   <td>' . $discount . '</td>
-                  <td>' . $description . '</td>
+       
                   <td>' . $name_brand . '</td>
                   <td>
                   <a href="' . $suasp . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>

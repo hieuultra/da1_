@@ -3,10 +3,16 @@ if (is_array($suasp)) {
   extract($suasp);
 }
 $hinhpath = "../upload/" . $img;
+$hinhpath1 = "../upload/" . $thumbnail;
 if (is_file($hinhpath)) {
   $hinh = "<img src='" . $hinhpath . "' height='70'>";
 } else {
   $hinh = "No photo";
+}
+if (is_file($hinhpath1)) {
+  $hinh1 = "<img src='" . $hinhpath1 . "' height='70'>";
+} else {
+  $hinh1 = "No photo";
 }
 ?>
 <div class="container-fluid mt-4 px-4">
