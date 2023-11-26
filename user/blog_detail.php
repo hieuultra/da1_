@@ -73,7 +73,6 @@
                     <a href="#" data-toggle="tooltip" title="Linkedin"><i class="fa fa-linkedin"></i></a>
                 </div>
             </div>
-
             <!-- Author Info -->
             <div class="author-info mt-4">
                 <div class="author-avatar">
@@ -83,7 +82,6 @@
                     <h2>About the Author: <a href="#">admin</a></h2>
                 </div>
             </div>
-
             <!-- Comments Section -->
             <div class="single-post-comments mt-4">
                 <div class="comments-area">

@@ -7,10 +7,10 @@
                 <div class="widget widget-search">
                     <h3 class="widget-title">Search</h3>
                     <form action="#">
-                        <div class="input-group mb-3">
+                        <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                                <button class="btn btn-outline-primary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </form>
@@ -30,16 +30,14 @@
                 </div>
             </div>
         </div>
-
         <div class="col-lg-9 col-md-8">
             <!-- Blog Posts -->
             <div class="archive-header mb-4">
                 <h1 class="archive-title">Monthly Archives: <span>November 2023</span></h1>
             </div>
-
             <?php foreach ($dsblog as $newitem) : ?>
                 <article class="blog-post-wrapper mb-4">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-md-4">
                             <div class="post-thumbnail">
                                 <a href="#"><img src="./upload/<?= $newitem['news_img'] ?>" class="img-fluid" alt="" /></a>
@@ -53,7 +51,7 @@
                                     <a href="#"><i class="fa fa-comments-o"></i> 2 comments</a>
                                 </div>
                                 <p><?= $newitem['news_name'] ?></p>
-                                <a class="readmore" href="?act=blog_detail&id=<?= $newitem['id'] ?>">Read more</a>
+                                <a class="readmore btn btn-outline-primary" href="?act=blog_detail&id=<?= $newitem['id'] ?>">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -61,8 +59,8 @@
             <?php endforeach; ?>
 
             <!-- Pagination -->
-            <div class="pagination">
-                <ul class="pagination justify-content-center">
+            <div class="pagination justify-content-center">
+                <ul class="pagination">
                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
