@@ -52,7 +52,7 @@
           ?>
           <i class="fa-solid fa-users-line fa-fade fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
-            <a class="small text-white stretched-link" href="?act=list_account">View Details</a>
+            <a class="small text-white stretched-link" href="?act=list_bill">View Details</a>
             <div class="small text-white">
               <i class="fas fa-angle-right"></i>
             </div>
