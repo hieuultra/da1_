@@ -169,7 +169,7 @@ if (isset($_GET['act'])) {
         } else {
           // echo "Sorry, there was an error uploading your file.";
         }
-        update_pro($id_pro, $name_pro, $file,$description, $discount, $price, $id_cat, $id_brand);
+        update_pro($id_pro, $name_pro, $file, $description, $discount, $price, $id_cat, $id_brand);
         $tbao = 'Sua data thanh cong';
       }
       $dsbr = loadall_brand();
@@ -397,11 +397,14 @@ if (isset($_GET['act'])) {
       break;
     case 'edit_q':
       if (isset($_POST['ss']) && ($_POST['ss'])) {
+        // var_dump($_POST);die;
         $quantity = $_POST['quantity'];
         $id_cart = $_POST['id_cart'];
         $id_bill = $_POST['id_bill'];
         edit_cart($id_cart, $quantity, $id_bill);
       }
+      $suabi = loadall_b($id_bill);
+      $dsst = loadall_status_bill();
       // $bc = loadall_bc();
       include("bill/update_bill.php");
       break;

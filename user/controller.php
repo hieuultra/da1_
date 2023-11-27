@@ -84,6 +84,14 @@
         include_once("shop.php");
         break;
 
+      case "filter":
+        if (isset($_POST['btnsearch']) && ($_POST['btnsearch']) > 0) {
+          $filter = $_POST['filter'];
+          $sql = get_filter($filter);
+        }
+        include_once("shop.php");
+        break;
+
       case 'sign_up':
         if (isset($_POST['sign_up']) && ($_POST['sign_up'])) {
           $username = $_POST['username'];

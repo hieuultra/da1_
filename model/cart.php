@@ -229,6 +229,30 @@ function delete_bill($id_bill)
     $sql = "delete from bill where id_bill=" . $id_bill;
     pdo_execute($sql);
 }
+function get_filter($filter)
+{
+    switch ($filter) {
+        case '1':
+            $sql = "SELECT * FROM product WHERE price BETWEEN 0 AND 10000";
+            break;
+        case '2':
+            $sql = "SELECT * FROM product WHERE price BETWEEN 10000 AND 20000";
+            break;
+        case '3':
+            $sql = "SELECT * FROM product WHERE price BETWEEN 20000 AND 50000";
+            break;
+        case '4':
+            $sql = "SELECT * FROM product WHERE price BETWEEN 50000 AND 100000";
+            break;
+        case '5':
+            $sql = "SELECT * FROM product WHERE price >100000";
+            break;
+        default:
+            $sql = "SELECT * FROM product";
+            break;
+    }
+    return $sql;
+}
 function get_pttt($n)
 {
     switch ($n) {

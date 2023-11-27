@@ -29,17 +29,20 @@
                     <th>Product name</th>
                     <th>Image</th>
                     <th>Price</th>
-                    <th>Quantity</th>
                     <th>Total_price</th>
-                    <th>Action</th>
+                    <th>Quantity</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($suabi as $s) {
                     extract($s);
                     // var_dump($s);
+                    $total_order = 0; // Khởi tạo biến tổng đơn hàng
                     $s['price_pro'] =  $s['price_pro'] - (($s['price_pro'] *  $s['discount']) / 100);
                     $s['total'] = $s['price_pro'] * $s['quantity'];
+                    // Cộng tổng của từng sản phẩm vào tổng đơn hàng
+                    $total_order += $s['total'];
+                    // $s['total_order'] = $s['price_pro'] + $s['total'];
                     // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
                     // $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
                     $hinhpath = "../upload/" . $s['image_pro'];
@@ -50,26 +53,28 @@
                     }
                 ?>
                     <tr>
-                        <td><?= $s['name_pro'] ?></td>
+                        <td>
+                            <?= $s['name_pro'] ?>
+                        </td>
                         <td><?= $hinh ?></td>
                         <td><?= number_format($s['price_pro'], 0, ",", ".") ?>$</td>
-                        <form action="?act=edit_q" method="post">
-                            <td>
+                        <td><?= number_format($s['total'], 0, ",", ".") ?>$</td>
+                        <td>
+                            <form action="?act=edit_q" id="<?= $s['id_cart'] ?>" method="post">
+                                <input name="quantity" value="<?= $s['quantity'] ?>" id="x">
                                 <input type="hidden" name="id_cart" value="<?= $s['id_cart'] ?>">
                                 <input type="hidden" name="id_bill" value="<?= $s['id_bill'] ?>">
-                                <input name="quantity" value="<?= $s['quantity'] ?>" id="x">
-                            </td>
-                            <td><?= number_format($s['total'], 0, ",", ".") ?>$</td>
-                            <td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>
-                        </form>
+                                <input type="submit" value="Update" class="btn btn-primary" name="ss" />
+                            </form>
+                        </td>
                     </tr>
+
                 <?php } ?>
                 <tr>
                     <td colspan="4">Total order</td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td class="align-middle"><?= number_format($s['total_price'], 0, ",", ".") ?>$</td>
+                    <td class="align-middle"><?= number_format($total_order, 0, ",", ".") ?>$</td>
                 </tr>
             </tbody>
         </table>
