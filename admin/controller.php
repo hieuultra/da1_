@@ -377,6 +377,7 @@ if (isset($_GET['act'])) {
       if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
         $suabi = loadall_b($_GET['id_bill']);
       }
+      $bc = loadall_st($_GET['id_bill']);
       $dsst = loadall_status_bill();
       include("bill/update_bill.php");
       break;
@@ -391,6 +392,7 @@ if (isset($_GET['act'])) {
         update_bill($id_bill, $id_status_bill);
         $tbao = 'Sua data thanh cong';
       }
+      $bc = loadall_st($id_bill);
       $dsst = loadall_status_bill();
       $listbill = loadall_bill();
       include "bill/list_bill.php";
@@ -403,9 +405,9 @@ if (isset($_GET['act'])) {
         $id_bill = $_POST['id_bill'];
         edit_cart($id_cart, $quantity, $id_bill);
       }
+      $bc = loadall_st($id_bill);
       $suabi = loadall_b($id_bill);
       $dsst = loadall_status_bill();
-      // $bc = loadall_bc();
       include("bill/update_bill.php");
       break;
       //blog

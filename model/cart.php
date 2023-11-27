@@ -95,6 +95,12 @@ function edit_cart($id_cart, $quantity, $id_bill)
     $sql = "update cart set quantity='" . $quantity . "' where id_bill=" . $id_bill . " and id_cart=" . $id_cart;
     pdo_execute($sql);
 }
+function loadall_st($id_bill)
+{
+    $sql = "SELECT sum(total) as sum_total FROM cart WHERE id_bill=" . $id_bill;
+    $bc = pdo_query($sql);
+    return $bc; //co ket qua tra ve phai return
+}
 function loadall_bc()
 {
     $sql = "select * from bill b join cart c on b.id_bill=c.id_bill";

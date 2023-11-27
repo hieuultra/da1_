@@ -1,7 +1,12 @@
 <?php
-// if (is_array($suabi)) {
-//     extract($suabi);
+// if (is_array($bc)) {
+//     extract($bc);
+//     // var_dump($bc);
 // }
+foreach ($bc as $b) {
+    extract($b);
+    // var_dump($b);
+}
 ?>
 <style>
     #s {
@@ -41,7 +46,8 @@
                     $s['price_pro'] =  $s['price_pro'] - (($s['price_pro'] *  $s['discount']) / 100);
                     $s['total'] = $s['price_pro'] * $s['quantity'];
                     // Cộng tổng của từng sản phẩm vào tổng đơn hàng
-                    $total_order += $s['total'];
+                    // $total_order += $s['total'];
+                    $total_order=loadall_st($id_bill);
                     // $s['total_order'] = $s['price_pro'] + $s['total'];
                     // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
                     // $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
@@ -74,7 +80,7 @@
                     <td colspan="4">Total order</td>
                     <td></td>
                     <td></td>
-                    <td class="align-middle"><?= number_format($total_order, 0, ",", ".") ?>$</td>
+                    <td class="align-middle"><?= number_format($sum_total, 0, ",", ".") ?>$</td>
                 </tr>
             </tbody>
         </table>
