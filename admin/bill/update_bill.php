@@ -42,13 +42,12 @@ foreach ($bc as $b) {
                 <?php foreach ($suabi as $s) {
                     extract($s);
                     // var_dump($s);
-                    $total_order = 0; // Khởi tạo biến tổng đơn hàng
+                    $total_order = 0; 
                     $s['price_pro'] =  $s['price_pro'] - (($s['price_pro'] *  $s['discount']) / 100);
                     $s['total'] = $s['price_pro'] * $s['quantity'];
-                    // Cộng tổng của từng sản phẩm vào tổng đơn hàng
-                    // $total_order += $s['total'];
-                    $total_order=loadall_st($id_bill);
-                    // $s['total_order'] = $s['price_pro'] + $s['total'];
+                    //  $b['total_cart'] += $s['total'];
+                    $total_order = loadall_st($id_bill);
+                    // $s['total_order'] = $s[0]['total']+ $s[1]['total'];
                     // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
                     // $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
                     $hinhpath = "../upload/" . $s['image_pro'];
@@ -80,7 +79,7 @@ foreach ($bc as $b) {
                     <td colspan="4">Total order</td>
                     <td></td>
                     <td></td>
-                    <td class="align-middle"><?= number_format($sum_total, 0, ",", ".") ?>$</td>
+                    <td class="align-middle"><?= number_format($s['total'] , 0, ",", ".") ?>$</td>
                 </tr>
             </tbody>
         </table>

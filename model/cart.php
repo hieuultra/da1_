@@ -97,7 +97,7 @@ function edit_cart($id_cart, $quantity, $id_bill)
 }
 function loadall_st($id_bill)
 {
-    $sql = "SELECT sum(total) as sum_total FROM cart WHERE id_bill=" . $id_bill;
+    $sql = "SELECT total * quantity AS total_cart FROM cart WHERE id_bill = " . $id_bill;
     $bc = pdo_query($sql);
     return $bc; //co ket qua tra ve phai return
 }
@@ -209,7 +209,7 @@ function loadall_cart_count($id_bill)
 function loadall_bill()
 {
     $sql = "select *,sum(c.quantity) as sum_quantity from bill b join cart c on b.id_bill=c.id_bill
-     join status_bill s on b.id_status_bill=s.id_status_bill where 1";
+     join status_bill s on b.id_status_bill=s.id_status_bill join product p on c.id_pro=p.id_pro where 1";
     $sql .= " group by c.id_bill order by b.id_bill desc";
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return

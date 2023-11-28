@@ -29,6 +29,8 @@
                             extract($l);
                             $suabill = "index.php?act=edit_bill&id_bill=" . $id_bill;
                             $xoabill = "index.php?act=delete_bill&id_bill=" . $id_bill;
+                            $price_pro =  $price_pro - (($price_pro *  $discount) / 100);
+                            $total_price = $price_pro * $quantity;
                             // $hinhpath = "../upload/" . $image_pro;
                             // if (is_file($hinhpath)) {
                             //     $hinh = "<img src='" . $hinhpath . "' height='70'>";
