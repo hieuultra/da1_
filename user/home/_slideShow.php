@@ -1,3 +1,12 @@
+<style>
+  .product-offer img {
+    transition: transform 0.5s ease;
+  }
+
+  .product-offer:hover img {
+    transform: scale(1.1);
+  }
+</style>
 <div class="container-fluid mb-3">
   <div class="row px-xl-5">
     <div class="col-lg-8">
