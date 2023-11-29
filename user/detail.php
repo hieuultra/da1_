@@ -26,7 +26,7 @@
           <img class="w-100 h-100" src="' . $hinh . '" id="x" />
         </div>
         <div class="carousel-item">
-          <img class="w-100 h-50" src="' . $hinh1 . '" alt="Image" />
+          <img class="w-100 h-100" src="' . $hinh1 . '" alt="Image" />
         </div>
         <div class="carousel-item">
           <img class="w-100 h-100" src="' . $hinh . '" id="x" />
