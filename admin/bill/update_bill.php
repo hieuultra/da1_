@@ -3,10 +3,10 @@
 //     extract($bc);
 //     // var_dump($bc);
 // }
-foreach ($bc as $b) {
-    extract($b);
-    // var_dump($b);
-}
+// foreach ($bc as $b) {
+//     extract($b);
+//     // var_dump($b);
+// }
 ?>
 <style>
     #s {
@@ -34,8 +34,8 @@ foreach ($bc as $b) {
                     <th>Product name</th>
                     <th>Image</th>
                     <th>Price</th>
-                    <th>Total_price</th>
                     <th>Quantity</th>
+                    <th>Total_price</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,8 +46,7 @@ foreach ($bc as $b) {
                     $s['price_pro'] =  $s['price_pro'] - (($s['price_pro'] *  $s['discount']) / 100);
                     $s['total'] = $s['price_pro'] * $s['quantity'];
                     //  $b['total_cart'] += $s['total'];
-                    $total_order = loadall_st($id_bill);
-                    // array_sum($s['total']);                  
+                    // $total_order = loadall_st($id_bill);                
                     // $s['total_order'] = $s[0]['total']+ $s[1]['total'];
                     // $suasp = "index.php?act=edit_pro&id_pro=" . $s['id_pro'];
                     // $xoasp = "index.php?act=delete_cart&id_pro=" . $s['id_pro'];
@@ -64,15 +63,15 @@ foreach ($bc as $b) {
                         </td>
                         <td><?= $hinh ?></td>
                         <td><?= number_format($s['price_pro'], 0, ",", ".") ?>$</td>
+                        <td><?= $s['quantity'] ?></td>
                         <td><?= number_format($s['total'], 0, ",", ".") ?>$</td>
-                        <td>
+                        <!-- <td>
                             <form action="?act=edit_q" id="<?= $s['id_cart'] ?>" method="post">
-                                <input name="quantity" value="<?= $s['quantity'] ?>" id="x">
                                 <input type="hidden" name="id_cart" value="<?= $s['id_cart'] ?>">
                                 <input type="hidden" name="id_bill" value="<?= $s['id_bill'] ?>">
                                 <input type="submit" value="Update" class="btn btn-primary" name="ss" />
                             </form>
-                        </td>
+                        </td> -->
                     </tr>
 
                 <?php } ?>
@@ -80,7 +79,8 @@ foreach ($bc as $b) {
                     <td colspan="4">Total order</td>
                     <td></td>
                     <td></td>
-                    <td class="align-middle"><?= number_format($s['total'], 0, ",", ".") ?>$</td>
+                    <td></td>
+                    <td class="align-middle"><?= number_format($s['total_price'], 0, ",", ".") ?>$</td>
                 </tr>
             </tbody>
         </table>
