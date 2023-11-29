@@ -21,7 +21,7 @@
           <div class="row">
             <div class="col-12">
               <select class="form-select form-select-sm" name="filter" aria-label="Small select example">
-                <option value="0" selected>Chosen price</option>
+                <option value="0" selected>Choosen price</option>
                 <option value="1">0$ - 10.000$</option>
                 <option value="2">10.000$- 20.000$</option>
                 <option value="3">20.000$ - 50.000$</option>

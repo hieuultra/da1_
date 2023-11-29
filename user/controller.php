@@ -88,20 +88,8 @@
         if (isset($_POST['btnsearch']) && ($_POST['btnsearch'])) {
           $filter = $_POST['filter'];
           $sql = get_filter($filter);
-
-          // Thực hiện truy vấn SQL để lấy sản phẩm theo filter
-          $result = $your_database_connection->query($sql); // Thay $your_database_connection bằng kết nối đến MySQL của bạn
-
-          if ($result->num_rows > 0) {
-            // Xử lý dữ liệu từ kết quả query và hiển thị sản phẩm tương ứng
-            while ($row = $result->fetch_assoc()) {
-              // Hiển thị thông tin sản phẩm
-              echo "Product: " . $row["product_name"] . " - Price: $" . $row["price"] . "<br>";
-            }
-          } else {
-            echo "No products found!";
-          }
         }
+        $sps = loadall_pro_shop1();
         include_once("shop.php");
         break;
 
