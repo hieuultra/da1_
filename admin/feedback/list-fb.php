@@ -39,7 +39,7 @@
                            <td>' . $name_fb . '</td>
                            <td>' . $created_at . '</td>
                            <td> <a href="' . $suafb . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
-         <a href="' . $xoacom . '" class="btn btn-warning"><input type="button" onclick ="return confirm(\'ban co chac chan muon xoa?\')" value="Delete" /></a>
+         <a href="' . $xoacom . '" class="btn btn-danger"><input type="button" onclick ="return confirm(\'ban co chac chan muon xoa?\')" value="Delete" /></a>
         </td>
                 </tr>';
                     }
