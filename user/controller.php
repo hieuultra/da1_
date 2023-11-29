@@ -85,12 +85,12 @@
         break;
 
       case "filter":
-        if (isset($_POST['btnsearch']) && ($_POST['btnsearch'])) {
+        if (isset($_POST['btnsearch'])) {
           $filter = $_POST['filter'];
-          $sql = get_filter($filter);
+          $locgia = get_filter($filter);
         }
         $sps = loadall_pro_shop1();
-        include_once("shop.php");
+        include 'shop.php';
         break;
 
       case 'sign_up':

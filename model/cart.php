@@ -257,7 +257,7 @@ function get_filter($filter)
             $sql = "SELECT * FROM product";
             break;
     }
-    return $sql;
+    return pdo_query($sql);
 }
 function get_pttt($n)
 {

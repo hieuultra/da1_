@@ -28,13 +28,12 @@
                 <option value="4">50.000$ - 100.000$</option>
                 <option value="5"> > 100.000$</option>
               </select>
-              <button type="submmit" name="btnsearch" class="btn btn-primary">Filter</button>
+              <input type="submit" name="btnsearch" class="btn btn-primary" value="Filter" />
             </div>
           </div>
         </form>
       </div>
       <!-- Price End -->
-
       <!-- Color Start -->
       <div class="border-bottom mb-4 pb-4">
         <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
@@ -146,14 +145,73 @@
         </div>
 
         <!-- Product -->
-        <?php
-        // $i = 0;
-        foreach ($sps as $s) {
-          extract($s);
-          $linksp = "index.php?act=pro_detail&id_pro=" . $id_pro;
-          $tt = $price - (($price * $discount) / 100);
-          $hinh = $img_path . $img;
-          echo '<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+
+        <?php if (isset($locgia) && is_array($locgia)) {
+          // extract($locgia);
+          //  $tt = $price - (($price * $discount) / 100);
+          //  $hinh = $img_path . $img;
+        ?>
+          <?php foreach ($locgia as $value) :  $linksp = "index.php?act=pro_detail&id_pro=" . $value['id_pro']; ?>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+              <div class="card product-item border-0 mb-4">
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                  <a href="'<?= $linksp ?>"> <img class="img-fluid w-300" src="./upload/<?php echo $value['img'] ?>" alt="" id="img" /></a>
+                </div>
+                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                  <div class="product-action">
+                    <form action="index.php?act=wishlist" method="post">
+                      <input type="hidden" name="id_pro" value="<?= $value['id_pro'] ?>">
+                      <input type="hidden" name="name_pro" value="<?= $value['name_pro'] ?>">
+                      <input type="hidden" name="img" value="<?= $value['img'] ?>">
+                      <input type="hidden" name="price" value="<?= $value['price'] ?>">
+                      <input type="hidden" name="discount" value="<?= $value['discount'] ?>">
+                      <input type="submit" class="btn btn-primary" value="Like" name="wishlist">
+                      <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                    </form>
+                  </div>
+
+                  <a href="<?= $linksp ?>">
+                    <h6 class="text-truncate mb-3"><?= $value['name_pro'] ?></h6>
+                  </a>
+                  <div class="d-flex justify-content-center">
+                    <h6><?php
+                        $tt = $value['price']  - (($value['price'] * $value['discount']) / 100); ?>
+                      <?php echo number_format($tt); ?>$</p>
+                    </h6>
+                    <h6 class="text-muted ml-2"><del><?= number_format($value['price'], 0, ",", ".") . '$' ?></del></h6>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center mb-1">
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small class="fa fa-star text-primary mr-1"></small>
+                    <small>(99)</small>
+                  </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between bg-light border">
+                  <a href="<?= $linksp ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                  <form action="index.php?act=addtocart" method="post">
+                    <input type="hidden" name="id_pro" value="<?= $value['id_pro'] ?>">
+                    <input type="hidden" name="name_pro" value="<?= $value['name_pro'] ?>">
+                    <input type="hidden" name="img" value="<?= $value['img'] ?>">
+                    <input type="hidden" name="price" value="<?= $value['price'] ?>">
+                    <input type="hidden" name="discount" value="<?= $value['discount'] ?>">
+                    <input type="submit" value="Add To Cart" class="btn btn-sm text-dark p-0" name="addtocart"><i class="fas fa-shopping-cart text-primary mr-1"></i>
+                  </form>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php } else {; ?>
+          <?php if (isset($sps) && is_array($sps)) { ?>
+            <?php
+            foreach ($sps as $s) {
+              extract($s);
+              $linksp = "index.php?act=pro_detail&id_pro=" . $id_pro;
+              $tt = $price - (($price * $discount) / 100);
+              $hinh = $img_path . $img;
+              echo '<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
      <div class="card product-item border-0 mb-4">
        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
        <a href="' . $linksp . '">   <img class="img-fluid w-300" src="' . $hinh . '" alt="" id="img" /></a>
@@ -199,8 +257,14 @@
        </div>
      </div>
    </div>';
-        }
-        ?>
+            } ?>
+          <?php } else { ?>
+            <div class="row">
+              <h2 style="text-align: center;">No products in a choosen</h2>
+            </div>
+
+          <?php } ?>
+        <?php } ?>
 
         <div class="col-12 pb-1">
           <nav aria-label="Page navigation">
