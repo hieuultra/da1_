@@ -33,7 +33,7 @@
                                 // $ttdh = get_ttdh($bill['id_status_bill']);
                                 $countsp = loadall_cart_count($id_bill);
                                 $ctb = "index.php?act=bill_detail&id_bill=" . $id_bill;
-                                $huydh = "index.php?act=delete_bill&id_bill=" . $id_bill;
+                                $huydh = "index.php?act=update_bill&id_bill=" . $id_bill;
                                 echo ' <tr>
                             <td>' . $id_bill . '</td>
                             <td>' . $date_order . '</td>
