@@ -169,6 +169,11 @@ function insert_bill($name_user, $address_user, $phone_user, $email_user, $total
     values('$name_user','$address_user','$phone_user','$email_user','$total_price','$payment_method','$date_order','$id_user')";
     return pdo_execute_return_lastInsertId($sql); // insert xong tra ve id vua insert de insert vao table cart
 }
+function delete_bil($id_bill)
+{
+    $sql = "delete from bill where id_bill=" . $id_bill;
+    pdo_execute($sql);
+}
 function insert_cart($image_pro, $name_pro, $price_pro, $total, $quantity, $id_pro, $id_bill, $id_user)
 {
     $sql = "insert into cart(image_pro, name_pro, price_pro, total, quantity, id_pro, id_bill,id_user) 
