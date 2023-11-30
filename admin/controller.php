@@ -373,6 +373,16 @@ if (isset($_GET['act'])) {
       $listbill = loadall_bill();
       include "bill/list_bill.php";
       break;
+
+    case 'delete_bill':
+      if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
+        delete_bil($_GET['id_bill']);
+      }
+      $listbill = loadall_bill();
+
+      include "bill/list_bill.php";
+      break;
+
     case 'edit_bill':
       if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
         $suabi = loadall_b($_GET['id_bill']);
