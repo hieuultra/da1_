@@ -275,9 +275,9 @@
         }
         include "bill_detail.php";
         break;
-      case 'delete_bill':
+      case 'update_bill':
         if (isset($_GET['id_bill'])) {
-          delete_bil($_GET['id_bill']);
+          update_bil($_GET['id_bill']);
         }
         header('Location:index.php?act=mybill');
         // include "view/cart/viewcart.php";
