@@ -37,6 +37,11 @@
                             // } else {
                             //     $hinh = "No photo";
                             // }
+                            if ($id_status_bill == 5) {
+                                $suabill = ''; // Không hiển thị nút xóa cho admin
+                            } else {
+                                $suabill = '<a href="' . $suabill . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>';
+                            }
 
                             echo '  <tr>
                   <td>' . $name_user . '</td>
@@ -46,7 +51,7 @@
                   <td>' . $date_order . '</td>
                   <td>' . $name_status . '</td>
                   <td>
-                  <a href="' . $suabill . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
+                  ' . $suabill . '
                   <a href="' . $xoabill . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
                   </td>
                 </tr>';
