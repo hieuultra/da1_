@@ -1,3 +1,57 @@
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function() {
+    $("#demoForm").validate({
+      rules: {
+        "username": {
+          required: true,
+        },
+        "name": {
+          required: true,
+        },
+        "email": {
+          required: true,
+          email: true
+        },
+        "phone": {
+          required: true,
+          number: true
+        },
+        "address": {
+          required: true,
+        }
+      },
+      messages: {
+        "username": {
+          required: "Username is required",
+        },
+        "name": {
+          required: "Name is required",
+        },
+        "email": {
+          required: "Email is required",
+          email: "Please enter a valid email address"
+        },
+        "phone": {
+          required: "Phone number is required",
+          number: "Please enter a valid phone number"
+        },
+        "address": {
+          required: "Address is required",
+        },
+      },
+      errorPlacement: function(error, element) {
+        error.appendTo(element.parent());
+      }
+    });
+  });
+</script>
+<style>
+  label.error {
+    color: red;
+  }
+</style>
 <?php
 global  $img_path;
 $tong = 0;
@@ -19,7 +73,7 @@ foreach ($_SESSION['mycart'] as $cart) {
 <div class="container-fluid pt-5">
   <div class="row px-xl-5">
     <div class="col-lg-8">
-      <form action="index.php?act=billconfirm" method="post">
+      <form action="index.php?act=billconfirm" method="post" id="demoForm">
         <div class="mb-4">
           <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
           <div class="row">
@@ -41,7 +95,7 @@ foreach ($_SESSION['mycart'] as $cart) {
             ?>
             <div class="col-md-6 form-group">
               <!-- <input type="hidden" name="id_user" value="<?= $id_user ?>"> -->
-              <label>User Name</label>
+              <label class="form-label">User Name</label>
               <input class="form-control" type="text" name="username" value="<?= $username ?>" />
             </div>
             <div class="col-md-6 form-group">

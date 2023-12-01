@@ -141,7 +141,7 @@
             ?>
               <a href="?act=account" class="btn px-0">
                 <i class="far fa-user text-primary"></i>
-                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"></span>
               </a>
             <?php
             } else {

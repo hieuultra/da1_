@@ -29,9 +29,6 @@
                     required: true,
                     email: true
                 }
-
-                
-              
             },
             messages: {
                 "username": {
