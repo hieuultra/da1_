@@ -5,6 +5,12 @@ function insert_tk($username, $password, $name, $address, $phone, $email, $file)
      values('$username','$password','$name','$address','$phone','$email','$file')";
     pdo_execute($sql);
 }
+function  insert_tk_bill($name_user, $name,  $address_user, $phone_user, $email_user)
+{
+    $sql = "insert into user(username,name,address,phone,email)
+     values('$name_user','$name','$address_user','$phone_user','$email_user')";
+    return pdo_execute_return_lastInsertId($sql);
+}
 function check_user($username, $password)
 {
     $sql = "select * from user where username='" . $username . "' AND password='" . $password . "'";
@@ -105,4 +111,3 @@ function update_fb($id, $id_status_fb)
     $sql = "update feedback set id_status_fb='" . $id_status_fb . "' where id=" . $id;
     pdo_execute($sql);
 }
-

@@ -227,6 +227,14 @@ function loadall_bil($id_user)
     $listbill = pdo_query($sql);
     return $listbill; //co ket qua tra ve phai return
 }
+function loadall_tk_bil($id_user)
+{
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join status_bill s on b.id_status_bill=s.id_status_bill where 1";
+    if ($id_user > 0) $sql .= "  and b.id_user=" . $id_user;
+    $sql .= "  group by b.id_bill order by b.id_bill desc";
+    $listbill = pdo_query($sql);
+    return $listbill; //co ket qua tra ve phai return
+}
 function loadall_bi($id_user)
 {
     $sql = "select * from bill b join cart c on b.id_bill=c.id_bill where 1";

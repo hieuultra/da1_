@@ -40,7 +40,7 @@ foreach ($_SESSION['mycart'] as $cart) {
             }
             ?>
             <div class="col-md-6 form-group">
-              <input type="hidden" name="id_user" value="<?= $id_user ?>">
+              <!-- <input type="hidden" name="id_user" value="<?= $id_user ?>"> -->
               <label>User Name</label>
               <input class="form-control" type="text" name="username" value="<?= $username ?>" />
             </div>

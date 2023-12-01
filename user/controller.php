@@ -232,7 +232,7 @@
       case 'billconfirm':
         if (isset($_POST['dydh']) && ($_POST['dydh'])) {
           if (isset($_SESSION['user'])) {
-            $id_user = $_SESSION['user']['id_user'];
+            $id_user1 = $_SESSION['user']['id_user'];
           } else {
             $id_user = 0;
           }
@@ -241,19 +241,33 @@
           $email_user = $_POST['email'];
           $phone_user = $_POST['phone'];
           $address_user = $_POST['address'];
+          insert_tk_bill($name_user, $name,  $address_user, $phone_user, $email_user);
+          if (!isset($_SESSION['user'])) {
+            $id_user = insert_tk_bill($name_user, $name,  $address_user, $phone_user, $email_user);
+            $_SESSION['bill_iduser'] = $id_user; // Lưu id_user vào session để sử dụng ở trang mybill
+          }
           $payment_method = $_POST['payment'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
           $date_order = date("Y-m-d H:i:s", time());
           $total_price = tongdh();
           //tao bill
-          $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+          if (isset($_SESSION['user'])) {
+            $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user1);
+          } else {
+            $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+          }
+
 
           //insert into cart: voi $session['mycart'] $id_bill
           //neu ko login thi dung isset hay empty
           foreach ($_SESSION['mycart'] as $cart) {
-            insert_cart($cart['image'], $cart['name'], $cart['price'], $cart['total'], $cart['quantity'], $cart['id'], $id_bill, $_SESSION['user']['id_user']);
+            if (isset($_SESSION['user'])) {
+              insert_cart($cart['image'], $cart['name'], $cart['price'], $cart['total'], $cart['quantity'], $cart['id'], $id_bill, $_SESSION['user']['id_user']);
+            } else {
+              insert_cart($cart['image'], $cart['name'], $cart['price'], $cart['total'], $cart['quantity'], $cart['id'], $id_bill, $id_user);
+            }
           }
-          //xoa session
+
           $_SESSION['cart'] = [];
         }
         $bill = loadone_bill($id_bill);
@@ -261,18 +275,14 @@
         include "billconfirm.php";
         break;
       case 'mybill':
-        if (!isset($_SESSION['user'])){
-          $listbill="";
-        }else{
+        if (!isset($_SESSION['user'])) {
+          $listbill = loadall_tk_bil($_SESSION['bill_iduser']);
+        } else {
           $listbill = loadall_bil($_SESSION['user']['id_user']);
         }
-        //  {
-        //   if (isset($_GET['id_user']) && ($_GET['id_user']) > 0) {
-        //     $listbill = loadall_bi($_GET['id_user']);
-        //   } else {
-        // }
         include "mybill.php";
         break;
+
       case 'bill_detail':
         if (isset($_GET['id_bill']) && ($_GET['id_bill']) > 0) {
           $spbill = loadall_sp_cart($_GET['id_bill']);
