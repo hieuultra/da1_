@@ -261,11 +261,15 @@
         include "billconfirm.php";
         break;
       case 'mybill':
-        // if (isset($_SESSION['user'])) {
+        if (!isset($_SESSION['user'])){
+          $listbill="";
+        }else{
+          $listbill = loadall_bil($_SESSION['user']['id_user']);
+        }
+        //  {
         //   if (isset($_GET['id_user']) && ($_GET['id_user']) > 0) {
         //     $listbill = loadall_bi($_GET['id_user']);
         //   } else {
-        $listbill = loadall_bil($_SESSION['user']['id_user']);
         // }
         include "mybill.php";
         break;
