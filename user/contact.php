@@ -1,3 +1,60 @@
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+  $().ready(function() {
+    $("#demoForm").validate({
+      onfocusout: false,
+      onkeyup: false,
+      onclick: false,
+      rules: {
+        "name": {
+          required: true,
+
+        },
+        "email": {
+          required: true,
+          email: true
+        },
+        "phone": {
+          required: true,
+        },
+        "subject": {
+          required: true,
+        },
+        "message": {
+          required: true,
+
+        }
+      },
+      messages: {
+        "name": {
+          required: "Bắt buộc nhập name",
+        },
+        "email": {
+          required: "Bắt buộc nhập email",
+          email: "Hãy nhập dúng định dạng email"
+        },
+        "phone": {
+          required: "Bắt buộc nhập tel",
+        },
+        "subject": {
+          required: "Bắt buộc nhập subject",
+
+        },
+        "message": {
+          required: "Bắt buộc nhập message",
+        }
+
+      }
+    });
+  });
+</script>
+<style>
+  label.error {
+    color: red;
+  }
+</style>
+
 <style>
   .tbao {
     text-align: center;
@@ -22,7 +79,7 @@
     <div class="col-lg-7 mb-5">
       <div class="contact-form">
         <div id="success"></div>
-        <form name="sentMessage" novalidate="novalidate" action="?act=addfb" method="post">
+        <form name="sentMessage" novalidate="novalidate" action="?act=addfb" method="post" id="demoForm">
           <div class="control-group">
             <input type="text" class="form-control" name="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
             <p class="help-block text-danger"></p>
