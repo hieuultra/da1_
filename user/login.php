@@ -12,6 +12,34 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
 </head>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+  $().ready(function() {
+    $("#demoForm").validate({
+      onfocusout: false,
+      onkeyup: false,
+      onclick: false,
+      rules: {
+        "username": {
+          required: true,
+        },
+        "password": {
+          required: true,
+        },
+
+      },
+      messages: {
+        "username": {
+          required: "Bắt buộc nhập username ",
+        },
+        "password": {
+          required: "Bắt buộc nhập password ",
+        }
+      }
+    });
+  });
+</script>
 <style>
   label.error {
     color: red;
@@ -41,7 +69,7 @@
                       <span class="text-primary font-weight-bold border px-3 mr-1">U</span>Multishop
                     </h1>
                   </div>
-                  <form action="?act=login" method="post">
+                  <form action="?act=login" method="post" id="demoForm">
                     <div class="form-group">
                       <label>Username</label>
                       <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />
@@ -73,13 +101,13 @@
                 </div>
               </div>
             </div>
-            <h2 class="tbao">
+            <!-- <h2 class="tbao">
               <?php
               if (isset($tbao) && ($tbao) != "") {
                 echo $tbao;
               }
               ?>
-            </h2>
+            </h2> -->
           </div>
         </div>
       </div>

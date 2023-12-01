@@ -14,7 +14,6 @@
 
             },
             messages: {
-
                 "name_cat": {
                     required: "Bắt buộc nhập tên danh mục ",
                     nameloai: "Không được trùng tên danh mục đã có"
@@ -30,7 +29,7 @@
 </style>
 <div class="container-fluid mt-4 px-4">
   <h1 class="mt-4">Add category</h1>
-  <form action="index.php?act=add_cat" method="POST" enctype="multipart/form-data">
+  <form action="index.php?act=add_cat" method="POST" enctype="multipart/form-data" id="demoForm">
     <div class="mb-3">
       <label class="form-label">Name</label>
       <input type="text" class="form-control" name="name_cat">
