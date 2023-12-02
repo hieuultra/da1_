@@ -273,7 +273,9 @@
 
           $_SESSION['cart'] = [];
         }
-        $listbill = loadall_tk_bil($_SESSION['bill_iduser']);
+        if (!isset($_SESSION['user'])) {
+          $listbill = loadall_tk_bil($_SESSION['bill_iduser']);
+        }
         $bill = loadone_bill($id_bill);
         $billct = loadall_cart($id_bill);
         include "billconfirm.php";
