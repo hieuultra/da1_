@@ -25,6 +25,10 @@
   if (!isset($_SESSION['wishlist'])) {
     $_SESSION['wishlist'] = [];
   }
+  // if (!isset($_SESSION['bill_iduser'])) {
+  //   $_SESSION['bill_iduser'] = [];
+  // }
+
 
 
   $spnew = loadall_pro_home();
