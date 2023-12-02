@@ -73,7 +73,7 @@ foreach ($_SESSION['mycart'] as $cart) {
 <div class="container-fluid pt-5">
   <div class="row px-xl-5">
     <div class="col-lg-8">
-      <form action="index.php?act=billconfirm" method="post" id="demoForm">
+      <form name="sentMessage" action="index.php?act=billconfirm" method="post" id="demoForm">
         <div class="mb-4">
           <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
           <div class="row">
@@ -96,23 +96,23 @@ foreach ($_SESSION['mycart'] as $cart) {
             <div class="col-md-6 form-group">
               <!-- <input type="hidden" name="id_user" value="<?= $id_user ?>"> -->
               <label class="form-label">User Name</label>
-              <input class="form-control" type="text" name="username" value="<?= $username ?>" />
+              <input class="form-control" type="text" name="username" required="required" data-validation-required-message="Please enter your username" value="<?= $username ?>" />
             </div>
             <div class="col-md-6 form-group">
               <label>Name</label>
-              <input class="form-control" type="text" name="name" value="<?= $name ?>" />
+              <input class="form-control" type="text" name="name" required="required" data-validation-required-message="Please enter your name" value="<?= $name ?>" />
             </div>
             <div class="col-md-6 form-group">
               <label>E-mail</label>
-              <input class="form-control" type="text" name="email" value="<?= $email ?>" />
+              <input class="form-control" type="email" name="email" required="required" data-validation-required-message="Please enter your email" value="<?= $email ?>" />
             </div>
             <div class="col-md-6 form-group">
               <label>Phone</label>
-              <input class="form-control" type="text" name="phone" value="<?= $phone ?>" />
+              <input class="form-control" type="text" name="phone" required="required" data-validation-required-message="Please enter your phone" value="<?= $phone ?>" />
             </div>
             <div class="col-md-6 form-group">
               <label>Address</label>
-              <input class="form-control" type="text" name="address" value="<?= $address ?>" />
+              <input class="form-control" type="text" name="address" required="required" data-validation-required-message="Please enter your phone" value="<?= $address ?>" />
             </div>
           </div>
         </div>

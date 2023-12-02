@@ -79,7 +79,7 @@
     <div class="col-lg-7 mb-5">
       <div class="contact-form">
         <div id="success"></div>
-        <form name="sentMessage" novalidate="novalidate" action="?act=addfb" method="post" id="demoForm">
+        <form name="sentMessage" action="?act=addfb" method="post" id="demoForm">
           <div class="control-group">
             <input type="text" class="form-control" name="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
             <p class="help-block text-danger"></p>
