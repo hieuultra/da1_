@@ -241,7 +241,6 @@
           $email_user = $_POST['email'];
           $phone_user = $_POST['phone'];
           $address_user = $_POST['address'];
-          // insert_tk_bill($name_user, $name,  $address_user, $phone_user, $email_user);
           if (!isset($_SESSION['user'])) {
             $id_user = insert_tk_bill($name_user, $name,  $address_user, $phone_user, $email_user);
             $_SESSION['bill_iduser'] = $id_user; // Lưu id_user vào session để sử dụng ở trang mybill
@@ -270,6 +269,7 @@
 
           $_SESSION['cart'] = [];
         }
+        $listbill = loadall_tk_bil($_SESSION['bill_iduser']);
         $bill = loadone_bill($id_bill);
         $billct = loadall_cart($id_bill);
         include "billconfirm.php";

@@ -65,11 +65,15 @@ foreach ($_SESSION['mycart'] as $cart) {
                 $phone = $_SESSION['user']['phone'];
                 $email = $_SESSION['user']['email'];
             } else {
-                $username = '';
-                $name = '';
-                $address = '';
-                $phone = '';
-                $email = '';
+                $listbill =  loadall_tk_bil($_SESSION['bill_iduser']);
+                foreach ($listbill as $l) {
+                    // var_dump($l);
+                    $username = $l['name_user'];
+                    $name = $l['name_user'];
+                    $address = $l['address_user'];
+                    $phone = $l['phone_user'];
+                    $email = $l['email_user'];
+                }
             }
             ?>
 
