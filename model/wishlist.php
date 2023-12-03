@@ -20,7 +20,7 @@ function view_wishlist($del)
         // extract($wl);
         $hinh = $img_path . $wl[2];
         // $gia = $wl[3];
-        $price =  $wl[3] - (($wl[3] *  $wl[4]) / 100);
+        $price = floatval($wl[3]) - ((floatval($wl[3]) * floatval($wl[4])) / 100);
 
         if ($del == 1) {
             $xoasp_td = '<td><a href="index.php?act=delwl&id=' . $i . '">

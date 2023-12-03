@@ -9,7 +9,7 @@
   <!-- Title -->
   <div class="text-center mb-4">
     <h2 class="section-title px-5">
-      <span class="px-2">Top Products</span>
+      <span class="px-2">Top Views Products</span>
     </h2>
   </div>
 
@@ -21,7 +21,7 @@
         <!-- Search -->
         <form action="?act=search_pro" method="post">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search by name" name="kyw"/>
+            <input type="text" class="form-control" placeholder="Search by name" name="kyw" />
             <div class="input-group-append">
               <span class="input-group-text bg-transparent text-primary">
                 <!-- <i class="fa fa-search"></i> -->
@@ -32,8 +32,7 @@
         </form>
         <!-- Sort -->
         <div class="dropdown ml-4">
-          <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+          <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sort by
           </button>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
@@ -68,7 +67,7 @@
          <input type="hidden" name="price" value="' . $price . '">
          <input type="hidden" name="discount" value="' . $discount . '">
          <input type="submit" class="btn btn-primary" value="Like" name="wishlist">
-       <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+       View:<a href="">' . $view . '</a>
        </form>
    </div>
          <h6 class="text-truncate mb-3">' . $name_pro . '</h6>

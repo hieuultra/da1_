@@ -7,6 +7,16 @@
   h2 {
     color: red;
   }
+
+  .product-details {
+    display: flex;
+    align-items: center;
+  }
+
+  .like-form {
+    margin-left: auto;
+    /* Đẩy form sang bên phải */
+  }
 </style>
 <!-- Shop Detail Start -->
 <div class="container-fluid py-5">
@@ -48,7 +58,17 @@
 
     <!-- Product information -->
     <div class="col-lg-7 pb-5">
-      <h3 class="font-weight-semi-bold"><?= $name_pro ?></h3>
+      <div class="product-details">
+        <h3 class="font-weight-semi-bold"><?= $name_pro ?></h3>
+        <form action="index.php?act=wishlist" method="post" class="like-form">
+          <input type="hidden" name="id_pro" value="<?= $id_pro ?>">
+          <input type="hidden" name="name_pro" value="<?= $name_pro ?>">
+          <input type="hidden" name="img" value="<?= $img ?>">
+          <input type="hidden" name="price" value="<?= $price ?>">
+          <input type="hidden" name="discount" value="<?= $discount ?>">
+          <input type="submit" class="btn btn-primary" value="Like" name="wishlist">
+        </form>
+      </div>
       <div class="d-flex mb-3">
         <div class="text-primary mr-2">
           <small class="fas fa-star"></small>
