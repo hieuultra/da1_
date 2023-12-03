@@ -126,6 +126,7 @@
             </div>
             <a href="?act=contact" class="nav-item nav-link">Contact</a>
             <a href="?act=blog" class="nav-item nav-link">Blog</a>
+            <a href="?act=sell" class="nav-item nav-link">Selling Products</a>
           </div>
           <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
             <a href="?act=view_wishlist" class="btn px-0">

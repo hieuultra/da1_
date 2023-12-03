@@ -177,3 +177,11 @@ function  update_quantity($vitri)
         }
     }
 }
+function loadall_pro_sell()
+{
+    //cach noi chuoi sql
+    //phai co cach khoang
+    $sql = "select sum(quantity) as prosell, b.*  from cart c join product b on c.id_pro=b.id_pro group by  c.id_pro order by prosell desc limit 0,8";
+    $dssp = pdo_query($sql);
+    return $dssp; //co ket qua tra ve phai return
+}

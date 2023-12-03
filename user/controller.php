@@ -389,6 +389,10 @@
         }
         include "view_cart.php";
         break;
+      case 'sell':
+        $dssell = loadall_pro_sell();
+        include "sell.php";
+        break;
     }
   } else {
     include_once("user/home/index.php");
