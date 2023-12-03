@@ -61,6 +61,7 @@ $tongship = 0;
 foreach ($_SESSION['mycart'] as $cart) {
   $name_pro = $cart['name'];
   $hinh = $img_path . $cart['image'];
+  $quantity = $cart['quantity'];
   // $gia = $cart[3];
   $price =  $cart['price'] - (($cart['price'] *  $cart['discount']) / 100);
   $total = $price * $cart['quantity'];

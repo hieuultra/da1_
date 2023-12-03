@@ -34,6 +34,8 @@
                             $countsp = loadall_cart_count($id_bill);
                             $ctb = "index.php?act=bill_detail&id_bill=" . $id_bill;
                             $huydh = "index.php?act=update_bill&id_bill=" . $id_bill;
+                            $ship = 100;
+                            $total_price += $ship;
                             if ($id_status_bill != 1) {
                                 $huydh = ''; // Không hiển thị nút xóa cho admin
                             } else {

@@ -59,8 +59,10 @@ function view_cart($del)
                 </td>';
             $edit = '<td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>  ';
         } else {
+            $ship=100;
             $xoasp_td = "";
             $edit = "";
+            $tong+=$ship;
         }
         echo '  <tbody class="align-middle">
            <tr> <form action="?act=edit_sc" method="post">
