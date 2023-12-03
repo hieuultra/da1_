@@ -25,7 +25,16 @@ function sum_user_b()
     $sum_user = pdo_query($sql);
     return $sum_user;
 }
-function getChartData(){
+function quantity_pro()
+{
+    $sql = "select sum(quantity) as quantity_pro from cart ";
+    // $sql .= "  from sanpham join danhmuc on sanpham.id_dm=danhmuc.id_dm ";
+    // $sql .= " group by danhmuc.id_dm order by danhmuc.id_dm desc ";
+    $sum_quantity = pdo_query($sql);
+    return $sum_quantity;
+}
+function getChartData()
+{
     $sql = "SELECT date_order, SUM(quantity) AS total_sold FROM cart c join bill b
     on c.id_bill=b.id_bill GROUP BY c.id_pro";
     $data = pdo_query($sql);

@@ -16,7 +16,7 @@
             echo ' <div class="card-body">' . $count_sp . ' Count_products</div>';
           }
           ?>
-        <i class="fa-solid fa-box fa-shake fa-2xl"></i>
+          <i class="fa-solid fa-box fa-shake fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=list_pro">View Details</a>
             <div class="small text-white">
@@ -59,9 +59,15 @@
           </div>
         </div>
       </div>
-      <!-- <div class="col-xl-3 col-md-6">
+      <div class="col-xl-3 col-md-6">
         <div class="card bg-danger text-white mb-4">
-          <div class="card-body">Danger Card</div>
+          <?php
+          foreach ($sum_quantity as $s) {
+            extract($s);
+            echo ' <div class="card-body">' . $quantity_pro . ' Products sold</div>';
+          }
+          ?>
+          <i class="fa-solid fa-cart-shopping fa-beat fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="#">View Details</a>
             <div class="small text-white">
@@ -69,7 +75,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
     <div class="row">
       <div class="col-xl-6">
@@ -83,7 +89,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-xl-6">
         <div class="card mb-4">
           <div class="card-header">
