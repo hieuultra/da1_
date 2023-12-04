@@ -22,7 +22,7 @@ include "../model/dboard.php";
 $countsp = count_sp();
 $sum = sum_total_pr();
 $sum_user = sum_user_b();
-$sum_quantity= quantity_pro();
+$sum_quantity = quantity_pro();
 
 if (isset($_GET['act'])) {
   $act = $_GET['act'];
@@ -555,6 +555,18 @@ if (isset($_GET['act'])) {
     case 'log_out':
       session_unset();
       header('Location:../index.php');
+      break;
+    case 'total_revenue':
+      $total1 = total1();
+      include "statistics/total_revenue.php";
+      break;
+    case 'date':
+      if (isset($_POST['check']) && ($_POST['check'])) {
+        $date = $_POST['dateod'];
+        $total = total($date);
+      }
+      $total1 = total1();
+      include "statistics/total_revenue.php";
       break;
   }
 } else {

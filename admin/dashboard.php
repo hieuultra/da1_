@@ -33,9 +33,10 @@
             echo ' <div class="card-body">' . number_format($sum_total, 0, ",", ".") . '$ Total revenue</div>';
           }
           ?>
+
           <i class="fa-solid fa-money-bill fa-beat fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
-            <a class="small text-white stretched-link" href="#">View Details</a>
+            <a class="small text-white stretched-link" href="?act=total_revenue">View Details</a>
             <div class="small text-white">
               <i class="fas fa-angle-right"></i>
             </div>
