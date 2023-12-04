@@ -1,11 +1,51 @@
+<?php
+function getStatusColorClass($name_status)
+{
+    switch ($name_status) {
+        case 'da xac nhan':
+            return 'status-brown'; // Define your CSS class for brown color here
+        case 'dang xu ly':
+            return 'status-yellow'; // Define your CSS class for brown color here
+        case 'da huy':
+            return 'status-red'; // Define your CSS class for red color here
+        case 'giao hang thanh cong':
+            return 'status-blue'; // Define your CSS class for green color here
+        case 'dang giao hang':
+            return 'status-green'; // Define your CSS class for green color here
+        default:
+            return ''; // Default class if status doesn't match
+    }
+}
+?>
 <style>
     #i {
         margin-left: 600px;
     }
 
-    /* #t {
-        margin-left: 160px;
-    } */
+    .status-yellow {
+        color: hotpink;
+        font-weight: bold;
+    }
+
+    .status-blue {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .status-brown {
+        color: brown;
+        font-weight: bold;
+    }
+
+    .status-red {
+        color: red;
+        font-weight: bold;
+    }
+
+    .status-green {
+        color: green;
+        font-weight: bold;
+    }
 </style>
 
 <body>
@@ -46,7 +86,7 @@
                             <td>' . $date_order . '</td>
                             <td>' . $countsp . '</td>
                             <td>' . number_format($total_price, 0, ",", ".") . '$' . '</td>
-                            <td>' . $name_status . '</td>
+                            <td class="' . getStatusColorClass($name_status) . '">' . $name_status . '</td>
                             <td><a href="' . $ctb . '" class="btn btn-primary"><input type="button" value="See detail" /></a></td>
                             <td> ' . $huydh . '
                           </td>
@@ -54,7 +94,6 @@
                         }
                     }
                     ?>
-
                 </table>
             </div>
         </div>
