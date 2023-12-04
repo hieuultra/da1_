@@ -41,17 +41,16 @@ function getChartData()
 
     return $data;
 }
-function total1(){
+function total1()
+{
     $sql = "select  date_order, sum(total_price) as total from bill group by date_order";
-    $total1= pdo_query($sql);
+    $total1 = pdo_query($sql);
     return $total1;
 }
-function total($date) {
-    // Sanitize and format the date
+function total($date)
+{
     $formattedDate = date("Y-m-d", strtotime($date));
     $sql = "SELECT DATE(date_order) AS date_only, SUM(total_price) AS total FROM bill WHERE DATE(date_order) = '$formattedDate' GROUP BY DATE(date_order)";
-    
     $total = pdo_query($sql);
-    
     return $total;
 }
