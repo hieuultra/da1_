@@ -33,7 +33,7 @@
                             ?>
                                 <tr>
                                     <td><?= $date_only ?></td>
-                                    <td><?= $total ?></td>
+                                    <td><?= number_format($total, 0, ",", ".") . '$' ?></td>
                                 </tr>
 
                             <?php endforeach; ?>
@@ -45,7 +45,7 @@
 
                                     <tr>
                                         <td><?= $date_order ?></td>
-                                        <td><?= $total ?></td>
+                                        <td><?=number_format($total, 0, ",", ".") . '$' ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php } ?>
