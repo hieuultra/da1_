@@ -1,3 +1,29 @@
+<style>
+    .status-yellow {
+        color: hotpink;
+        font-weight: bold;
+    }
+
+    .status-blue {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .status-brown {
+        color: brown;
+        font-weight: bold;
+    }
+
+    .status-red {
+        color: red;
+        font-weight: bold;
+    }
+
+    .status-green {
+        color: green;
+        font-weight: bold;
+    }
+</style>
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">List Bill</h1>
@@ -28,38 +54,43 @@
                         <?php foreach ($listbill as $l) {
                             extract($l);
                             $suabill = "index.php?act=edit_bill&id_bill=" . $id_bill;
-                            $xoabill = "index.php?act=delete_bill&id_bill=" . $id_bill;
+                            // $xoabill = "index.php?act=delete_bill&id_bill=" . $id_bill;
                             $price_pro =  $price_pro - (($price_pro *  $discount) / 100);
-                            // $total_price = $price_pro * $quantity;
-                            // $hinhpath = "../upload/" . $image_pro;
-                            // if (is_file($hinhpath)) {
-                            //     $hinh = "<img src='" . $hinhpath . "' height='70'>";
-                            // } else {
-                            //     $hinh = "No photo";
-                            // }
-                            if ($id_status_bill == 5) {
-                                $suabill = ''; // Không hiển thị nút xóa cho admin
-                            } else {
-                                $suabill = '<a href="' . $suabill . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>';
+                            $statusClass = '';
+                            switch ($name_status) {
+                                case 'da xac nhan':
+                                    $statusClass = 'status-brown';
+                                    break;
+                                case 'da huy':
+                                    $statusClass = 'status-red';
+                                    break;
+                                case 'giao hang thanh cong':
+                                    $statusClass = 'status-blue';
+                                    break;
+                                case 'dang giao hang':
+                                    $statusClass = 'status-green';
+                                    break;
+                                case 'dang xu ly':
+                                    $statusClass = 'status-yellow';
+                                    break;
+                                default:
+                                    $statusClass = ''; // Default class if status doesn't match
                             }
-
                             echo '  <tr>
                   <td>' . $name_user . '</td>
                   <td>' . $id_bill . '</td>
                   <td>' . $sum_quantity . '</td>
                   <td>' .  number_format($total_price, 0, ",", ".") . '$' . '</td>
                   <td>' . $date_order . '</td>
-                  <td>' . $name_status . '</td>
+                  <td class="' . $statusClass . '">' . $name_status . '</td>
                   <td>
-                  ' . $suabill . '
-                  <a href="' . $xoabill . '" class="btn btn-danger"><input type="button" value="DELETE" onclick ="return confirm(\'ban co chac chan muon xoa?\')" /></a>
+                  <a href="' . $suabill . '" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
                   </td>
                 </tr>';
                         }
                         ?>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
