@@ -35,6 +35,14 @@ function loadall_pro_shop3()
     $sps = pdo_query($sql);
     return $sps; //co ket qua tra ve phai return
 }
+function loadall_pro_shop4()
+{
+    //cach noi chuoi sql
+    //phai co cach khoang
+    $sql = "select * from product where 1 order by id_pro desc limit 0,15";
+    $sps = pdo_query($sql);
+    return $sps; //co ket qua tra ve phai return
+}
 
 function loadall_pro_home()
 {
