@@ -29,6 +29,7 @@ foreach ($carts as $cart) {
         ?>
       </table>
     </div>
+
     <div class="col-lg-4">
       <form class="mb-5" action="">
         <div class="input-group">
@@ -58,24 +59,25 @@ foreach ($carts as $cart) {
             <h5 class="font-weight-bold"><?= number_format($tongship, 0, ",", ".") . "$"  ?></h5>
           </div>
           <!-- <?php
-          if (isset($_SESSION['user'])) {
-          ?>
+                if (isset($_SESSION['user'])) {
+                ?>
             <a href="?act=checkout" class="btn btn-block btn-primary my-3 py-3">
               Proceed To Checkout
             </a>
           <?php
-          } else {
+                } else {
           ?>
             <a href="?act=login" class="btn btn-block btn-primary my-3 py-3">
               Proceed To Checkout
             </a>
           <?php } ?> -->
           <a href="?act=checkout" class="btn btn-block btn-primary my-3 py-3">
-              Proceed To Checkout
-            </a>
-
+            Proceed To Checkout
+          </a>
         </div>
       </div>
     </div>
+
   </div>
 </div>
+

@@ -77,6 +77,7 @@ foreach ($_SESSION['mycart'] as $cart) {
       <form name="sentMessage" action="index.php?act=billconfirm" method="post" id="demoForm">
         <div class="mb-4">
           <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+          <h6>Already have an account? <a href="?act=login">Login</a></h6>
           <div class="row">
             <?php
             if (isset($_SESSION['user'])) {
@@ -168,6 +169,7 @@ foreach ($_SESSION['mycart'] as $cart) {
             $ship;
             $tongship = $tong + $ship;
             echo '<div class="d-flex justify-content-between">
+            <img src="' . $hinh . '" alt="" height="50px">
                <p>' . $name_pro . '</p>
               <p>' .  number_format($price, 0, ",", ".") . '$ </p>
               </div>';

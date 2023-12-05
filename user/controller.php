@@ -219,6 +219,7 @@
         include "view_cart.php";
         break;
       case "view_cart":
+        $sps = loadall_pro_shop4();
         include 'view_cart.php';
         break;
       case 'delcart':
