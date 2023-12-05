@@ -16,7 +16,7 @@
             echo ' <div class="card-body">' . $count_sp . ' Count_products</div>';
           }
           ?>
-          <i class="fa-solid fa-box fa-shake fa-2xl"></i>
+          <i class="fa-solid fa-box-open fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=list_pro">View Details</a>
             <div class="small text-white">
@@ -34,7 +34,7 @@
           }
           ?>
 
-          <i class="fa-solid fa-money-bill fa-beat fa-2xl"></i>
+          <i class="fa-solid fa-money-bills fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=total_revenue">View Details</a>
             <div class="small text-white">
@@ -51,7 +51,7 @@
             echo ' <div class="card-body">' . $sum_user  . ' Customer</div>';
           }
           ?>
-          <i class="fa-solid fa-users-line fa-fade fa-2xl"></i>
+          <i class="fa-solid fa-user fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=list_bill">View Details</a>
             <div class="small text-white">
@@ -68,7 +68,7 @@
             echo ' <div class="card-body">' . $quantity_pro . ' Products sold</div>';
           }
           ?>
-          <i class="fa-solid fa-cart-shopping fa-beat fa-2xl"></i>
+          <i class="fa-solid fa-cart-shopping fa-2xl"></i>
           <div class="card-footer d-flex align-items-center justify-content-between">
             <a class="small text-white stretched-link" href="?act=sold">View Details</a>
             <div class="small text-white">
@@ -104,7 +104,7 @@
       </div>
     </div>
 
-    <div class="card mb-4">
+    <!-- <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table me-1"></i>
         DataTable Example
@@ -143,6 +143,6 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
   </div>
 </main>
