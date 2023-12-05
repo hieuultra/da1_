@@ -69,3 +69,17 @@ function sold1($date)
 }
 
 
+function order_sold()
+{
+    $sql = "select  date_order, count(id_bill) as sold from bill group by date_order ";
+    $totalsold = pdo_query($sql);
+    return $totalsold;
+}
+function order_sold1($date)
+{
+    $formattedDate = date("Y-m-d", strtotime($date));
+    $sql = "SELECT DATE(date_order) AS date_only, COUNT(id_bill) AS sold FROM bill  WHERE DATE(date_order) = '$formattedDate' GROUP BY DATE(date_order)";
+    $totals = pdo_query($sql);
+    return $totals;
+}
+
