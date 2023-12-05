@@ -54,3 +54,18 @@ function total($date)
     $total = pdo_query($sql);
     return $total;
 }
+function sold()
+{
+    $sql = "select  b.date_order, sum(c.quantity) as quan from bill b join cart c on b.id_bill=c.id_bill group by date_order ";
+    $totalsold = pdo_query($sql);
+    return $totalsold;
+}
+function sold1($date)
+{
+    $formattedDate = date("Y-m-d", strtotime($date));
+    $sql = "SELECT DATE(b.date_order) AS date_only, SUM(c.quantity) AS quan FROM bill b join cart c on b.id_bill=c.id_bill WHERE DATE(b.date_order) = '$formattedDate' GROUP BY DATE(b.date_order)";
+    $totals = pdo_query($sql);
+    return $totals;
+}
+
+

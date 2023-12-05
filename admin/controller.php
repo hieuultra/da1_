@@ -568,6 +568,19 @@ if (isset($_GET['act'])) {
       $total1 = total1();
       include "statistics/total_revenue.php";
       break;
+
+      case 'sold':
+        $totalsold = sold();
+        include "statistics/sold.php";
+        break;
+      case 'datesold':
+        if (isset($_POST['check']) && ($_POST['check'])) {
+          $date = $_POST['date'];
+          $totals = sold1($date);
+        }
+        $totalsold = sold();
+        include "statistics/sold.php";
+        break;
   }
 } else {
   include("dashboard.php");
