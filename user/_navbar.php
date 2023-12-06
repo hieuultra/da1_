@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row bg-secondary py-1 px-xl-5">
-    <marquee behavior="scroll" direction="left" scrollamount="5">
-      <span style="font-size: 18px; color: black;">Free exchange for 30 days.</span>
-    </marquee>
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    <span style="font-size: 18px; color: black;">Free exchange for 30 days.</span>
+  </marquee>
     <div class="col-lg-6 d-none d-lg-block">
       <div class="d-inline-flex align-items-center h-100">
         <a class="text-body mr-3" href="">About</a>
@@ -16,8 +16,8 @@
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="?act=login"><button type="submit" class="dropdown-item" type="button">Sign in</button></a>
-            <a href="?act=sign_up"> <button type="submit" class="dropdown-item" type="button">Sign up</button></a>
+           <a href="?act=login"><button type="submit" class="dropdown-item" type="button">Sign in</button></a> 
+           <a href="?act=sign_up"> <button type="submit" class="dropdown-item" type="button">Sign up</button></a> 
           </div>
         </div>
         <div class="btn-group mx-2">
@@ -156,7 +156,7 @@
               </a>
             <?php } ?>
             <a href="?act=mybill" class="btn px-0">
-              <i class="fas fa-file-invoice-dollar"></i>
+              <i class="fas fa-file-invoice-dollar text-primary"></i>
               <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
             </a>
           </div>

@@ -40,7 +40,7 @@ if (is_array($suafb)) {
 
         <input type="submit" class="btn btn-primary" value="Update" name="editfb">
         <a href="?act=list_fb">
-            <input type="button" class="btn btn-primary" value="Lisr_Feedback">
+            <input type="button" class="btn btn-primary" value="List_Feedback">
         </a>
     </form>
 </div>
