@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row bg-secondary py-1 px-xl-5">
   <marquee behavior="scroll" direction="left" scrollamount="5">
-    <span style="font-size: 18px; color: black;">Free exchange for 30 days.</span>
+    <span style="font-size: 18px; color: red;">Free exchange for 30 days.</span>
   </marquee>
     <div class="col-lg-6 d-none d-lg-block">
       <div class="d-inline-flex align-items-center h-100">
