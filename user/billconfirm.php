@@ -28,7 +28,7 @@ foreach ($_SESSION['mycart'] as $cart) {
 <div class="container-fluid pt-5">
     <div class="text-center mb-4">
         <h2 class="section-title px-5">
-            <span class="px-2">Thanks you for order products</span>
+            <span class="px-2" style="color:red">Thanks you for order products</span>
         </h2>
     </div>
     <?php
