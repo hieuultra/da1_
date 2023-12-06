@@ -116,6 +116,7 @@ foreach ($_SESSION['mycart'] as $cart) {
               <label>Address</label>
               <input class="form-control" type="text" name="address" required="required" data-validation-required-message="Please enter your phone" value="<?= $address ?>" />
             </div>
+          
           </div>
         </div>
         <div class="card border-secondary mb-5">
