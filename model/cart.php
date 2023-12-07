@@ -59,10 +59,10 @@ function view_cart($del)
                 </td>';
             $edit = '<td><input type="submit" value="Update" class="btn btn-primary" name="ss"></td>  ';
         } else {
-            $ship=100;
+            $ship = 100;
             $xoasp_td = "";
             $edit = "";
-            $tong+=$ship;
+            $tong += $ship;
         }
         echo '  <tbody class="align-middle">
            <tr> <form action="?act=edit_sc" method="post">
@@ -278,13 +278,13 @@ function get_pttt($n)
 {
     switch ($n) {
         case '1':
-            $pt = "Paypal";
+            $pt = "Transfer payments";
             break;
         case '2':
-            $pt = "Direct check";
+            $pt = "Direct payment";
             break;
-        case '3':
-            $pt = "Bank transfer";
+        case '4':
+            $pt = "Online payment";
             break;
 
         default:

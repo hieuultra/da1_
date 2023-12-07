@@ -17,6 +17,7 @@
   include "./model/cart.php";
   include "./model/comment.php";
   include "./model/wishlist.php";
+  include "./model/momo.php";
 
 
   if (!isset($_SESSION['mycart'])) {
@@ -250,18 +251,26 @@
             $id_user = insert_tk_bill($name_user, $name,  $address_user, $phone_user, $email_user);
             $_SESSION['bill_iduser'] = $id_user; // Lưu id_user vào session để sử dụng ở trang mybill
           }
+
           $payment_method = $_POST['payment'];
           date_default_timezone_set("Asia/Ho_Chi_Minh");
           $date_order = date("Y-m-d H:i:s", time());
           $total_price = tongdh();
           //tao bill
-          if (isset($_SESSION['user'])) {
-            $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user1);
-          } else {
-            $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+          if ($payment_method != 4) {
+            if (isset($_SESSION['user'])) {
+              $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user1);
+            } else {
+              $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+            }
           }
-
-
+          // payment online
+          if ($payment_method == 4) {
+            $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+            $bill = loadone_bill($id_bill);
+            $id = $bill['id_bill'];
+            include "./model/payment.php";
+          }
           //insert into cart: voi $session['mycart'] $id_bill
           //neu ko login thi dung isset hay empty
           foreach ($_SESSION['mycart'] as $cart) {
@@ -277,8 +286,24 @@
         if (!isset($_SESSION['user'])) {
           $listbill = loadall_tk_bil($_SESSION['bill_iduser']);
         }
-        $bill = loadone_bill($id_bill);
-        $billct = loadall_cart($id_bill);
+
+        if (isset($_GET['partnerCode']) && $_GET['partnerCode']) {
+          // Thông tin thanh toán
+          $partnerCode = $_GET['partnerCode'];
+          $orderId = $_GET['orderId'];
+          $amount = $_GET['amount'];
+          $orderInfo = $_GET['orderInfo'];
+          $orderType = $_GET['orderType'];
+          $transId = $_GET['transId'];
+          $payType = $_GET['payType'];
+          payment_momo($partnerCode, $orderId, $amount, $orderInfo, $orderType, $transId, $payType);
+          $get_idbill = $_GET['id_bill'];
+          $bill = loadone_bill($get_idbill);
+          $billct = loadall_cart($get_idbill);
+        } else {
+          $bill = loadone_bill($id_bill);
+          $billct = loadall_cart($id_bill);
+        }
         include "billconfirm.php";
         break;
       case 'mybill':

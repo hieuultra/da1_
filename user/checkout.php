@@ -116,7 +116,7 @@ foreach ($_SESSION['mycart'] as $cart) {
               <label>Address</label>
               <input class="form-control" type="text" name="address" required="required" data-validation-required-message="Please enter your phone" value="<?= $address ?>" />
             </div>
-          
+
           </div>
         </div>
         <div class="card border-secondary mb-5">
@@ -127,19 +127,19 @@ foreach ($_SESSION['mycart'] as $cart) {
             <div class="form-group">
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" name="payment" id="paypal" value="1" checked />
-                <label class="custom-control-label" for="paypal">Paypal</label>
+                <label class="custom-control-label" for="paypal">Transfer payments</label>
               </div>
             </div>
             <div class="form-group">
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" name="payment" id="directcheck" value="2" />
-                <label class="custom-control-label" for="directcheck">Direct Check</label>
+                <label class="custom-control-label" for="directcheck">Direct payment</label>
               </div>
             </div>
             <div class="">
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" name="payment" id="banktransfer" value="3" />
-                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                <input type="radio" class="custom-control-input" name="payment" id="momo" value="4" />
+                <label class="custom-control-label" for="momo">Online payment</label>
               </div>
             </div>
           </div>
