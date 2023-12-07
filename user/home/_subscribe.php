@@ -4,11 +4,10 @@
     <div class="col-md-6 col-12 py-5">
       <div class="text-center mb-2 pb-2">
         <h2 class="section-title px-5 mb-3">
-          <span class="bg-secondary px-2">Stay Updated</span>
+          <span class="bg-secondary px-2">SIGN UP FOR PROMOTIONS</span>
         </h2>
         <p>
-          Amet lorem at rebum amet dolores. Elitr lorem dolor sed amet diam
-          labore at justo ipsum eirmod duo labore labore.
+          Enter your email here to receive the latest fashion trends and promotions from UMULTISHOP.
         </p>
       </div>
       <form action="">
