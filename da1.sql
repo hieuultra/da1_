@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 02, 2023 lúc 06:09 PM
+-- Thời gian đã tạo: Th12 07, 2023 lúc 01:24 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -45,11 +45,11 @@ CREATE TABLE `bill` (
 --
 
 INSERT INTO `bill` (`id_bill`, `name_user`, `address_user`, `phone_user`, `email_user`, `total_price`, `payment_method`, `id_status_bill`, `date_order`, `id_user`) VALUES
-(147, 'admin', 'ha noi', '0363707561', 'admin@fpt.edu.vn', '6860', 1, 1, '2023-12-02 23:58:42', 41),
-(148, 'jacson', 'usa', '344422323', 'jacson@gmail.com', '6860', 1, 3, '2023-12-02 23:59:25', 8),
-(149, 'jacson', 'usa', '344422323', 'jacson@gmail.com', '31520', 3, 2, '2023-12-02 23:59:52', 8),
-(151, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '56000', 2, 2, '2023-12-03 00:05:24', 1),
-(152, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '81800', 1, 1, '2023-12-03 00:08:31', 1);
+(208, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '60000', 1, 1, '2023-12-07 19:01:21', 1),
+(209, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '202500', 2, 3, '2023-12-07 19:01:52', 1),
+(210, 'hieubt', 'Hanoi', '0363707562', 'hieubtph32408@fpt.edu.vn', '19400', 4, 2, '2023-12-07 19:03:19', 1),
+(211, 'K289010059@hupes.edu.vn', 'lao cai', '0363707561', 'user@gmail.com', '112000', 2, 1, '2023-12-07 19:17:24', 44),
+(213, 'canhc', 'canada', '4323214', 'canh123@gmail.com', '699300', 4, 1, '2023-12-07 19:20:24', 46);
 
 -- --------------------------------------------------------
 
@@ -100,17 +100,12 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id_cart`, `image_pro`, `name_pro`, `price_pro`, `total`, `quantity`, `id_pro`, `id_bill`, `id_user`) VALUES
-(217, '9bda540f-31c5-4ea1-8ef7-b13c99bf241a.jpg', ' shoes g ', 100, 100, 3, 42, 142, 8),
-(218, 'tải xuống (9).jpg', ' hat mon ', 100000, 100000, 1, 45, 142, 8),
-(219, 'Self-Taught Designer Tweets Photos Of All The Dresses She Made In 2020, And Her Thread Gets 337K Likes.jpg', ' dress gi ', 7000, 7000, 1, 51, 142, 8),
-(225, 'Self-Taught Designer Tweets Photos Of All The Dresses She Made In 2020, And Her Thread Gets 337K Likes.jpg', ' dress gi ', 7000, 7000, 1, 51, 147, 41),
-(226, 'Self-Taught Designer Tweets Photos Of All The Dresses She Made In 2020, And Her Thread Gets 337K Likes.jpg', ' dress gi ', 7000, 7000, 1, 51, 148, 8),
-(227, 'Self-Taught Designer Tweets Photos Of All The Dresses She Made In 2020, And Her Thread Gets 337K Likes.jpg', ' dress gi ', 7000, 7000, 2, 51, 149, 8),
-(228, '65bc84ee-4948-4372-9bef-9df9d9f48983.jpg', ' hat 5 ', 20000, 20000, 1, 32, 149, 8),
-(229, '0a6c93bb-a3e1-4027-9ad5-60224fe0acaf.jpg', ' shoe a ', 3500, 3500, 2, 38, 150, 1),
-(230, '1b685802-1193-4226-b2b1-02c51bbc76dd.jpg', ' bag shi ', 70000, 70000, 1, 44, 151, 1),
-(231, 'tải xuống (6).jpg', ' shirt kk ', 40000, 40000, 2, 46, 152, 1),
-(232, 'd9b74968-e7f7-4ad7-8bbd-249c09a18680.jpg', ' hat white ', 20000, 20000, 1, 49, 152, 1);
+(288, 'tải xuống (9).jpg', ' hat mon ', 100000, 100000, 1, 45, 208, 1),
+(289, 'tải xuống (9).jpg', ' hat mon ', 100000, 100000, 1, 45, 209, 1),
+(290, 'tải xuống (12).jpg', ' dress19 ', 190000, 190000, 1, 47, 209, 1),
+(291, 'd9b74968-e7f7-4ad7-8bbd-249c09a18680.jpg', ' hat white ', 20000, 20000, 1, 49, 210, 1),
+(292, '1b685802-1193-4226-b2b1-02c51bbc76dd.jpg', ' bag shi ', 70000, 70000, 2, 44, 211, 44),
+(294, 'Tactical utility pants.jpg', ' trouser ninja ', 999000, 999000, 1, 35, 213, 46);
 
 -- --------------------------------------------------------
 
@@ -212,6 +207,31 @@ INSERT INTO `news` (`id`, `news_name`, `content`, `news_img`, `update_at`, `crea
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `payment_momo`
+--
+
+CREATE TABLE `payment_momo` (
+  `id_momo` int(11) NOT NULL,
+  `partner_code` varchar(50) NOT NULL,
+  `order_id` int(50) NOT NULL,
+  `amount` varchar(50) NOT NULL,
+  `order_info` varchar(100) NOT NULL,
+  `order_type` varchar(50) NOT NULL,
+  `trans_id` int(11) NOT NULL,
+  `pay_type` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `payment_momo`
+--
+
+INSERT INTO `payment_momo` (`id_momo`, `partner_code`, `order_id`, `amount`, `order_info`, `order_type`, `trans_id`, `pay_type`) VALUES
+(6, 'MOMOBKUN20180529', 1701950599, '10000', 'Thanh toán qua MoMo', 'momo_wallet', 2147483647, 'napas'),
+(8, 'MOMOBKUN20180529', 1701951624, '10000', 'Thanh toán qua MoMo', 'momo_wallet', 2147483647, 'napas');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `product`
 --
 
@@ -234,25 +254,25 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_pro`, `name_pro`, `img`, `thumbnail`, `description`, `discount`, `price`, `view`, `id_size`, `id_cat`, `id_brand`) VALUES
-(32, ' hat 5 ', '65bc84ee-4948-4372-9bef-9df9d9f48983.jpg', 'fdd1b1f6-30d1-4812-8575-43d852bae377.jpg', 'dcxc', 11, 20000, 20, 0, 16, 7),
+(32, ' hat 5 ', '65bc84ee-4948-4372-9bef-9df9d9f48983.jpg', 'fdd1b1f6-30d1-4812-8575-43d852bae377.jpg', 'dcxc', 11, 20000, 21, 0, 16, 7),
 (34, ' shirt6 ', '953b9010-f5e2-4eba-b085-ded519da5124.jpg', '5580ce6d-49bf-4666-aafb-f451cccd7b80.jpg', 'wdd', 22, 12900, 22, 0, 13, 5),
-(35, ' trouser ninja ', 'Tactical utility pants.jpg', '84269917-1f8b-40a4-852e-30b895e5a36f.jpg', 'bdkfabdk hfdsfi gdfkh dsf', 30, 999000, 6, 0, 14, 7),
+(35, ' trouser ninja ', 'Tactical utility pants.jpg', '84269917-1f8b-40a4-852e-30b895e5a36f.jpg', 'bdkfabdk hfdsfi gdfkh dsf', 30, 999000, 8, 0, 14, 7),
 (36, ' dress12 ', 'Reup art by AnimeHinata.jpg', 'e4e82cd2-e886-4c48-b9c5-ed35ae6f7447.jpg', 'sfasd dsf ds', 34, 6800, 11, 0, 44, 8),
-(37, ' shirt1 ', '↟.jpg', '9896663d-ae95-4088-aac2-590244539a06.jpg', 'dfd fddfd', 11, 29999, 7, 0, 13, 8),
-(38, ' shoe a ', '0a6c93bb-a3e1-4027-9ad5-60224fe0acaf.jpg', 'cc9c0c24-bdcc-43e9-8781-76c1d49c9763.jpg', 'efwd dfdwf', 22, 3500, 4, 0, 17, 5),
+(37, ' shirt1 ', '↟.jpg', '9896663d-ae95-4088-aac2-590244539a06.jpg', 'dfd fddfd', 11, 29999, 8, 0, 13, 8),
+(38, ' shoe a ', '0a6c93bb-a3e1-4027-9ad5-60224fe0acaf.jpg', 'cc9c0c24-bdcc-43e9-8781-76c1d49c9763.jpg', 'efwd dfdwf', 22, 3500, 8, 0, 17, 5),
 (39, ' bag b ', 'Asge Backpack for Girls Kids Schoolbag Children Bookbag Women Casual Daypack.jpg', 'Hey Yoo HY760 Cute Casual Hiking Daypack Waterproof Bookbag School Bag Backpack for Girls Women.jpg', 'efwf dfdwf', 33, 3000, 3, 0, 22, 3),
-(40, ' dress b ', '6f6b8541-2f53-4e05-ba26-c9aafc2b9eff.jpg', 'A-Line Prom Dresses Sparkle & Shine Dress Wedding Party Sweep _ Brush Train Sleeveless Sequined with Crystals Sequin Ruffles - Custom Size _ Black.jpg', 'dsf dfdf', 2, 200, 3, 0, 44, 8),
-(41, ' trouser dx ', '006c8bdf-9090-4d21-9768-5c526cd8d203.jpg', '84269917-1f8b-40a4-852e-30b895e5a36f.jpg', 'wfdew dfd', 33, 8700, 2, 0, 14, 4),
-(42, ' shoes g ', '9bda540f-31c5-4ea1-8ef7-b13c99bf241a.jpg', 'tải xuống (11).jpg', 'wddwf dfdw', 3, 100, 3, 0, 17, 3),
-(43, ' bag baby ', 'ac1e08b0-9445-47bb-921f-4816bf1e7dd0.jpg', '🧚🏼_♀️ 𝓕𝐚𝐢𝐫𝐲𝐭𝐨𝐩𝐢𝐚 🧚.jpg', 'dwfd dfd', 22, 50000, 2, 0, 22, 8),
-(44, ' bag shi ', '1b685802-1193-4226-b2b1-02c51bbc76dd.jpg', 'Asge Backpack for Girls Kids Schoolbag Children Bookbag Women Casual Daypack.jpg', 'dfd dfdf', 20, 70000, 2, 0, 22, 8),
-(45, ' hat mon ', 'tải xuống (9).jpg', '4e2b057c-a5cd-4f52-82a9-1fc43be1624c.jpg', 'ddf dfdsf dfds', 40, 100000, 2, 0, 16, 2),
-(46, ' shirt kk ', 'tải xuống (6).jpg', 'tải xuống (7).jpg', 'dfdsf dfds', 22, 40000, 3, 0, 13, 2),
-(47, ' dress19 ', 'tải xuống (12).jpg', '1ad588fd-19d6-4618-9580-84a8f6b60ec8.jpg', 'dfdsf dsfdsf dsfs', 25, 190000, 2, 0, 44, 6),
-(49, ' hat white ', 'd9b74968-e7f7-4ad7-8bbd-249c09a18680.jpg', 'Ear Decor Fuzzy Bucket Hat.jpg', 'dssdds d', 3, 20000, 1, 0, 16, 8),
-(50, ' hat pink ', '🩷.jpg', '0657255e-2026-4c46-a2cf-098be56c47df.jpg', 'dd dsd ds ', 23, 79000, 1, 0, 16, 6),
-(51, ' dress gi ', 'Self-Taught Designer Tweets Photos Of All The Dresses She Made In 2020, And Her Thread Gets 337K Likes.jpg', 'e4b58558-4f39-424d-a934-5152e3046062.jpg', 'sd dsfds dsf ds', 2, 7000, 1, 0, 44, 2),
-(53, ' vest man ', '3e95730f-a958-496d-b600-5bfac04c3d3b.jpg', 'Mens Jacket Trench Long Coat Casual Fashion Double Breast Coat Luxury Black Tweed Long Overcoat Long Jackets.jpg', 'dds dsfdsf sd', 2, 6500, 1, 0, 13, 2);
+(40, ' dress b ', '6f6b8541-2f53-4e05-ba26-c9aafc2b9eff.jpg', 'A-Line Prom Dresses Sparkle & Shine Dress Wedding Party Sweep _ Brush Train Sleeveless Sequined with Crystals Sequin Ruffles - Custom Size _ Black.jpg', 'dsf dfdf', 2, 200, 4, 0, 44, 8),
+(41, ' trouser dx ', '006c8bdf-9090-4d21-9768-5c526cd8d203.jpg', '84269917-1f8b-40a4-852e-30b895e5a36f.jpg', 'wfdew dfd', 33, 8700, 3, 0, 14, 4),
+(42, ' shoes g ', '9bda540f-31c5-4ea1-8ef7-b13c99bf241a.jpg', 'tải xuống (11).jpg', 'wddwf dfdw', 3, 100, 4, 0, 17, 3),
+(43, ' bag baby ', 'ac1e08b0-9445-47bb-921f-4816bf1e7dd0.jpg', '🧚🏼_♀️ 𝓕𝐚𝐢𝐫𝐲𝐭𝐨𝐩𝐢𝐚 🧚.jpg', 'dwfd dfd', 22, 50000, 4, 0, 22, 8),
+(44, ' bag shi ', '1b685802-1193-4226-b2b1-02c51bbc76dd.jpg', 'Asge Backpack for Girls Kids Schoolbag Children Bookbag Women Casual Daypack.jpg', 'dfd dfdf', 20, 70000, 7, 0, 22, 8),
+(45, ' hat mon ', 'tải xuống (9).jpg', '4e2b057c-a5cd-4f52-82a9-1fc43be1624c.jpg', 'ddf dfdsf dfds', 40, 100000, 4, 0, 16, 2),
+(46, ' shirt kk ', 'tải xuống (6).jpg', 'tải xuống (7).jpg', 'dfdsf dfds', 22, 40000, 5, 0, 13, 2),
+(47, ' dress19 ', 'tải xuống (12).jpg', '1ad588fd-19d6-4618-9580-84a8f6b60ec8.jpg', 'dfdsf dsfdsf dsfs', 25, 190000, 3, 0, 44, 6),
+(49, ' hat white ', 'd9b74968-e7f7-4ad7-8bbd-249c09a18680.jpg', 'Ear Decor Fuzzy Bucket Hat.jpg', 'dssdds d', 3, 20000, 3, 0, 16, 8),
+(50, ' hat pink ', '🩷.jpg', '0657255e-2026-4c46-a2cf-098be56c47df.jpg', 'dd dsd ds ', 23, 79000, 4, 0, 16, 6),
+(51, ' dress gi ', 'Self-Taught Designer Tweets Photos Of All The Dresses She Made In 2020, And Her Thread Gets 337K Likes.jpg', 'e4b58558-4f39-424d-a934-5152e3046062.jpg', 'sd dsfds dsf ds', 2, 7000, 16, 0, 44, 2),
+(53, ' vest man ', '3e95730f-a958-496d-b600-5bfac04c3d3b.jpg', 'Mens Jacket Trench Long Coat Casual Fashion Double Breast Coat Luxury Black Tweed Long Overcoat Long Jackets.jpg', 'Áo Thun Cổ Trụ Ngân Hà Space Ver18\r\nChất liệu: Cotton Compact\r\nThành phần: 100% Cotton\r\n- Thân thiện\r\n- Thấm hút thoát ẩm\r\n- Mềm mại\r\n- Kiểm soát mùi\r\n- Điều hòa nhiệt\r\n+ Họa tiết in bột nổi\r\n- HDSD:\r\n+ Nên giặt chung với sản phẩm cùng màu\r\n+ Không dùng t', 2, 6500, 16, 0, 13, 2);
 
 -- --------------------------------------------------------
 
@@ -399,7 +419,9 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `name`, `address`, `phone
 (4, 'dattc', '111', 'trancongdat', 'nam dinh', '4323214', 'dattc@gmail.com', 'cf2a122a156546850b3ef7e1bfbaed5d.jpg', 1),
 (8, 'jacson', '1212', 'm.jacson', 'usa', '344422323', 'jacson@gmail.com', '686418.jpg', 1),
 (9, 'phubt', '111', 'phudatvan', 'ha nam', '3424343243', 'phuongbt@gmail.com', 'b23e5566cc93eeff46c0d4277cceea6d.jpg', 1),
-(41, 'admin', '', 'admin1', 'ha noi', '0363707561', 'admin@fpt.edu.vn', '', 1);
+(44, 'K289010059@hupes.edu.vn', '', 'dattran', 'lao cai', '0363707561', 'user@gmail.com', '', 1),
+(45, 'canh', '', 'canh ngu', 'canada', '3412123324', 'canh123@gmail.com', '', 1),
+(46, 'canhc', '', 'canh ngu', 'canada', '4323214', 'canh123@gmail.com', '', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -446,6 +468,12 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `payment_momo`
+--
+ALTER TABLE `payment_momo`
+  ADD PRIMARY KEY (`id_momo`);
 
 --
 -- Chỉ mục cho bảng `product`
@@ -503,7 +531,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
 
 --
 -- AUTO_INCREMENT cho bảng `brand`
@@ -515,7 +543,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=295;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -527,7 +555,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT cho bảng `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id_com` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_com` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT cho bảng `feedback`
@@ -540,6 +568,12 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `payment_momo`
+--
+ALTER TABLE `payment_momo`
+  MODIFY `id_momo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
@@ -587,7 +621,7 @@ ALTER TABLE `status_fb`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
