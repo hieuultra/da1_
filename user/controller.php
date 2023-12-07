@@ -266,7 +266,11 @@
           }
           // payment online
           if ($payment_method == 4) {
-            $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user1);
+            if (isset($_SESSION['user'])) {
+              $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user1);
+            } else {
+              $id_bill = insert_bill($name_user, $address_user, $phone_user, $email_user, $total_price, $payment_method, $date_order, $id_user);
+            }
             $bill = loadone_bill($id_bill);
             $id = $bill['id_bill'];
             include "./model/payment.php";
