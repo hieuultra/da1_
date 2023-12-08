@@ -59,7 +59,7 @@
     <div class="col-lg-4 col-6 text-left">
       <form action="index.php?act=search_pro" method="post">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for products" name="kyw">
+          <input type="text" class="form-control" placeholder="Search for products [Enter]" name="kyw">
           <div class="input-group-append">
             <span class="input-group-text bg-transparent text-primary">
               <i class="fa fa-search"></i>
