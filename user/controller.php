@@ -18,6 +18,7 @@
   include "./model/comment.php";
   include "./model/wishlist.php";
   include "./model/momo.php";
+  include "./model/mail.php";
 
 
   if (!isset($_SESSION['mycart'])) {
@@ -343,6 +344,7 @@
           $created_at = date("Y-m-d H:i:s", time());
           if ($name_user != '') {
             insert_fb($name_user, $email_user, $phone_user, $subject_name, $content, $created_at);
+            sendConfirmationEmail($name_user, $email_user, $phone_user, $subject_name, $content);
             $tbao = "We will answerd you early.Thanks you for this about!!";
           }
         }
