@@ -4,7 +4,7 @@
     <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
       <a href="" class="text-decoration-none">
         <h1 class="mb-4 display-5 font-weight-semi-bold">
-          <span class="text-primary font-weight-bold border border-white px-3 mr-1">U Multishop</span>
+          <span class="text-primary font-weight-bold border border-white px-3 mr-1">ULTRA SHOP</span>
         </h1>
       </a>
       <p>
