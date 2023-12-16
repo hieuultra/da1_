@@ -103,6 +103,12 @@ function loadall_st($id_bill)
     $bc = pdo_query($sql);
     return $bc; //co ket qua tra ve phai return
 }
+function loadall_count_b($id_user)
+{
+    $sql = "SELECT count(id_bill) as count_b FROM bill WHERE id_user = " . $id_user;
+    $count_b = pdo_query($sql);
+    return $count_b; //co ket qua tra ve phai return
+}
 function loadall_bc()
 {
     $sql = "select * from bill b join cart c on b.id_bill=c.id_bill";

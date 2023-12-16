@@ -8,13 +8,32 @@
   $dsdm = loadall_cat();
   include "./model/brand.php";
   $dsbr = loadall_brand();
+  include "./model/cart.php";
+  if (isset($_SESSION['user'])) {
+    $count_wl = count($_SESSION['wishlist']);
+  } else {
+    $count_wl = '';
+  }
+  if (isset($_SESSION['user'])) {
+    $count_cart = count($_SESSION['mycart']);
+  } else {
+    $count_cart = '';
+  }
+  $count_b = 0;
+  if (!isset($_SESSION['user'])) {
+    $listbill = '';
+    $count_b = 0;
+  } else {
+    $listbill = loadall_bil($_SESSION['user']['id_user']);
+    $count_b = count($listbill);
+  }
   include "_navbar.php";
   include "./global.php";
   include  "./model/product.php";
   include "./model/size.php";
   include "./model/slider.php";
   include  "./model/user.php";
-  include "./model/cart.php";
+
   include "./model/comment.php";
   include "./model/wishlist.php";
   include "./model/momo.php";
@@ -30,7 +49,6 @@
   // if (!isset($_SESSION['bill_iduser'])) {
   //   $_SESSION['bill_iduser'] = [];
   // }
-
 
 
   $spnew = loadall_pro_home();
@@ -206,8 +224,8 @@
             $quantity = 1;
           }
           $total = $quantity * $price_pro;
-          //check trung sp
 
+          //check trung sp
           if (isset($_SESSION['mycart'][$id_pro])) {
             $_SESSION['mycart'][$id_pro]['quantity'] += 1;
           } else {
@@ -218,6 +236,7 @@
             $_SESSION['mycart'][$id_pro] = $spadd;
             // var_dump($_SESSION['mycart']);
           }
+          $count_cart = count($_SESSION['mycart']);
         }
         include "view_cart.php";
         break;
@@ -313,10 +332,12 @@
         include "billconfirm.php";
         break;
       case 'mybill':
+        $count_b = 0;
         if (!isset($_SESSION['user'])) {
           $listbill = loadall_tk_bil($_SESSION['bill_iduser']);
         } else {
           $listbill = loadall_bil($_SESSION['user']['id_user']);
+          $count_b = count($listbill);
         }
         include "mybill.php";
         break;
@@ -392,6 +413,9 @@
 
           $spwl = [$id_pro, $name_pro, $image_pro, $price_pro, $discount];
           array_push($_SESSION['wishlist'], $spwl); //add mang con($spadd) vao mang cha $_session...
+
+          // Lấy số lượng sản phẩm từ giỏ hàng và lưu vào session yêu thích
+          $count_wl = count($_SESSION['wishlist']);
         }
         include "view_wishlist.php";
         break;
