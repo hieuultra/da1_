@@ -199,6 +199,7 @@
           $image_pro = $_POST['img'];
           $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
+
           if (isset($_POST['quantity']) && ($_POST['quantity']) > 0) {
             $quantity = $_POST['quantity'];
           } else {
@@ -416,6 +417,30 @@
           $price_pro = $_POST['price'];
           $discount = $_POST['discount'];
           $quantity = $_POST['quantity'];
+
+          // Kiểm tra nếu số lượng không được để trống và không phải là một chuỗi trống
+          if ($quantity === "" || trim($quantity) === "") {
+            echo "<script>alert('Please enter a quantity.');</script>";
+            include "view_cart.php";
+            exit(); // Dừng việc thực hiện nếu số lượng trống
+          }
+
+          // Kiểm tra nếu số lượng không phải là số
+          if (!is_numeric($quantity)) {
+            echo "<script>alert('Please enter a valid quantity.');</script>";
+            include "view_cart.php";
+            exit(); // Dừng việc thực hiện nếu số lượng không hợp lệ
+          }
+
+          if ($quantity > 8) {
+            echo "<script>alert('You can only buy up to 8 products.');</script>";
+            include "view_cart.php";
+            exit(); // Dừng việc thêm sản phẩm nếu vượt quá 8
+          } elseif ($quantity < 1) {
+            echo "<script>alert('Quantity cannot be less than 1.');</script>";
+            include "view_cart.php";
+            exit(); // Dừng việc thực hiện nếu số lượng nhỏ hơn 0
+          }
           // var_dump($_POST);die;
           $_SESSION['mycart'][$id_pro]['quantity'] = $quantity;
         }
