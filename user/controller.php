@@ -12,16 +12,16 @@
   if (isset($_SESSION['user'])) {
     $count_wl = count($_SESSION['wishlist']);
   } else {
-    $count_wl = '';
+    $count_wl = 0;
   }
   if (isset($_SESSION['user'])) {
     $count_cart = count($_SESSION['mycart']);
   } else {
-    $count_cart = '';
+    $count_cart = 0;
   }
   $count_b = 0;
   if (!isset($_SESSION['user'])) {
-    $listbill = '';
+    $listbill = 0;
     $count_b = 0;
   } else {
     $listbill = loadall_bil($_SESSION['user']['id_user']);
