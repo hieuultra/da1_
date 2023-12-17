@@ -36,7 +36,9 @@
                                 <td><?= $sum_quantity ?></td>
                                 <td><?= number_format($total_price, 0, ",", ".") ?>$</td>
                                 <td><?= $date_order ?></td>
-                                <td><?= $name_status ?></td>
+                                <td style="color: <?= $name_status === 'da huy' ? 'red' : ($name_status === 'giao hang thanh cong' ? 'green' : 'black') ?>">
+                                    <?= $name_status ?>
+                                </td>
                                 <td>
                                     <a href="<?= $suabill ?>" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
                                 </td>
