@@ -36,8 +36,13 @@
                                 <td><?= $sum_quantity ?></td>
                                 <td><?= number_format($total_price, 0, ",", ".") ?>$</td>
                                 <td><?= $date_order ?></td>
-                                <td style="color: <?= $name_status === 'da huy' ? 'red' : ($name_status === 'giao hang thanh cong' ? 'green' : 'black') ?>">
-                                    <?= $name_status ?>
+                                <td>
+                                    <!-- In ra giá trị của $name_status -->
+                                    <!-- Thẻ có chứa màu sắc -->
+                                    <span style="color: 
+        <?= $name_status === 'da huy' ? 'red' : ($name_status === 'da xac nhan' ? 'brown' : ($name_status === 'dang xu ly' ? 'purple' : ($name_status === 'dang giao hang' ? 'green' : ($name_status === 'giao hang thanh cong' ? 'blue' : 'black')))) ?>">
+                                        <?= $name_status ?>
+                                    </span>
                                 </td>
                                 <td>
                                     <a href="<?= $suabill ?>" class="btn btn-warning"><input type="button" value="UPDATE" /></a>
