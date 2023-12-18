@@ -403,8 +403,13 @@ if (isset($_GET['act'])) {
 
         // Kiểm tra xem trạng thái mới có lớn hơn trạng thái hiện tại không
         if ($new_status_id > $current_status_id) {
-          update_bill($id_bill, $new_status_id);
-          $tbao = 'Sua data thanh cong';
+          // Nếu trạng thái mới không phải là đã hủy (ID = 5)
+          if ($new_status_id != 5) {
+            update_bill($id_bill, $new_status_id);
+            $tbao = 'Sua data thanh cong';
+          } else {
+            echo "<script>alert('Do not cancel orders.');</script>";
+          }
         } else {
           echo "<script>alert('It is not possible to update back after updating.');</script>";
         }
@@ -414,6 +419,7 @@ if (isset($_GET['act'])) {
       $listbill = loadall_bill();
       include "bill/list_bill.php";
       break;
+
     case 'edit_q':
       if (isset($_POST['ss']) && ($_POST['ss'])) {
         // var_dump($_POST);die;
