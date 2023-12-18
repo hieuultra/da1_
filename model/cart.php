@@ -196,7 +196,8 @@ function loadone_bill($id_bill)
 }
 function loadall_b($id_bill)
 {
-    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join product p on c.id_pro=p.id_pro where b.id_bill=" . $id_bill;
+    $sql = "select * from bill b join cart c on b.id_bill=c.id_bill join product p on c.id_pro=p.id_pro
+    join status_bill st on st.id_status_bill=b.id_status_bill where b.id_bill=" . $id_bill;
     $bill = pdo_query($sql);
     return $bill; //co ket qua tra ve phai return
 }

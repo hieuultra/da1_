@@ -1,13 +1,3 @@
-<?php
-// if (is_array($bc)) {
-//     extract($bc);
-//     // var_dump($bc);
-// }
-// foreach ($bc as $b) {
-//     extract($b);
-//     // var_dump($b);
-// }
-?>
 <style>
     #s {
         font-size: 20px;
@@ -73,7 +63,6 @@
                             </form>
                         </td> -->
                     </tr>
-
                 <?php } ?>
                 <tr>
                     <td colspan="4">Total order</td>
@@ -84,7 +73,6 @@
                 </tr>
             </tbody>
         </table>
-
         <form action="?act=update_bill" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id_bill" value="<?= $suabi[0]['id_bill'] ?>">
             <div class="mb-3">

@@ -394,14 +394,20 @@ if (isset($_GET['act'])) {
       break;
     case 'update_bill':
       if (isset($_POST['edit']) && ($_POST['edit'])) {
-        // $name_user = $_POST['name_user'];
         $id_bill = $_POST['id_bill'];
-        // $phone_user = $_POST['phone_user'];
-        // $address_user = $_POST['address_user'];
-        // $quantity = $_POST['quantity'];
-        $id_status_bill = $_POST['id_status_bill'];
-        update_bill($id_bill, $id_status_bill);
-        $tbao = 'Sua data thanh cong';
+        $new_status_id = $_POST['id_status_bill'];
+
+        // Lấy trạng thái hiện tại của đơn hàng từ hàm loadall_b()
+        $suabi = loadall_b($id_bill);
+        $current_status_id = $suabi[0]['id_status_bill'];
+
+        // Kiểm tra xem trạng thái mới có lớn hơn trạng thái hiện tại không
+        if ($new_status_id > $current_status_id) {
+          update_bill($id_bill, $new_status_id);
+          $tbao = 'Sua data thanh cong';
+        } else {
+          echo "<script>alert('It is not possible to update back after updating.');</script>";
+        }
       }
       $bc = loadall_st($id_bill);
       $dsst = loadall_status_bill();
