@@ -134,8 +134,10 @@
             // echo "Sorry, there was an error uploading your file.";
           }
           //  $hinh=$_POST['hinh'];
-          insert_tk($username, $password, $name, $address, $phone, $email, $file);
-          $tbao = "Creat account sucsess!Please login to do comment or order products!";
+          if ($username != "" && $password != "") {
+            insert_tk($username, $password, $name, $address, $phone, $email, $file);
+            $tbao = "<script>alert('Creat account sucsess!Please login to do order products!');</script>";
+          }
         }
         include_once("pages-sign-up.php");
         break;
@@ -150,7 +152,7 @@
             include "login_sucsess.php";
             // $tbao = "Ban da dang nhap thanh cong!";
           } else {
-            $tbao = "Account no have, Please check or sign_up!";
+            $tbao = "<script>alert('Account no have, Please check or sign_up!');</script>";
           }
         }
         include "login.php";
@@ -178,8 +180,8 @@
           update_taikhoan($id_user, $username, $password, $name, $address, $phone, $email, $file);
           $_SESSION['user'] = check_user($username, $password); // sau khi edit xong thi edit lai $_SESSION['user'] moi
           // header("location:index.php?act=edit_taikhoan");
-
-          $tb = "Edit account sucsess!";
+          $tb = "<script>alert('Edit account sucsess!');</script>";
+          // $tb = "Edit account sucsess!";
         }
         include "edit_account.php";
         break;
@@ -189,8 +191,10 @@
           $check_email =  check_email($email);
           if (is_array($check_email)) {
             $tbao = "Your password is:" . $check_email['password'];
+            echo "<script>alert('$tbao');</script>";
           } else {
             $tbao = "Email no have!";
+            echo "<script>alert('$tbao');</script>";
           }
         }
         include 'forgot-password.php';
