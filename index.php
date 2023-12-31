@@ -7,7 +7,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="Free HTML Templates" name="keywords" />
   <meta content="Free HTML Templates" name="description" />
-<!-- fontawesome -->
+  <!-- fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Favicon -->
   <link href="./user/img/favicon.ico" rel="icon" />
@@ -24,6 +24,7 @@
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="./user/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./user/css/popup.css">
 </head>
 
 <body>
@@ -44,6 +45,17 @@
 
   <!-- Template Javascript -->
   <script src="./user/js/main.js"></script>
+  <!-- Popup -->
+  <div class="popup" id="discountPopup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2 class="discount-title">Ưu đãi giảm giá!</h2>
+      <p class="discount-offer">Nhập mã giảm giá "SALE20" để được giảm giá 20% cho đơn hàng của bạn.</p>
+      <img src="./user/img/thiet-ke-phieu-qua-tang-gia-re-2.jpg" alt="">
+    </div>
+  </div>
+
+  <script src="./user/js/popup.js"></script>
 </body>
 
 </html>
