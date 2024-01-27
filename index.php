@@ -54,8 +54,8 @@
       <img src="./user/img/thiet-ke-phieu-qua-tang-gia-re-2.jpg" alt="">
     </div>
   </div>
-
-  <script src="./user/js/popup.js"></script>
+<!-- 
+  <script src="./user/js/popup.js"></script> -->
 </body>
 
 </html>
