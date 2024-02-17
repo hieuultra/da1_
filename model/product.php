@@ -99,7 +99,7 @@ function loadall_pro($id_cat = 0)
     $sql .= " order by pro.id_pro desc";
     $dssp = pdo_query($sql);
     return $dssp; //co ket qua tra ve phai return
-}
+}   
 function loadone_pro($id_pro)
 {
     $sql = "select * from product where id_pro=" . $id_pro;
