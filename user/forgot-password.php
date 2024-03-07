@@ -42,8 +42,8 @@
                       <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
                     </div>
                     <div class="text-center mt-3">
-                      <input type="submit" href="#" class="btn btn-lg btn-primary" value="Send" name="send_email">
-                      <input type="reset" href="#" class="btn btn-lg btn-primary" value="Reset">
+                      <input type="submit" href="#"  class="btn btn-outline-primary" value="Send" name="send_email">
+                      <input type="reset" href="#" class="btn btn-outline-warning" value="Reset">
                       <!-- <button type="submit" class="btn btn-lg btn-primary">Reset password</button> -->
                     </div>
                   </form>
