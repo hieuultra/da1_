@@ -22,15 +22,17 @@ function view_cart($del)
     $tong = 0;
     $i = 0;
     if ($del == 1) {
+        $t = ' <p class="text-danger">Please type quantity and press Enter or Update</p>';
         $xoasp_th = '<th colspan="2">Action</th>';
         $edit = '';
         $xoasp_td2 = '';
     } else {
+        $t = "";
         $xoasp_th = "";
         $edit = '';
         $xoasp_td2 = "";
     }
-    echo '   <p class="text-danger">Please type quantity and press Enter or Update</p> <thead class="bg-secondary text-dark">
+    echo '  ' . $t . ' <thead class="bg-secondary text-dark">
     <tr>
     <th>Image</th>
     <th>Products</th>
