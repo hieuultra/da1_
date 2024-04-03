@@ -137,6 +137,18 @@
           if ($username != "" && $password != "") {
             insert_tk($username, $password, $name, $address, $phone, $email, $file);
             $tbao = "<script>alert('Creat account sucsess!Please login to do order products!');</script>";
+          } else if ($username == "") {
+            $tb = "Please type your Username";
+          } else if ($password == "") {
+            $tb1 = "Please type your Password";
+          } else if ($name == "") {
+            $tb2 = "Please type your Name";
+          } else if ($address == "") {
+            $tb3 = "Please type your Address";
+          } else if ($phone == "") {
+            $tb4 = "Please type your Phone";
+          } else if ($email == "") {
+            $tb5 = "Please type your Email";
           }
         }
         include_once("pages-sign-up.php");

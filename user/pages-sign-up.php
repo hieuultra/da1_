@@ -15,67 +15,60 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
 <script>
-    $().ready(function() {
-        $("#demoForm").validate({
-            onfocusout: false,
-            onkeyup: false,
-            onclick: false,
-            rules: {
-                "username": {
-                    required: true,
-                    maxlength: 10
-                },
-                "password": {
-                    required: true,
-                    minlength: 3
-                },
-                "name": {
-                    required: true,
-                    minlength: 5
-                },
-                "address": {
-                    required: true,
-                },
-                "phone": {
-                    required: true,
-                },
-                "email": {
-                    required: true,
-                    email: true
-                }
-            },
-            messages: {
-                "username": {
-                    required: "Bắt buộc nhập username",
-                    maxlength: "Hãy nhập tối đa 10 ký tự"
-                },
-                "password": {
-                    required: "Bắt buộc nhập password",
-                    minlength: "Hãy nhập ít nhất 3 ký tự"
-                },
-                "name": {
-                    required: "Bắt buộc nhập ho ten",
-                    maxlength: "Hãy nhập ít nhất 5 ký tự"
-                },               
-                "address": {
-                    required: "Bắt buộc nhập address",
-                },
-                "phone": {
-                    required: "Bắt buộc nhập phone",
-                },
-                "email": {
-                    required: "Bắt buộc nhập email",
-                    email: "Hãy nhập dúng định dạng email"
-                }
-            }
-        });
+  $().ready(function() {
+    $("#demoForm").validate({
+      onfocusout: false,
+      onkeyup: false,
+      onclick: false,
+      rules: {
+        username: {
+          required: true,
+        },
+        password: {
+          required: true,
+          minlength: 1
+        },
+        name: {
+          required: true,
+          minlength: 1
+        },
+        address: {
+          required: true,
+        },
+        phone: {
+          required: true,
+        },
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        username: {
+          required: "Bắt buộc nhập username",
+        },
+        password: {
+          required: "Bắt buộc nhập password",
+          minlength: "Hãy nhập ít nhất 1 ký tự"
+        },
+        name: {
+          required: "Bắt buộc nhập ho ten",
+          minlength: "Hãy nhập ít nhất 1 ký tự"
+        },
+        address: {
+          required: "Bắt buộc nhập address",
+        },
+        phone: {
+          required: "Bắt buộc nhập phone",
+        },
+        email: {
+          required: "Bắt buộc nhập email",
+          email: "Hãy nhập dúng định dạng email"
+        }
+      }
     });
+  });
 </script>
-<style>
-    label.error {
-        color: red;
-    }
-</style>
 <style>
   label.error {
     color: red;
@@ -83,6 +76,8 @@
 
   .tbao {
     color: red;
+    font-weight: 500;
+    font-size: medium;
   }
 </style>
 
@@ -107,26 +102,68 @@
                     <div class="form-group">
                       <label>UserName</label>
                       <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb) && ($tb) != "") {
+                          echo $tb;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Password</label>
                       <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb1) && ($tb1) != "") {
+                          echo $tb1;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Name</label>
                       <input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb2) && ($tb2) != "") {
+                          echo $tb2;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Address</label>
                       <input class="form-control form-control-lg" type="text" name="address" placeholder="Enter your address" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb3) && ($tb3) != "") {
+                          echo $tb3;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Phone</label>
                       <input class="form-control form-control-lg" type="text" name="phone" placeholder="Enter your phone" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb4) && ($tb4) != "") {
+                          echo $tb4;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Email</label>
                       <input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb5) && ($tb5) != "") {
+                          echo $tb5;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Image</label>
