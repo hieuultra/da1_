@@ -151,8 +151,10 @@
             // header('Location:login_sucsess.php');
             include "login_sucsess.php";
             // $tbao = "Ban da dang nhap thanh cong!";
-          } else {
-            $tbao = "<script>alert('Account no have, Please check or sign_up!');</script>";
+          } else if ($username == "") {
+            $tb = "Please type your Username";
+          } else if ($password == "") {
+            $tb1 = "Please type your Password";
           }
         }
         include "login.php";
@@ -191,10 +193,8 @@
           $check_email =  check_email($email);
           if (is_array($check_email)) {
             $tbao = "Your password is:" . $check_email['password'];
-            echo "<script>alert('$tbao');</script>";
           } else {
             $tbao = "Email no have!";
-            echo "<script>alert('$tbao');</script>";
           }
         }
         include 'forgot-password.php';

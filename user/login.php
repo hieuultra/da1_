@@ -47,6 +47,8 @@
 
   .tbao {
     color: red;
+    font-weight: 500;
+    font-size: medium;
   }
 </style>
 
@@ -73,10 +75,24 @@
                     <div class="form-group">
                       <label>Username</label>
                       <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb) && ($tb) != "") {
+                          echo $tb;
+                        }
+                        ?>
+                      </h2>
                     </div>
                     <div class="form-group">
                       <label>Password</label>
                       <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+                      <h2 class="tbao">
+                        <?php
+                        if (isset($tb1) && ($tb1) != "") {
+                          echo $tb1;
+                        }
+                        ?>
+                      </h2>
                       <div class="d-flex mt-2 justify-content-between">
                         <small>
                           <a href="?act=forgot_password">Forgot password?</a>
@@ -101,13 +117,6 @@
                 </div>
               </div>
             </div>
-            <h2 class="tbao">
-              <?php
-              if (isset($tbao) && ($tbao) != "") {
-                echo $tbao;
-              }
-              ?>
-            </h2>
           </div>
         </div>
       </div>
