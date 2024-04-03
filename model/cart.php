@@ -30,7 +30,7 @@ function view_cart($del)
         $edit = '';
         $xoasp_td2 = "";
     }
-    echo '   <thead class="bg-secondary text-dark">
+    echo '   <p class="text-primary">Please type quantity and press Enter or Update</p> <thead class="bg-secondary text-dark">
     <tr>
     <th>Image</th>
     <th>Products</th>
