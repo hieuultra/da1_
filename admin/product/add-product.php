@@ -27,9 +27,8 @@
              
             },
             messages: {
-                "tensp ": {
+                "name_pro ": {
                     required: "Bắt buộc nhập username",
-                    maxlength: "Hãy nhập tối đa 10 ký tự"
                 },
                 
                 "img ": {
@@ -37,7 +36,7 @@
                 },
              
                 "price": {
-                    required: "Bắt buộc nhập password",
+                    required: "Bắt buộc nhập price",
                     positiveNumber: "Price phải là số dương"
                 },
                 "discount ": {
